@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qaj3BlZF9lbE9NTui3m683jZXp0uAHkAhtFRJ5KPBqMZW0iUZVzeBmwjUYyA1DoZFFT84vCAU+fF5xkXm6IbEA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ramon\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}
