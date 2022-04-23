@@ -1,25 +1,30 @@
 ﻿using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kumbajah.Domain.Entities
 {
     public class User : Base
     {
         public string Name { get; private set; }
+        public string LastName { get; private set; }
         public string Email { get; private set; }
+        public string PhoneNumber { get; private set; }
+        public int Age { get; private set; }
         public string Password { get; private set; }
+        public string CPF { get; private set; }
 
         public User() {}
 
-        public User(string name, string email, string password)
+        public User(string name,string lastName, string email, string phoneNumber, int age, string password, string cpf)
         {
             Name = name;
+            LastName = lastName;
             Email = email;
+            PhoneNumber = phoneNumber;
+            Age = age;
             Password = password;
+            CPF = cpf;
             _errors = new List<string>();
         }
 
@@ -41,6 +46,18 @@ namespace Kumbajah.Domain.Entities
         public void ChangeName(string name)
         {
             Name = name;
+            Validate();
+        }
+
+        public void ChangeLastName(string lastName)
+        {
+            LastName = lastName;
+            Validate();
+        }
+
+        public void ChangePhoneNumber(string phoneNumber)
+        {
+            PhoneNumber = phoneNumber;
             Validate();
         }
 
