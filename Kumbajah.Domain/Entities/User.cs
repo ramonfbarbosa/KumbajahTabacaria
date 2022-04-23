@@ -10,19 +10,19 @@ namespace Kumbajah.Domain.Entities
         public string LastName { get; private set; }
         public string Email { get; private set; }
         public string PhoneNumber { get; private set; }
-        public int Age { get; private set; }
+        public string Birthday { get; private set; }
         public string Password { get; private set; }
         public string CPF { get; private set; }
 
         public User() {}
 
-        public User(string name,string lastName, string email, string phoneNumber, int age, string password, string cpf)
+        public User(string name,string lastName, string email, string phoneNumber, string birthday, string password, string cpf)
         {
             Name = name;
             LastName = lastName;
             Email = email;
             PhoneNumber = phoneNumber;
-            Age = age;
+            Birthday = birthday;
             Password = password;
             CPF = cpf;
             _errors = new List<string>();

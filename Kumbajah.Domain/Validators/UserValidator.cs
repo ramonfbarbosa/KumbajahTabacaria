@@ -17,16 +17,16 @@ namespace Kumbajah.Domain.Validators
 
             RuleFor(costumer => costumer.Name)
                 .NotEmpty()
-                .WithMessage("O campo Nome não pode ficar vazio!")
+                .WithMessage("O campo nome não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo Nome não pode ficar nulo!")
+                .WithMessage("O campo nome não pode ficar nulo!")
                 
                 .MinimumLength(3)
                 .WithMessage("O nome deve ter no mínimo 3 caracteres")
                 
                 .MaximumLength(80)
-                .WithMessage("O nome deve ter no máximo 20 caracteres");
+                .WithMessage("O nome deve ter no máximo 80 caracteres");
 
             RuleFor(costumer => costumer.PhoneNumber)
                 .NotEmpty()
@@ -36,20 +36,20 @@ namespace Kumbajah.Domain.Validators
                 .WithMessage("O campo celular não pode ficar nulo!")
 
                 .MinimumLength(11)
-                .WithMessage("Celular deve ser no formato (XX) XXXXX - XXXX")
+                .WithMessage("O Celular deve ser no formato (XX) XXXXX - XXXX")
 
                 .MaximumLength(11)
-                .WithMessage("Celular deve ser no formato (XX) XXXXX - XXXX")
+                .WithMessage("O celular deve ser no formato (XX) XXXXX - XXXX")
 
                 .Matches(new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"))
-                .WithMessage("Número de celular inválido");
+                .WithMessage("Número de celular inválido!");
 
             RuleFor(costumer => costumer.LastName)
                 .NotEmpty()
-                .WithMessage("O campo Sobrenome não pode ficar vazio!")
+                .WithMessage("O campo sobrenome não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo Sobrenome não pode ficar nulo!")
+                .WithMessage("O campo sobrenome não pode ficar nulo!")
 
                 .MinimumLength(3)
                 .WithMessage("O nome deve ter no mínimo 2 caracteres")
@@ -59,10 +59,10 @@ namespace Kumbajah.Domain.Validators
 
             RuleFor(costumer => costumer.Email)
                 .NotEmpty()
-                .WithMessage("O campo Email não pode ficar vazio!")
+                .WithMessage("O campo e-mail não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo Email não pode ficar nulo!")
+                .WithMessage("O campo e-mail não pode ficar nulo!")
 
                 .MinimumLength(10)
                 .WithMessage("O email deve ter no mínimo 10 caracteres")
@@ -72,10 +72,10 @@ namespace Kumbajah.Domain.Validators
 
                 //pode da merda isso daqui de 2 validacoes
                 .EmailAddress()
-                .WithMessage("O email precisa ser válido")
+                .WithMessage("O e-mail precisa ser válido!")
 
                 .Matches(new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
-                .WithMessage("O email informado não é válido.");
+                .WithMessage("O e-mail informado não é válido!");
         }
     }
 }

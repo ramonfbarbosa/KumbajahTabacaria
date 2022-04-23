@@ -2,11 +2,6 @@
 using Kumbajah.Infra.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kumbajah.Infra.Context
 {
@@ -29,10 +24,14 @@ namespace Kumbajah.Infra.Context
         }
 
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new UserMap());
+            builder.ApplyConfiguration(new CategoryMap());
+            builder.ApplyConfiguration(new ProductMap());
         }
     }
 }

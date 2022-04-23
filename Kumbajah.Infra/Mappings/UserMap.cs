@@ -46,11 +46,11 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("password")
                 .HasColumnType("VARCHAR(180)");
 
-            builder.Property(x => x.Age)
+            builder.Property(x => x.Birthday)
                 .IsRequired()
                 .HasMaxLength(3)
-                .HasColumnName("age")
-                .HasColumnType("INT");
+                .HasColumnName("birthday")
+                .HasColumnType("VARCHAR(10)");
 
         }
     }

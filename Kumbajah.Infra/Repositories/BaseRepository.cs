@@ -34,8 +34,10 @@ namespace Kumbajah.Infra.Repositories
                                  .ToListAsync();
         }
 
-        public virtual async Task<T> Create(T obj, DateTime? updateTime)
+        public virtual async Task<T> Create(T obj, DateTime? createdTime)
         {
+            createdTime ??= DateTime.Now;
+            obj.CreatedTime = createdTime;
 
             _context.Add(obj);
             await _context.SaveChangesAsync();
@@ -45,8 +47,9 @@ namespace Kumbajah.Infra.Repositories
 
         public virtual async Task<T> Update(T obj, DateTime? updateTime)
         {
-            pdateTime ??= DateTime.Now;
+            updateTime ??= DateTime.Now;
             obj.UpdateTime = updateTime;
+
             _context.Entry(obj).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kumbajah.Domain.Validators;
+using System;
 
 namespace Kumbajah.Domain.Entities
 {
@@ -25,7 +26,17 @@ namespace Kumbajah.Domain.Entities
 
         public override bool Validate()
         {
-            throw new NotImplementedException();
+            var validator = new ProductValidator();
+            var validation = validator.Validate(this);
+
+            if (!validation.IsValid)
+            {
+                foreach (var errors in validation.Errors)
+                    _errors.Add(errors.ErrorMessage);
+
+                throw new Exception("Alguns campos estão inválidos, por favor corrija-os: " + _errors[0]);
+            }
+            return true;
         }
     }
 }
