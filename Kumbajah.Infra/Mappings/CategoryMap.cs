@@ -25,7 +25,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.ProductId)
                 .IsRequired()
                 .HasColumnName("PRODUCT_ID")
-                .HasColumnType("INT"); ;
+                .HasColumnType("BIGINT"); ;
         }
     }
 }

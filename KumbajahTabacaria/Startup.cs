@@ -20,22 +20,21 @@ namespace KumbajahTabacaria
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllers();
+            var connectionString = Configuration["ConnectionString:KUMBAJAH_MANAGER"];
             services.AddDbContext<KumbajahContext>(options => options
-                .UseSqlServer(Configuration.GetConnectionString("KUMBAJAH_MANAGER")), ServiceLifetime.Transient);
+                .UseSqlServer(connectionString, b => b.MigrationsAssembly("KumbajahTabacaria")), ServiceLifetime.Transient);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KumbajahTabacaria", Version = "v1" });
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
