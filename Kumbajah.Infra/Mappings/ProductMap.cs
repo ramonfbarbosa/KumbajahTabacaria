@@ -30,9 +30,8 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Price)
                 .IsRequired()
-                .HasMaxLength(10)
                 .HasColumnName("PRICE")
-                .HasColumnType("DECIMAL");
+                .HasColumnType("DECIMAL(10,10)");
 
             builder.Property(x => x.Image)
                 .IsRequired()
@@ -42,15 +41,13 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Quantity)
                 .IsRequired()
-                .HasMaxLength(180)
                 .HasColumnName("QUANTITY")
                 .HasColumnType("BIGINT");
 
-            builder.Property(x => x.Category)
+            builder.Property(x => x.CategoryId)
                 .IsRequired()
-                .HasMaxLength(3)
-                .HasColumnName("BIRTHDAY")
-                .HasColumnType("date)");
+                .HasColumnName("CATEGORY_ID")
+                .HasColumnType("INT");
 
         }
     }

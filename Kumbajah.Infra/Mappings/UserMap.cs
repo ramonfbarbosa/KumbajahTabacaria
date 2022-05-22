@@ -19,20 +19,20 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Name + "_" + x.LastName)
                 .IsRequired()
                 .HasMaxLength(80)
-                .HasColumnName("name")
+                .HasColumnName("NAME")
                 .HasColumnType("VARCHAR(80)");
 
             builder.Property(x => x.Email)
                 .IsRequired()
                 .HasMaxLength(30)
-                .HasColumnName("email")
+                .HasColumnName("EMAIL")
                 .HasColumnType("VARCHAR(30)");
 
             builder.Property(x => x.CPF)
                 .IsRequired()
                 .HasMaxLength(11)
                 .HasColumnName("CPF")
-                .HasColumnType("VARCHAR(11)");
+                .HasColumnType("BIGINT");
 
             builder.Property(x => x.PhoneNumber)
                 .IsRequired()

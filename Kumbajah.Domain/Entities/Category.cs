@@ -1,6 +1,4 @@
-﻿using Kumbajah.Domain.Validators;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Kumbajah.Domain.Entities
 {
@@ -8,6 +6,7 @@ namespace Kumbajah.Domain.Entities
     {
         public string Name { get; private set; }
         public virtual IEnumerable<Product> Products { get; }
+        public int ProductId { get; private set; }
 
         public Category() { }
 

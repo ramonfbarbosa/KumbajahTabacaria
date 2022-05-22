@@ -21,6 +21,11 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(80)
                 .HasColumnName("NAME")
                 .HasColumnType("VARCHAR(80)");
+
+            builder.Property(x => x.ProductId)
+                .IsRequired()
+                .HasColumnName("PRODUCT_ID")
+                .HasColumnType("INT"); ;
         }
     }
 }

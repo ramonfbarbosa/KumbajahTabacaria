@@ -9,14 +9,14 @@ namespace Kumbajah.Domain.Entities
         public string Name { get; private set; }
         public string LastName { get; private set; }
         public string Email { get; private set; }
-        public string PhoneNumber { get; private set; }
-        public string Birthday { get; private set; }
+        public int PhoneNumber { get; private set; }
+        public DateTime Birthday { get; private set; }
         public string Password { get; private set; }
-        public string CPF { get; private set; }
+        public long CPF { get; private set; }
 
         public User() {}
 
-        public User(string name,string lastName, string email, string phoneNumber, string birthday, string password, string cpf)
+        public User(string name,string lastName, string email, int phoneNumber, DateTime birthday, string password, long cpf)
         {
             Name = name;
             LastName = lastName;
