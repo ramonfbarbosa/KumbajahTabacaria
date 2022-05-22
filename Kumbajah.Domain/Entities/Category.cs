@@ -7,7 +7,7 @@ namespace Kumbajah.Domain.Entities
     public class Category : Base
     {
         public string Name { get; private set; }
-        public IEnumerable<Product> Products { get; }
+        public virtual IEnumerable<Product> Products { get; }
 
         public Category() { }
 
@@ -15,21 +15,6 @@ namespace Kumbajah.Domain.Entities
         {
             Name = name;
             Products = products;
-        }
-
-        public override bool Validate()
-        {
-            var validator = new CategoryValidator();
-            var validation = validator.Validate(this);
-
-            if (!validation.IsValid)
-            {
-                foreach (var errors in validation.Errors)
-                    _errors.Add(errors.ErrorMessage);
-
-                throw new Exception("Alguns campos estão inválidos, por favor corrija-os: " + _errors[0]);
-            }
-            return true;
         }
     }
 }

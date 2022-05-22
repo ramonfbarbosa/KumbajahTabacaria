@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("User");
+            builder.ToTable("USER");
 
             builder.HasKey(x => x.Id);
 
@@ -16,7 +16,7 @@ namespace Kumbajah.Infra.Mappings
                 .UseIdentityColumn()
                 .HasColumnType("BIGINT");
 
-            builder.Property(x => x.Name + " " + x.LastName)
+            builder.Property(x => x.Name + "_" + x.LastName)
                 .IsRequired()
                 .HasMaxLength(80)
                 .HasColumnName("name")
@@ -30,28 +30,25 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.CPF)
                 .IsRequired()
-                .HasMaxLength(30)
-                .HasColumnName("cpf")
+                .HasMaxLength(11)
+                .HasColumnName("CPF")
                 .HasColumnType("VARCHAR(11)");
 
             builder.Property(x => x.PhoneNumber)
                 .IsRequired()
-                .HasMaxLength(10)
-                .HasColumnName("phone_number")
+                .HasColumnName("PHONE_NUMBER")
                 .HasColumnType("BIGINT");
 
             builder.Property(x => x.Password)
                 .IsRequired()
                 .HasMaxLength(180)
-                .HasColumnName("password")
+                .HasColumnName("PASSWORD")
                 .HasColumnType("VARCHAR(180)");
 
             builder.Property(x => x.Birthday)
                 .IsRequired()
-                .HasMaxLength(3)
-                .HasColumnName("birthday")
-                .HasColumnType("VARCHAR(10)");
-
+                .HasColumnName("BIRTHDAY")
+                .HasColumnType("date");
         }
     }
 }

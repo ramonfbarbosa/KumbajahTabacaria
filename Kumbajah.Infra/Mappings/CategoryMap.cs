@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("Category");
+            builder.ToTable("CATEGORY");
 
             builder.HasKey(x => x.Id);
 
@@ -19,11 +19,8 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(80)
-                .HasColumnName("name")
+                .HasColumnName("NAME")
                 .HasColumnType("VARCHAR(80)");
-
-            // falta relacionamento produtos
-
         }
     }
 }

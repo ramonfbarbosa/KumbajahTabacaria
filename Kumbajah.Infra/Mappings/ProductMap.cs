@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Product");
+            builder.ToTable("PRODUCT");
 
             builder.HasKey(x => x.Id);
 
@@ -19,41 +19,38 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(80)
-                .HasColumnName("name")
+                .HasColumnName("NAME")
                 .HasColumnType("VARCHAR(80)");
-
 
             builder.Property(x => x.Description)
                 .IsRequired()
                 .HasMaxLength(180)
-                .HasColumnName("description")
+                .HasColumnName("DESCRIPTION")
                 .HasColumnType("VARCHAR(180)");
 
             builder.Property(x => x.Price)
                 .IsRequired()
                 .HasMaxLength(10)
-                .HasColumnName("price")
+                .HasColumnName("PRICE")
                 .HasColumnType("DECIMAL");
 
             builder.Property(x => x.Image)
                 .IsRequired()
                 .HasMaxLength(200)
-                .HasColumnName("image")
+                .HasColumnName("IMAGE")
                 .HasColumnType("BLOB");
 
             builder.Property(x => x.Quantity)
                 .IsRequired()
                 .HasMaxLength(180)
-                .HasColumnName("quantity")
+                .HasColumnName("QUANTITY")
                 .HasColumnType("BIGINT");
 
             builder.Property(x => x.Category)
                 .IsRequired()
                 .HasMaxLength(3)
-                .HasColumnName("birthday")
-                .HasColumnType("VARCHAR(10)");
-
-            // falta relacionamento Category
+                .HasColumnName("BIRTHDAY")
+                .HasColumnType("date)");
 
         }
     }

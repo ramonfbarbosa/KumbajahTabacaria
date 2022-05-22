@@ -28,7 +28,7 @@ namespace Kumbajah.Domain.Entities
             _errors = new List<string>();
         }
 
-        public override bool Validate()
+        public bool Validate()
         {
             var validator = new UserValidator();
             var validation = validator.Validate(this);

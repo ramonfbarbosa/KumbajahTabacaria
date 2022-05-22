@@ -10,7 +10,8 @@ namespace Kumbajah.Domain.Entities
         public decimal Price { get; private set; }
         public string Image { get; private set; }
         public long Quantity { get; private set; }
-        public Category Category { get; private set; }
+        public virtual Category Category { get; private set; }
+        public int CategoryId { get; private set; }
 
         public Product() { }
 
