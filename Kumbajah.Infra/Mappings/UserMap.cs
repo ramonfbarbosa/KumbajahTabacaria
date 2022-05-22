@@ -16,10 +16,16 @@ namespace Kumbajah.Infra.Mappings
                 .UseIdentityColumn()
                 .HasColumnType("BIGINT");
 
-            builder.Property(x => x.Name + "_" + x.LastName)
+            builder.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(20)
+                .HasColumnName("NAME")
+                .HasColumnType("VARCHAR(80)");
+
+            builder.Property(x => x.LastName)
                 .IsRequired()
                 .HasMaxLength(80)
-                .HasColumnName("NAME")
+                .HasColumnName("LAST_NAME")
                 .HasColumnType("VARCHAR(80)");
 
             builder.Property(x => x.Email)

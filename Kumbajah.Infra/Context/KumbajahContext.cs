@@ -12,6 +12,9 @@ namespace Kumbajah.Infra.Context
 
         public KumbajahContext() { }
 
+        public KumbajahContext(DbContextOptions<KumbajahContext> options) : base(options)
+        { }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Product>()

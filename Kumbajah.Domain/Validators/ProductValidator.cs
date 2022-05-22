@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Kumbajah.Domain.Entities;
-using System.Text.RegularExpressions;
 
 namespace Kumbajah.Domain.Validators
 {
@@ -43,12 +42,12 @@ namespace Kumbajah.Domain.Validators
                 .NotNull()
                 .WithMessage("O produto deve conter uma imagem!");
 
-            RuleFor(costumer => costumer.Category)
+            RuleFor(costumer => costumer.CategoryId)
                 .NotEmpty()
-                .WithMessage("O produto deve conter uma categoria!")
+                .WithMessage("O produto deve conter um ID da categoria!")
 
                 .NotNull()
-                .WithMessage("O produto deve conter uma categoria!");
+                .WithMessage("O produto deve conter um ID da categoria!");
         }
     }
 }

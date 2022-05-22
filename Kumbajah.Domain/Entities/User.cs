@@ -55,7 +55,7 @@ namespace Kumbajah.Domain.Entities
             Validate();
         }
 
-        public void ChangePhoneNumber(string phoneNumber)
+        public void ChangePhoneNumber(int phoneNumber)
         {
             PhoneNumber = phoneNumber;
             Validate();

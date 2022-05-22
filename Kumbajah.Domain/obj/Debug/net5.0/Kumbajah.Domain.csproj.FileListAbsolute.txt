@@ -1,0 +1,12 @@
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.csproj.AssemblyReference.cache
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.AssemblyInfoInputs.cache
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.AssemblyInfo.cs
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\bin\Debug\net5.0\Kumbajah.Domain.deps.json
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\bin\Debug\net5.0\Kumbajah.Domain.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\bin\Debug\net5.0\Kumbajah.Domain.pdb
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\refint\Kumbajah.Domain.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.pdb
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\ref\Kumbajah.Domain.dll

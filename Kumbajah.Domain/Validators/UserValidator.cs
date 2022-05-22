@@ -33,18 +33,9 @@ namespace Kumbajah.Domain.Validators
                 .WithMessage("O campo celular não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo celular não pode ficar nulo!")
+                .WithMessage("O campo celular não pode ficar nulo!");
 
-                .MinimumLength(11)
-                .WithMessage("O Celular deve ser no formato (XX) XXXXX - XXXX")
-
-                .MaximumLength(11)
-                .WithMessage("O celular deve ser no formato (XX) XXXXX - XXXX")
-
-                .Matches(new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"))
-                .WithMessage("Número de celular inválido!");
-
-            RuleFor(costumer => costumer.LastName)
+            _ = RuleFor(costumer => costumer.LastName)
                 .NotEmpty()
                 .WithMessage("O campo sobrenome não pode ficar vazio!")
 
