@@ -28,7 +28,7 @@ namespace KumbajahTabacaria
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllers();
             services.AddDbContext<KumbajahContext>(options => options
-                .UseSqlServer(Configuration["ConnectionString:KUMBAJAH_MANAGER"]), ServiceLifetime.Transient);
+                .UseSqlServer(Configuration.GetConnectionString("KUMBAJAH_MANAGER")), ServiceLifetime.Transient);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KumbajahTabacaria", Version = "v1" });
