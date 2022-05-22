@@ -34,22 +34,16 @@ namespace Kumbajah.Infra.Repositories
                                  .ToListAsync();
         }
 
-        public virtual async Task<T> Create(T obj, DateTime? createdTime)
+        public virtual async Task<T> Create(T obj)
         {
-            createdTime ??= DateTime.Now;
-            obj.CreatedTime = createdTime;
-
             _context.Add(obj);
             await _context.SaveChangesAsync();
 
             return obj;
         }
 
-        public virtual async Task<T> Update(T obj, DateTime? updateTime)
+        public virtual async Task<T> Update(T obj)
         {
-            updateTime ??= DateTime.Now;
-            obj.UpdateTime = updateTime;
-
             _context.Entry(obj).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 

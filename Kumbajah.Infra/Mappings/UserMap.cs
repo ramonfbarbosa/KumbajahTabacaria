@@ -8,12 +8,13 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("USER");
+            builder.ToTable("ACCOUNT");
 
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
+                .HasColumnName("ID")
                 .HasColumnType("BIGINT");
 
             builder.Property(x => x.Name)
@@ -54,7 +55,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Birthday)
                 .IsRequired()
                 .HasColumnName("BIRTHDAY")
-                .HasColumnType("date");
+                .HasColumnType("DATE");
         }
     }
 }

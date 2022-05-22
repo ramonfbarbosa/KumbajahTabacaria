@@ -4,14 +4,16 @@ using Kumbajah.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KumbajahTabacaria.Migrations
 {
     [DbContext(typeof(KumbajahContext))]
-    partial class KumbajahContextModelSnapshot : ModelSnapshot
+    [Migration("20220522015315_FixingCreatedAndUpdatedTimeFields")]
+    partial class FixingCreatedAndUpdatedTimeFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

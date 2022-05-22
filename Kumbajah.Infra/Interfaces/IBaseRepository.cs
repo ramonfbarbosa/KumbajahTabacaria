@@ -9,8 +9,8 @@ namespace Kumbajah.Infra.Interfaces
     {
         Task<T> GetById(long id);
         Task<List<T>> Get();
-        Task<T> Create(T obj, DateTime? createdTime);
-        Task<T> Update(T obj, DateTime? updateTime);
+        Task<T> Create(T obj);
+        Task<T> Update(T obj);
         Task Delete(long id);
     }
 }

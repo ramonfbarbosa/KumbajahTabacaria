@@ -2,6 +2,7 @@
 using Kumbajah.Infra.Context;
 using Kumbajah.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,6 +46,15 @@ namespace Kumbajah.Infra.Repositories
                .ToListAsync();
 
             return allProducts;
+        }
+
+        public virtual async Task<Product> Create(Product obj)
+        {
+            obj.CreatedTime = DateTime.Now;
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+
+            return obj;
         }
     }
 }

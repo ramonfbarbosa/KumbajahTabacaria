@@ -4,14 +4,16 @@ using Kumbajah.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KumbajahTabacaria.Migrations
 {
     [DbContext(typeof(KumbajahContext))]
-    partial class KumbajahContextModelSnapshot : ModelSnapshot
+    [Migration("20220522015112_FixingInitialMigration")]
+    partial class FixingInitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,8 +57,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("CATEGORY_ID");
 
                     b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("DATE")
-                        .HasColumnName("CREATED_TIME");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -86,9 +87,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("QUANTITY");
 
                     b.Property<DateTime?>("UpdateTime")
-                        .IsRequired()
-                        .HasColumnType("DATE")
-                        .HasColumnName("UPDATED_TIME");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

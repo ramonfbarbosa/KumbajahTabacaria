@@ -14,6 +14,7 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
+                .HasColumnName("ID")
                 .HasColumnType("BIGINT");
 
             builder.Property(x => x.Name)
@@ -49,6 +50,15 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("CATEGORY_ID")
                 .HasColumnType("BIGINT");
 
+            builder.Property(x => x.CreatedTime)
+                .IsRequired()
+                .HasColumnName("CREATED_TIME")
+                .HasColumnType("DATE");
+
+            builder.Property(x => x.UpdateTime)
+                .IsRequired()
+                .HasColumnName("UPDATED_TIME")
+                .HasColumnType("DATE");
         }
     }
 }

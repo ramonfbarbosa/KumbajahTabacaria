@@ -14,6 +14,7 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
+                .HasColumnName("ID")
                 .HasColumnType("BIGINT");
 
             builder.Property(x => x.Name)
