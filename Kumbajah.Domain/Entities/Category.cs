@@ -8,12 +8,5 @@ namespace Kumbajah.Domain.Entities
         public virtual IEnumerable<Product> Products { get; }
         public long ProductId { get; private set; }
 
-        public Category() { }
-
-        public Category(string name, IEnumerable<Product> products)
-        {
-            Name = name;
-            Products = products;
-        }
     }
 }

@@ -1529,11 +1529,22 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Kumbajah.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Kumbajah.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Kumbajah.Core.dll": {}
+        }
+      },
       "Kumbajah.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "FluentValidation": "9.3.0"
+          "FluentValidation": "9.3.0",
+          "Kumbajah.Core": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Kumbajah.Domain.dll": {}
@@ -5827,6 +5838,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Kumbajah.Core/1.0.0": {
+      "type": "project",
+      "path": "../Kumbajah.Core/Kumbajah.Core.csproj",
+      "msbuildProject": "../Kumbajah.Core/Kumbajah.Core.csproj"
     },
     "Kumbajah.Domain/1.0.0": {
       "type": "project",

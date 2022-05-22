@@ -48,7 +48,7 @@ namespace Kumbajah.Infra.Repositories
             return allProducts;
         }
 
-        public virtual async Task<Product> Create(Product obj)
+        public new virtual async Task<Product> Create(Product obj)
         {
             obj.CreatedTime = DateTime.Now;
             _context.Add(obj);

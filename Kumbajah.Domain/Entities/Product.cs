@@ -14,16 +14,5 @@ namespace Kumbajah.Domain.Entities
         public virtual Category Category { get; private set; }
         public long CategoryId { get; private set; }
 
-        public Product() { }
-
-        public Product(string name, string description, decimal price, string image, long quantity, Category category)
-        {
-            Name = name;
-            Description = description;
-            Price = price;
-            Image = image;
-            Quantity = quantity;
-            Category = category;
-        }
     }
 }

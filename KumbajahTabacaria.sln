@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KumbajahTabacaria", "KumbajahTabacaria\KumbajahTabacaria.csproj", "{09665054-C19C-4ED8-A34E-98C312E838BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KumbajahTabacaria", "KumbajahTabacaria\KumbajahTabacaria.csproj", "{09665054-C19C-4ED8-A34E-98C312E838BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kumbajah.Domain", "Kumbajah.Domain\Kumbajah.Domain.csproj", "{04D8685B-D64A-455F-941F-869E35F51C3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kumbajah.Domain", "Kumbajah.Domain\Kumbajah.Domain.csproj", "{04D8685B-D64A-455F-941F-869E35F51C3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kumbajah.Services", "Kumbajah.Services\Kumbajah.Services.csproj", "{B88BA68E-6E09-455D-B388-AC7C5675C046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kumbajah.Services", "Kumbajah.Services\Kumbajah.Services.csproj", "{B88BA68E-6E09-455D-B388-AC7C5675C046}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kumbajah.Infra", "Kumbajah.Infra\Kumbajah.Infra.csproj", "{595852D4-A281-4C70-A0FA-0D3B7B4A0BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kumbajah.Infra", "Kumbajah.Infra\Kumbajah.Infra.csproj", "{595852D4-A281-4C70-A0FA-0D3B7B4A0BC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kumbajah.Core", "Kumbajah.Core\Kumbajah.Core.csproj", "{5785644F-E84F-4B1E-AF46-14F78D07134A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{595852D4-A281-4C70-A0FA-0D3B7B4A0BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{595852D4-A281-4C70-A0FA-0D3B7B4A0BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{595852D4-A281-4C70-A0FA-0D3B7B4A0BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5785644F-E84F-4B1E-AF46-14F78D07134A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5785644F-E84F-4B1E-AF46-14F78D07134A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5785644F-E84F-4B1E-AF46-14F78D07134A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5785644F-E84F-4B1E-AF46-14F78D07134A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

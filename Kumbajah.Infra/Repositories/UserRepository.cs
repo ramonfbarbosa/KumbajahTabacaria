@@ -20,7 +20,17 @@ namespace Kumbajah.Infra.Repositories
         public async Task<User> GetByEmail(string email)
         {
             var user = await _context.User
-                .Where(x => x.Email.ToLower() == email.ToLower())
+                .Where(x => x.Email.ToLower().Equals(email.ToLower()))
+                .AsNoTracking()
+                .ToListAsync();
+
+            return user.FirstOrDefault();
+        }
+
+        public async Task<User> GetByCPF(long cpf)
+        {
+            var user = await _context.User
+                .Where(x => x.CPF.Equals(cpf))
                 .AsNoTracking()
                 .ToListAsync();
 
