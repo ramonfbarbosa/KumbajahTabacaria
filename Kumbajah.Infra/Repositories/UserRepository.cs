@@ -10,16 +10,16 @@ namespace Kumbajah.Infra.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        private new readonly KumbajahContext _context;
+        private KumbajahContext Context { get; }
 
         public UserRepository(KumbajahContext context) : base(context)
         {
-            _context = context;
+            Context = context;
         }
 
         public async Task<User> GetByEmail(string email)
         {
-            var user = await _context.User
+            var user = await Context.User
                 .Where(x => x.Email.ToLower().Equals(email.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
@@ -29,7 +29,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<User> GetByCPF(long cpf)
         {
-            var user = await _context.User
+            var user = await Context.User
                 .Where(x => x.CPF.Equals(cpf))
                 .AsNoTracking()
                 .ToListAsync();
@@ -39,7 +39,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<User>> SearchByEmail(string email)
         {
-            var allUsers = await _context.User
+            var allUsers = await Context.User
                 .Where(x => x.Email.ToLower().Contains(email.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
@@ -49,7 +49,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<User>> SearchByName(string name)
         {
-            var allUsers = await _context.User
+            var allUsers = await Context.User
                 .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();

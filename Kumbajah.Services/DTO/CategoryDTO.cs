@@ -4,6 +4,7 @@ namespace Kumbajah.Services.DTO
 {
     public class CategoryDTO
     {
+        public long Id { get; private set; }
         public string Name { get; private set; }
         public virtual IEnumerable<ProductDTO> Products { get; }
         public CategoryDTO() { }

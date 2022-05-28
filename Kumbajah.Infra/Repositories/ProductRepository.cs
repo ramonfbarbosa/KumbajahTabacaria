@@ -11,16 +11,16 @@ namespace Kumbajah.Infra.Repositories
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        private new readonly KumbajahContext _context;
+        private KumbajahContext Context { get; }
 
         public ProductRepository(KumbajahContext context) : base(context)
         {
-            _context = context;
+            Context = context;
         }
 
         public async Task<Product> GetByProductName(string name)
         {
-            var user = await _context.Product
+            var user = await Context.Product
                 .Where(x => x.Name.ToLower() == name.ToLower())
                 .AsNoTracking()
                 .ToListAsync();
@@ -30,7 +30,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Product>> SearchByCategory(Category category)
         {
-            var productsByCategory = await _context.Product
+            var productsByCategory = await Context.Product
                .Where(x => x.Name.ToLower().Contains(category.Name.ToLower()))
                .AsNoTracking()
                .ToListAsync();
@@ -40,7 +40,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Product>> SearchByProductName(string name)
         {
-            var allProducts = await _context.Product
+            var allProducts = await Context.Product
                .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                .AsNoTracking()
                .ToListAsync();
@@ -48,13 +48,33 @@ namespace Kumbajah.Infra.Repositories
             return allProducts;
         }
 
+        public async Task<List<Product>> SearchByBrand(string brandName)
+        {
+            var productsByBrand = await Context.Product
+                .Where(x => x.Brand.ToLower().Contains(brandName.ToLower()))
+                .AsNoTracking()
+                .ToListAsync();
+
+            return productsByBrand;
+        }
+
         public new virtual async Task<Product> Create(Product obj)
         {
             obj.CreatedTime = DateTime.Now;
-            _context.Add(obj);
-            await _context.SaveChangesAsync();
+            Context.Add(obj);
+            await Context.SaveChangesAsync();
 
             return obj;
+        }
+
+        public async Task<List<Product>> SearchByCategoryName(string categoryName)
+        {
+            var productsByCatgegoryName = await Context.Product
+                .Where(x => x.Category.Name.ToLower().Contains(categoryName.ToLower()))
+                .AsNoTracking()
+                .ToListAsync();
+
+            return productsByCatgegoryName;
         }
     }
 }

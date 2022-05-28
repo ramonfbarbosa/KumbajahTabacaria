@@ -10,7 +10,7 @@ namespace Kumbajah.Services.Interfaces
         Task<UserDTO> Update(UserDTO userDTO);
         Task Remove(long id);
         Task<UserDTO> GetById(long id);
-        Task<List<UserDTO>> Get();
+        Task<List<UserDTO>> GetAllUsers();
         Task<List<UserDTO>> SearchByName(string name);
         Task<List<UserDTO>> SearchByEmail(string email);
         Task<UserDTO> GetByEmail(string email);

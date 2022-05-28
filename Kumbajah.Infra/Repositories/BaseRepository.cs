@@ -2,7 +2,6 @@
 using Kumbajah.Infra.Context;
 using Kumbajah.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +10,16 @@ namespace Kumbajah.Infra.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : Base
     {
-        public readonly KumbajahContext _context;
+        public KumbajahContext Context { get; }
 
         public BaseRepository(KumbajahContext context)
         {
-            _context = context;
+            Context = context;
         }
 
         public virtual async Task<T> GetById(long id)
         {
-            var obj = await _context.Set<T>()
+            var obj = await Context.Set<T>()
                                     .AsNoTracking()
                                     .Where(x => x.Id == id)
                                     .ToListAsync();
@@ -29,23 +28,23 @@ namespace Kumbajah.Infra.Repositories
 
         public virtual async Task<List<T>> Get()
         {
-            return await _context.Set<T>()
+            return await Context.Set<T>()
                                  .AsNoTracking()
                                  .ToListAsync();
         }
 
         public virtual async Task<T> Create(T obj)
         {
-            _context.Add(obj);
-            await _context.SaveChangesAsync();
+            Context.Add(obj);
+            await Context.SaveChangesAsync();
 
             return obj;
         }
 
         public virtual async Task<T> Update(T obj)
         {
-            _context.Entry(obj).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            Context.Entry(obj).State = EntityState.Modified;
+            await Context.SaveChangesAsync();
 
             return obj;
         }
@@ -56,8 +55,8 @@ namespace Kumbajah.Infra.Repositories
 
             if (obj != null)
             {
-                _context.Remove(obj);
-                await _context.SaveChangesAsync();
+                Context.Remove(obj);
+                await Context.SaveChangesAsync();
             }
         }
     }

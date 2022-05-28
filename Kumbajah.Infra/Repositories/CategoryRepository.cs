@@ -10,16 +10,16 @@ namespace Kumbajah.Infra.Repositories
 {
     public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
-        private new readonly KumbajahContext _context;
+        private KumbajahContext Context { get; }
 
         public CategoryRepository(KumbajahContext context) : base(context)
         {
-            _context = context;
+            Context = context;
         }
 
         public async Task<Category> GetByCategoryName(string name)
         {
-            var categoryName = await _context.Category
+            var categoryName = await Context.Category
                 .Where(x => x.Name.ToLower() == name.ToLower())
                 .AsNoTracking()
                 .ToListAsync();
@@ -29,7 +29,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Category>> SearchByCategoryName(string name)
         {
-            var allCategories = await _context.Category
+            var allCategories = await Context.Category
                 .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();

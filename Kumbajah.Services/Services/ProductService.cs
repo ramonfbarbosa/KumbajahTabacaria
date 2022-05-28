@@ -1,6 +1,9 @@
-﻿using Kumbajah.Services.DTO;
+﻿using AutoMapper;
+using Kumbajah.Core.Exceptions;
+using Kumbajah.Domain.Entities;
+using Kumbajah.Infra.Repositories;
+using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,49 +11,62 @@ namespace Kumbajah.Services.Services
 {
     public class ProductService : IProductService
     {
-        public Task<ProductDTO> Create(ProductDTO categoryDTO)
+        private IMapper Mapper { get; }
+        private ProductRepository ProductRepository { get; }
+
+        public async Task<ProductDTO> Create(ProductDTO productDTO)
         {
-            throw new NotImplementedException();
+            var product = Mapper.Map<Product>(productDTO);
+            var createdProduct = await ProductRepository.Create(product);
+            return Mapper.Map<ProductDTO>(createdProduct);
         }
 
-        public Task<List<ProductDTO>> GetAllProducts()
+        public async Task<ProductDTO> Update(ProductDTO productDTO)
         {
-            throw new NotImplementedException();
+            var existingProduct = await ProductRepository.GetById(productDTO.Id);
+            if (existingProduct != null)
+                throw new DomainException("Não existe nenhuma categoria com este Id");
+            var product = Mapper.Map<Product>(existingProduct);
+            var updatedProduct = await ProductRepository.Update(product);
+            return Mapper.Map<ProductDTO>(updatedProduct);
         }
 
-        public Task<ProductDTO> GetByEmail(string email)
+        public async Task Remove(long id)
         {
-            throw new NotImplementedException();
+            await ProductRepository.Delete(id);
         }
 
-        public Task<ProductDTO> GetById(long id)
+        public async Task<List<ProductDTO>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var allProducts = await ProductRepository.Get();
+            return Mapper.Map<List<ProductDTO>>(allProducts);
         }
 
-        public Task Remove(long id)
+        public async Task<ProductDTO> GetById(long id)
         {
-            throw new NotImplementedException();
+            var product = await ProductRepository.GetById(id);
+            return Mapper.Map<ProductDTO>(product);
         }
 
-        public Task<List<ProductDTO>> SearchByCategoryName(string categoryName)
+        public async Task<List<ProductDTO>> SearchByBrand(string brandName)
         {
-            throw new NotImplementedException();
+            var allBrands = await ProductRepository.SearchByBrand(brandName);
+
+            return Mapper.Map<List<ProductDTO>>(allBrands);
         }
 
-        public Task<List<ProductDTO>> SearchByEmail(string email)
+        public async Task<List<ProductDTO>> SearchByCategoryName(string categoryName)
         {
-            throw new NotImplementedException();
+            var allCategoriesName = await ProductRepository.SearchByCategoryName(categoryName);
+
+            return Mapper.Map<List<ProductDTO>>(allCategoriesName);
         }
 
-        public Task<List<ProductDTO>> SearchByName(string name)
+        public async Task<List<ProductDTO>> SearchByProductName(string productName)
         {
-            throw new NotImplementedException();
-        }
+            var allProductsName = await ProductRepository.SearchByProductName(productName);
 
-        public Task<ProductDTO> Update(ProductDTO categoryDTO)
-        {
-            throw new NotImplementedException();
+            return Mapper.Map<List<ProductDTO>>(allProductsName);
         }
     }
 }

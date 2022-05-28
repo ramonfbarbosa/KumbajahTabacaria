@@ -32,7 +32,7 @@ namespace Kumbajah.Services.Services
             return Mapper.Map<UserDTO>(createdUser);
         }
 
-        public async Task<List<UserDTO>> Get()
+        public async Task<List<UserDTO>> GetAllUsers()
         {
             var allUsers = await UserRepository.Get();
             return Mapper.Map<List<UserDTO>>(allUsers);

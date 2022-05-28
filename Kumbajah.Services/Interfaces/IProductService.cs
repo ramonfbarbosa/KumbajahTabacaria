@@ -11,9 +11,8 @@ namespace Kumbajah.Services.Interfaces
         Task Remove(long id);
         Task<ProductDTO> GetById(long id);
         Task<List<ProductDTO>> GetAllProducts();
-        Task<List<ProductDTO>> SearchByName(string name);
-        Task<List<ProductDTO>> SearchByEmail(string email);
-        Task<ProductDTO> GetByEmail(string email);
+        Task<List<ProductDTO>> SearchByProductName(string name);
         Task<List<ProductDTO>> SearchByCategoryName(string categoryName);
+        Task<List<ProductDTO>> SearchByBrand(string brandName);
     }
 }
