@@ -7,14 +7,14 @@ namespace Kumbajah.Domain.Validators
     {
         public CategoryValidator()
         {
-            RuleFor(costumer => costumer)
+            RuleFor(category => category)
                 .NotEmpty()
                 .WithMessage("A entidade não pode ser vazia")
 
                 .NotNull()
                 .WithMessage("A entidade não pode ser nula");
 
-            RuleFor(costumer => costumer.Name)
+            RuleFor(category => category.Name)
                 .NotEmpty()
                 .WithMessage("O campo nome não pode ficar vazio!")
 
