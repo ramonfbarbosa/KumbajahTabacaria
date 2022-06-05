@@ -28,6 +28,7 @@ namespace KumbajahTabacaria
             services.AddControllers();
             var connectionString = Configuration["ConnectionString:KUMBAJAH_MANAGER"];
             services.AddDbContext<KumbajahContext>(options => options
+                .UseLazyLoadingProxies()
                 .UseSqlServer(connectionString, b => b.MigrationsAssembly("KumbajahTabacaria")), ServiceLifetime.Transient);
             services.AddSwaggerGen(c =>
             {

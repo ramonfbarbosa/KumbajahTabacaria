@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("ACCOUNT");
+            builder.ToTable("TB_USERS");
 
             builder.HasKey(x => x.Id);
 
@@ -17,16 +17,10 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("ID")
                 .HasColumnType("BIGINT");
 
-            builder.Property(x => x.Name)
+            builder.Property(x => x.Name + x.LastName)
                 .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("NAME")
-                .HasColumnType("VARCHAR(80)");
-
-            builder.Property(x => x.LastName)
-                .IsRequired()
-                .HasMaxLength(80)
-                .HasColumnName("LAST_NAME")
                 .HasColumnType("VARCHAR(80)");
 
             builder.Property(x => x.Email)

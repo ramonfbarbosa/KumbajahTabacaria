@@ -49,7 +49,7 @@ namespace Kumbajah.Domain.Validators
                 .NotNull()
                 .WithMessage("O produto deve conter uma marca!");
 
-            RuleFor(product => product.Quantity)
+            RuleFor(product => product.StockId)
                 .NotEmpty()
                 .WithMessage("O produto deve conter uma quantidade!")
 

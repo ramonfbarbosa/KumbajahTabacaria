@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("CATEGORY");
+            builder.ToTable("TB_CATEGORIES");
 
             builder.HasKey(x => x.Id);
 

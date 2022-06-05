@@ -1,5 +1,4 @@
-﻿using Kumbajah.Core.Exceptions;
-using Kumbajah.Domain.Validators;
+﻿using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
 
@@ -10,38 +9,54 @@ namespace Kumbajah.Domain.Entities
         public string Name { get; private set; }
         public string LastName { get; private set; }
         public string Email { get; private set; }
-        public int PhoneNumber { get; private set; }
-        public DateTime Birthday { get; private set; }
+        public DateTime Birthdate { get; private set; }
         public string Password { get; private set; }
-        public long CPF { get; private set; }
+        public string ConfirmPassword { get; private set; }
+        public string? CPF { get; private set; }
+        public string? PhoneNumber { get; private set; }
+        public virtual DefaultAddress DefaultAddress { get; private set; }
+        public long? DefaultAddressId { get; private set; }
+        public virtual IEnumerable<Address> Addresses { get; }
+        public virtual IEnumerable<Order> Orders { get; }
 
-        public User() {}
+        public User() { }
 
-        public User(string name,string lastName, string email, int phoneNumber, DateTime birthday, string password, long cpf)
+        //perguntar pro saulo sobre o defaultadress = null e pq o Order nao é
+        public User(long defaultAddressId)
+        {
+            DefaultAddressId = defaultAddressId;
+        }
+
+        public User(string name, string lastName,
+            string email, DateTime birthdate, string password, 
+            string? cpf = null, string? phoneNumber = null,
+            IEnumerable<Address>? addresses = null,
+            IEnumerable<Order>? orders = null)
         {
             Name = name;
             LastName = lastName;
             Email = email;
             PhoneNumber = phoneNumber;
-            Birthday = birthday;
+            Birthdate = birthdate;
             Password = password;
             CPF = cpf;
+            Addresses = addresses;
+            Orders = orders;
             _errors = new List<string>();
-
             Validate();
         }
 
-        public bool Validate()
+        public override bool Validate()
         {
             var validator = new UserValidator();
             var validation = validator.Validate(this);
 
             if (!validation.IsValid)
             {
-                foreach(var errors in validation.Errors)
-                     _errors.Add(errors.ErrorMessage);
-                
-                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
+                foreach (var errors in validation.Errors)
+                    _errors.Add(errors.ErrorMessage);
+
+                throw new Exception("Alguns campos estão inválidos, por favor corrija-os: " + _errors[0]);
             }
             return true;
         }
@@ -58,7 +73,7 @@ namespace Kumbajah.Domain.Entities
             Validate();
         }
 
-        public void ChangePhoneNumber(int phoneNumber)
+        public void ChangePhoneNumber(string phoneNumber)
         {
             PhoneNumber = phoneNumber;
             Validate();

@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("PRODUCT");
+            builder.ToTable("TB_PRODUCTS");
 
             builder.HasKey(x => x.Id);
 
