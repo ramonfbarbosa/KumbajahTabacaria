@@ -1,6 +1,7 @@
 ﻿using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Kumbajah.Domain.Entities
 {
@@ -11,11 +12,17 @@ namespace Kumbajah.Domain.Entities
         public decimal Price { get; private set; }
         public string Image { get; private set; }
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
+        [JsonIgnore]
         public virtual Category Category { get; private set; }
+        [JsonIgnore]
         public long CategoryId { get; private set; }
+        [JsonIgnore]
         public virtual Brand Brand { get; private set; }
+        [JsonIgnore]
         public long BrandId { get; private set; }
+        [JsonIgnore]
         public virtual Stock Stock { get; private set; }
+        [JsonIgnore]
         public long StockId { get; private set; }
         public virtual IEnumerable<OrderItem> Items { get; }
 

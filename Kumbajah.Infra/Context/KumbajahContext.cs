@@ -61,27 +61,27 @@ namespace Kumbajah.Infra.Context
                 .WithMany(category => category.Products)
                 .HasForeignKey(product => product.CategoryId);
             builder.Entity<Product>()
-                 .HasOne(product => product.Brand)
-                 .WithMany(brand => brand.Products)
-                 .HasForeignKey(product => product.BrandId);
+                .HasOne(product => product.Brand)
+                .WithMany(brand => brand.Products)
+                .HasForeignKey(product => product.BrandId);
             builder.Entity<Product>()
-                 .HasOne(product => product.Stock)
-                 .WithMany(stock => stock.Products)
-                 .HasForeignKey(product => product.StockId);
+                .HasOne(product => product.Stock)
+                .WithMany(stock => stock.Products)
+                .HasForeignKey(product => product.StockId);
 
             builder.Entity<OrderItem>()
-                 .HasOne(orderItem => orderItem.Product)
-                 .WithMany(product => product.Items)
-                 .HasForeignKey(orderItem => orderItem.ProductId);
+                .HasOne(orderItem => orderItem.Product)
+                .WithMany(product => product.Items)
+                .HasForeignKey(orderItem => orderItem.ProductId);
             builder.Entity<OrderItem>()
-                 .HasOne(orderItem => orderItem.Order)
-                 .WithMany(order => order.Items)
-                 .HasForeignKey(orderItem => orderItem.OrderId);
+                .HasOne(orderItem => orderItem.Order)
+                .WithMany(order => order.Items)
+                .HasForeignKey(orderItem => orderItem.OrderId);
 
             builder.Entity<User>()
-                 .HasOne(user => user.DefaultAddress)
-                 .WithMany(defaltAddress => defaltAddress.Users)
-                 .HasForeignKey(user => user.DefaultAddressId);
+                .HasOne(user => user.DefaultAddress)
+                .WithMany(defaltAddress => defaltAddress.Users)
+                .HasForeignKey(user => user.DefaultAddressId);
         }
     }
 }

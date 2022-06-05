@@ -1,6 +1,7 @@
 ﻿using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Kumbajah.Domain.Entities
 {
@@ -10,11 +11,17 @@ namespace Kumbajah.Domain.Entities
         public string PhoneNumber { get; private set; }
         public string CPF { get; private set; }
         public DateTime Birthdate { get; private set; }
+        [JsonIgnore]
         public virtual OrderStatus OrderStatus { get; private set; }
-        public long OrderStatusId { get; private set; } = 1;
+        [JsonIgnore]
+        public long OrderStatusId { get; private set; }
+        [JsonIgnore]
         public virtual User Users { get; private set; }
+        [JsonIgnore]
         public long UserId { get; private set; }
+        [JsonIgnore]
         public virtual Address Address { get; private set; }
+        [JsonIgnore]
         public long AddressId { get; private set; }
         public virtual IEnumerable<OrderItem> Items { get; }
 
