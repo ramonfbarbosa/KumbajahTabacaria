@@ -30,10 +30,10 @@ namespace Kumbajah.Domain.Validators
 
             RuleFor(product => product.Price)
                 .NotEmpty()
-                .WithMessage("O campo preco não pode ficar vazio!")
+                .WithMessage("O produto deve conter um preco!")
 
                 .NotNull()
-                .WithMessage("O campo preco não pode ficar nulo!");
+                .WithMessage("O produto deve conter um preco!");
 
             RuleFor(product => product.Image)
                 .NotEmpty()
@@ -42,7 +42,7 @@ namespace Kumbajah.Domain.Validators
                 .NotNull()
                 .WithMessage("O produto deve conter uma imagem!");
 
-            RuleFor(product => product.Brand)
+            RuleFor(product => product.BrandId)
                 .NotEmpty()
                 .WithMessage("O produto deve conter uma marca!")
 

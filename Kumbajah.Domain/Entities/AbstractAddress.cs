@@ -8,19 +8,19 @@
         public string City { get; private set; }
         public string District { get; private set; }
         public int Number { get; private set; }
-        public string Complement { get; private set; }
+        public string? Complement { get; private set; }
         public string Reference { get; private set; }
 
         public AbstractAddress() { }
 
         public AbstractAddress(string cep, string street,
-            int number, string reference, string complement) 
+            int number, string reference, string? complement = null) 
         {
             CEP = cep;
             Street = street;
             Number = number;
-            Complement = complement;
             Reference = reference;
+            Complement = complement;
         }
     }
 }

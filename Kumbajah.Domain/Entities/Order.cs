@@ -9,7 +9,6 @@ namespace Kumbajah.Domain.Entities
         public DateTime BuyMoment { get; set; } = DateTime.Now;
         public string PhoneNumber { get; private set; }
         public string CPF { get; private set; }
-        public DateTime Birthdate { get; private set; }
         public virtual OrderStatus OrderStatus { get; private set; }
         public long OrderStatusId { get; private set; }
         public virtual User Users { get; private set; }
@@ -21,13 +20,11 @@ namespace Kumbajah.Domain.Entities
         public Order() { }
 
         public Order(DateTime buyMoment, string phoneNumber, 
-            string cpf, DateTime birthdate, long userId,
-            long addressId)
+            string cpf, long userId, long addressId)
         {
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;
             CPF = cpf;
-            Birthdate = birthdate;
             UserId = userId;
             AddressId = addressId;
             Validate();

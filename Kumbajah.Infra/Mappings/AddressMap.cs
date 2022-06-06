@@ -53,7 +53,6 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnType("INT");
 
             builder.Property(x => x.Complement)
-                .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("COMPLEMENT")
                 .HasColumnType("VARCHAR(50)");

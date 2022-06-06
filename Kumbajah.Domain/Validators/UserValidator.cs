@@ -23,8 +23,8 @@ namespace Kumbajah.Domain.Validators
                 .NotNull()
                 .WithMessage("O campo nome não pode ficar nulo!")
                 
-                .MinimumLength(3)
-                .WithMessage("O nome deve ter no mínimo 3 caracteres")
+                .MinimumLength(2)
+                .WithMessage("O nome deve ter no mínimo 2 caracteres")
                 
                 .MaximumLength(80)
                 .WithMessage("O nome deve ter no máximo 80 caracteres");
@@ -58,25 +58,15 @@ namespace Kumbajah.Domain.Validators
                 .EmailAddress()
                 .WithMessage("O e-mail precisa ser válido!");
 
-            //RuleFor(costumer => costumer.PhoneNumber)
-            //    .NotEmpty()
-            //    .WithMessage("O campo celular não pode ficar vazio!")
+            RuleFor(costumer => costumer.Birthdate)
+                .NotEmpty()
+                .WithMessage("O campo e-mail não pode ficar vazio!")
 
-            //    .NotNull()
-            //    .WithMessage("O campo celular não pode ficar nulo!")
-                
-            //    .Matches(new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"))
-            //    .WithMessage("Celular invãlido! Coloque o DDD na frente");
+                .NotNull()
+                .WithMessage("O campo e-mail não pode ficar nulo!")
 
-            //RuleFor(costumer => costumer.Birthday)
-            //    .NotEmpty()
-            //    .WithMessage("O campo e-mail não pode ficar vazio!")
-
-            //    .NotNull()
-            //    .WithMessage("O campo e-mail não pode ficar nulo!")
-
-            //    .Must(x => BeOver18(x))
-            //    .WithMessage("Voce precisa ter mais de 18 anos!");
+                .Must(x => BeOver18(x))
+                .WithMessage("Voce precisa ter mais de 18 anos!");
 
             RuleFor(costumer => costumer.Password)
                 .NotEmpty()
@@ -97,19 +87,8 @@ namespace Kumbajah.Domain.Validators
 
                 .Equal(x => x.Password)
                 .WithMessage("As senhas nao batem!");
-
-            //RuleFor(costumer => costumer.CPF)
-            //   .NotEmpty()
-            //   .WithMessage("O campo e-mail não pode ficar vazio!")
-
-            //   .NotNull()
-            //   .WithMessage("O campo e-mail não pode ficar nulo!")
-
-            //   .Matches(new Regex(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}"))
-            //   .WithMessage("Deve ser um CPF válido");
-
         }
-        protected static bool BeOver18(DateTime userBday)
+        private static bool BeOver18(DateTime userBday)
         {
             int eighteen = 18;
             var today = DateTime.Today;

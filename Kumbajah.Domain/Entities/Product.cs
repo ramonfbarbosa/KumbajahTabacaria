@@ -17,13 +17,15 @@ namespace Kumbajah.Domain.Entities
         public long BrandId { get; private set; }
         public virtual Stock Stock { get; private set; }
         public long StockId { get; private set; }
+        public virtual Color Color { get; private set; }
+        public long ColorId { get; private set; }
         public virtual IEnumerable<OrderItem> Items { get; }
 
         public Product() { }
 
         public Product(string name, string description, decimal price, 
             string image, long stockId, long brandId,
-            long categoryId)
+            long categoryId, long colorId)
         {
             Name = name;
             Description = description;
@@ -32,6 +34,7 @@ namespace Kumbajah.Domain.Entities
             StockId = stockId;
             BrandId = brandId;
             CategoryId = categoryId;
+            ColorId = colorId;
             Validate();
         }
 

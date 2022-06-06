@@ -35,12 +35,6 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("CPF")
                 .HasColumnType("VARCHAR(15)");
 
-            builder.Property(x => x.Birthdate)
-                .IsRequired()
-                .HasMaxLength(20)
-                .HasColumnName("BIRTHDATE")
-                .HasColumnType("DATE");
-
             builder.Property(x => x.OrderStatusId)
                 .IsRequired();
             builder.Property(x => x.UserId)
