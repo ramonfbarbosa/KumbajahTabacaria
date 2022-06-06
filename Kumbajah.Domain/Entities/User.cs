@@ -14,21 +14,14 @@ namespace Kumbajah.Domain.Entities
         public string ConfirmPassword { get; private set; }
         public string? CPF { get; private set; }
         public string? PhoneNumber { get; private set; }
-        public virtual DefaultAddress DefaultAddress { get; private set; }
-        public long? DefaultAddressId { get; private set; }
         public virtual IEnumerable<Address> Addresses { get; }
         public virtual IEnumerable<Order> Orders { get; }
 
         public User() { }
 
         //perguntar pro saulo sobre o defaultadress = null e pq o Order nao é
-        public User(long defaultAddressId)
-        {
-            DefaultAddressId = defaultAddressId;
-        }
-
         public User(string name, string lastName,
-            string email, DateTime birthdate, string password, 
+            string email, DateTime birthdate, string password,
             string? cpf = null, string? phoneNumber = null,
             IEnumerable<Address>? addresses = null,
             IEnumerable<Order>? orders = null)
@@ -75,7 +68,7 @@ namespace Kumbajah.Domain.Entities
 
         public void ChangePhoneNumber(string phoneNumber)
         {
-            PhoneNumber = phoneNumber;
+            //PhoneNumber = phoneNumber;
             Validate();
         }
 

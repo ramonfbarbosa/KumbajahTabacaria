@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kumbajah.Infra.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<Category>
+    public class OrderStatusMap : IEntityTypeConfiguration<OrderStatus>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<OrderStatus> builder)
         {
-            builder.ToTable("TB_CATEGORIES");
+            builder.ToTable("TB_ORDER_STATUS");
 
             builder.HasKey(x => x.Id);
 
@@ -17,11 +17,10 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("ID")
                 .HasColumnType("BIGINT");
 
-            builder.Property(x => x.Name)
+            builder.Property(x => x.Status)
                 .IsRequired()
-                .HasMaxLength(80)
-                .HasColumnName("NAME")
-                .HasColumnType("VARCHAR(80)");
+                .HasColumnName("STATUS")
+                .HasColumnType("VARCHAR(10)");
         }
     }
 }

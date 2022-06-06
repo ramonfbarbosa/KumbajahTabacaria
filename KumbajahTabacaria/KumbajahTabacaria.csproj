@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kumbajah.Infra\Kumbajah.Infra.csproj" />
+    <ProjectReference Include="..\Kumbajah.Services\Kumbajah.Services.csproj" />
   </ItemGroup>
 
 </Project>

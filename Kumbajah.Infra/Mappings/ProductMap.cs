@@ -40,25 +40,12 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("IMAGE")
                 .HasColumnType("VARCHAR(180)");
 
-            builder.Property(x => x.Quantity)
-                .IsRequired()
-                .HasColumnName("QUANTITY")
-                .HasColumnType("BIGINT");
-
             builder.Property(x => x.CategoryId)
-                .IsRequired()
-                .HasColumnName("CATEGORY_ID")
-                .HasColumnType("BIGINT");
-
-            builder.Property(x => x.CreatedTime)
-                .IsRequired()
-                .HasColumnName("CREATED_TIME")
-                .HasColumnType("DATE");
-
-            builder.Property(x => x.UpdateTime)
-                .IsRequired()
-                .HasColumnName("UPDATED_TIME")
-                .HasColumnType("DATE");
+                .IsRequired();
+            builder.Property(x => x.BrandId)
+               .IsRequired();
+            builder.Property(x => x.StockId)
+               .IsRequired();
         }
     }
 }

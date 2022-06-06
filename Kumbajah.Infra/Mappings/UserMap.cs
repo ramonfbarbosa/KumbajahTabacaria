@@ -21,7 +21,7 @@ namespace Kumbajah.Infra.Mappings
                 .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("NAME")
-                .HasColumnType("VARCHAR(80)");
+                .HasColumnType("VARCHAR(180)"); //testar
 
             builder.Property(x => x.Email)
                 .IsRequired()
@@ -29,27 +29,26 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("EMAIL")
                 .HasColumnType("VARCHAR(30)");
 
-            builder.Property(x => x.CPF)
+            builder.Property(x => x.Birthdate)
                 .IsRequired()
-                .HasMaxLength(11)
-                .HasColumnName("CPF")
-                .HasColumnType("BIGINT");
-
-            builder.Property(x => x.PhoneNumber)
-                .IsRequired()
-                .HasColumnName("PHONE_NUMBER")
-                .HasColumnType("BIGINT");
+                .HasColumnName("BIRTHDATE")
+                .HasColumnType("DATE");
 
             builder.Property(x => x.Password)
                 .IsRequired()
                 .HasMaxLength(180)
                 .HasColumnName("PASSWORD")
-                .HasColumnType("VARCHAR(180)");
+                .HasColumnType("VARCHAR(50)");
 
-            builder.Property(x => x.Birthday)
-                .IsRequired()
-                .HasColumnName("BIRTHDAY")
-                .HasColumnType("DATE");
+            builder.Property(x => x.CPF)
+                .HasMaxLength(11)
+                .HasColumnName("CPF")
+                .HasColumnType("VARCHAR(15)");
+
+            builder.Property(x => x.PhoneNumber)
+                .HasColumnName("PHONE_NUMBER")
+                .HasColumnType("VARCHAR(15)");
+
         }
     }
 }

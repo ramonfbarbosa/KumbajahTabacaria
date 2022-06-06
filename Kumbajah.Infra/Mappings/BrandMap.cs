@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kumbajah.Infra.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<Category>
+    public class BrandMap : IEntityTypeConfiguration<Brand>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Brand> builder)
         {
-            builder.ToTable("TB_CATEGORIES");
+            builder.ToTable("TB_BRANDS");
 
             builder.HasKey(x => x.Id);
 
@@ -19,9 +19,9 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Name)
                 .IsRequired()
-                .HasMaxLength(80)
+                .HasMaxLength(20)
                 .HasColumnName("NAME")
-                .HasColumnType("VARCHAR(80)");
+                .HasColumnType("VARCHAR(50)");
         }
     }
 }

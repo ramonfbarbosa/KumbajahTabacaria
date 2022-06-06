@@ -9,7 +9,6 @@ namespace Kumbajah.Infra.Context
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<OrderItem> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<DefaultAddress> DefaultAddress { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
@@ -32,7 +31,6 @@ namespace Kumbajah.Infra.Context
             builder.ApplyConfiguration(new AddressMap());
             builder.ApplyConfiguration(new BrandMap());
             builder.ApplyConfiguration(new CategoryMap());
-            builder.ApplyConfiguration(new DefaultAddressMap());
             builder.ApplyConfiguration(new OrderMap());
             builder.ApplyConfiguration(new OrderItemMap());
             builder.ApplyConfiguration(new OrderStatusMap());
@@ -64,10 +62,6 @@ namespace Kumbajah.Infra.Context
                 .HasOne(product => product.Brand)
                 .WithMany(brand => brand.Products)
                 .HasForeignKey(product => product.BrandId);
-            builder.Entity<Product>()
-                .HasOne(product => product.Stock)
-                .WithMany(stock => stock.Products)
-                .HasForeignKey(product => product.StockId);
 
             builder.Entity<OrderItem>()
                 .HasOne(orderItem => orderItem.Product)
@@ -78,10 +72,10 @@ namespace Kumbajah.Infra.Context
                 .WithMany(order => order.Items)
                 .HasForeignKey(orderItem => orderItem.OrderId);
 
-            builder.Entity<User>()
-                .HasOne(user => user.DefaultAddress)
-                .WithMany(defaltAddress => defaltAddress.Users)
-                .HasForeignKey(user => user.DefaultAddressId);
+            builder.Entity<Stock>()
+                .HasOne(stock => stock.Product)
+                .WithOne(product => product.Stock)
+                .HasForeignKey<Product>(product => product.StockId);
         }
     }
 }

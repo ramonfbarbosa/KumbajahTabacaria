@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kumbajah.Infra.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<Category>
+    public class StockMap : IEntityTypeConfiguration<Stock>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Stock> builder)
         {
-            builder.ToTable("TB_CATEGORIES");
+            builder.ToTable("TB_STOCK");
 
             builder.HasKey(x => x.Id);
 
@@ -17,11 +17,13 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("ID")
                 .HasColumnType("BIGINT");
 
-            builder.Property(x => x.Name)
+            builder.Property(x => x.Quantity)
                 .IsRequired()
-                .HasMaxLength(80)
-                .HasColumnName("NAME")
-                .HasColumnType("VARCHAR(80)");
+                .HasColumnName("QUANTITY")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.Product)
+                .IsRequired();
         }
     }
 }

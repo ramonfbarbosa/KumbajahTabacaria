@@ -1,19 +1,26 @@
-﻿using System;
+﻿using Kumbajah.Domain.Validators;
+using System;
 using System.Collections.Generic;
 
 namespace Kumbajah.Domain.Entities
 {
-    public class Address : Base
+    public class Address : AbstractAddress
     {
         public virtual IEnumerable<Order> Orders { get; }
         public virtual IEnumerable<User> Users { get; }
 
         public Address() { }
 
-        public Address(IEnumerable<Order> orders, IEnumerable<User> users)
+        public Address(
+            string cep, string street,
+            int number, string reference, string complement,
+            IEnumerable<Order> orders,
+            IEnumerable<User> users) :
+            base(cep, street, number, reference, complement)
         {
             Orders = orders;
             Users = users;
+            Validate();
         }
 
         public override bool Validate()

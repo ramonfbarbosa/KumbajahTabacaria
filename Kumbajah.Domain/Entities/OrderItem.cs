@@ -2,6 +2,7 @@
 {
     public class OrderItem
     {
+        public long Id { get; private set; }
         public int Quantity { get; private set; }
         public decimal Price { get; private set; }
         public virtual Order Order { get; private set; }

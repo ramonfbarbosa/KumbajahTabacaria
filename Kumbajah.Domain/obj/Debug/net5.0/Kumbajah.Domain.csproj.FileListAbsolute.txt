@@ -10,3 +10,6 @@ C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\D
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\refint\Kumbajah.Domain.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\ref\Kumbajah.Domain.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\bin\Debug\net5.0\Kumbajah.Core.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\bin\Debug\net5.0\Kumbajah.Core.pdb
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Domain\obj\Debug\net5.0\Kumbajah.Domain.csproj.CopyComplete

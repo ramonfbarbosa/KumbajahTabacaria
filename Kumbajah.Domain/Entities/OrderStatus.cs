@@ -5,14 +5,14 @@ namespace Kumbajah.Domain.Entities
     public class OrderStatus
     {
         public short Id { get; set; }
-        public string Name { get; set; }
+        public string Status { get; set; }
         public virtual IEnumerable<Order> Orders { get; private set; }
 
         public OrderStatus() { }
 
-        public OrderStatus(string name)
+        public OrderStatus(string status)
         {
-            Name = name;
+            Status = status;
         }
     }
 }
