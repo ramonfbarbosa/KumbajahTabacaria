@@ -9,6 +9,7 @@ namespace Kumbajah.Infra.Context
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<OrderItem> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
@@ -31,6 +32,7 @@ namespace Kumbajah.Infra.Context
             builder.ApplyConfiguration(new AddressMap());
             builder.ApplyConfiguration(new BrandMap());
             builder.ApplyConfiguration(new CategoryMap());
+            builder.ApplyConfiguration(new ColorMap());
             builder.ApplyConfiguration(new OrderMap());
             builder.ApplyConfiguration(new OrderItemMap());
             builder.ApplyConfiguration(new OrderStatusMap());
@@ -62,6 +64,10 @@ namespace Kumbajah.Infra.Context
                 .HasOne(product => product.Brand)
                 .WithMany(brand => brand.Products)
                 .HasForeignKey(product => product.BrandId);
+            builder.Entity<Product>()
+                 .HasOne(product => product.Color)
+                 .WithMany(color => color.Products)
+                 .HasForeignKey(product => product.ColorId);
 
             builder.Entity<OrderItem>()
                 .HasOne(orderItem => orderItem.Product)
