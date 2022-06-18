@@ -50,22 +50,19 @@ namespace Kumbajah.Services.Services
 
         public async Task<List<ProductDTO>> SearchByBrand(string brandName)
         {
-            var allBrands = await ProductRepository.SearchByBrand(brandName);
-
+            var allBrands = await ProductRepository.SearchByBrandName(brandName);
             return Mapper.Map<List<ProductDTO>>(allBrands);
         }
 
         public async Task<List<ProductDTO>> SearchByCategoryName(string categoryName)
         {
             var allCategoriesName = await ProductRepository.SearchByCategoryName(categoryName);
-
             return Mapper.Map<List<ProductDTO>>(allCategoriesName);
         }
 
         public async Task<List<ProductDTO>> SearchByProductName(string productName)
         {
             var allProductsName = await ProductRepository.SearchByProductName(productName);
-
             return Mapper.Map<List<ProductDTO>>(allProductsName);
         }
     }

@@ -15,7 +15,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
                 .HasColumnName("ID")
-                .HasColumnType("BIGINT");
+                .HasColumnType("INT");
 
             builder.Property(x => x.Quantity)
                 .IsRequired()
@@ -27,11 +27,6 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(20)
                 .HasColumnName("PRICE")
                 .HasColumnType("DECIMAL(10,10)");
-
-            builder.Property(x => x.OrderId)
-                .IsRequired();
-            builder.Property(x => x.ProductId)
-                .IsRequired();
         }
     }
 }

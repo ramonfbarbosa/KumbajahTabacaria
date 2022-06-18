@@ -19,7 +19,6 @@ namespace Kumbajah.Domain.Entities
 
         public User() { }
 
-        //perguntar pro saulo sobre o defaultadress = null e pq o Order nao é
         public User(string name, string lastName,
             string email, DateTime birthdate, string password,
             string? cpf = null, string? phoneNumber = null,
@@ -68,7 +67,7 @@ namespace Kumbajah.Domain.Entities
 
         public void ChangePhoneNumber(string phoneNumber)
         {
-            //PhoneNumber = phoneNumber;
+            PhoneNumber = phoneNumber;
             Validate();
         }
 

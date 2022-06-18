@@ -55,12 +55,6 @@ namespace Kumbajah.Services.Services
             await UserRepository.Delete(id);
         }
 
-        public async Task<List<UserDTO>> SearchByEmail(string email)
-        {
-            var user = await UserRepository.SearchByEmail(email);
-            return Mapper.Map<List<UserDTO>>(user);
-        }
-
         public async Task<List<UserDTO>> SearchByName(string name)
         {
             var user = await UserRepository.SearchByEmail(name);

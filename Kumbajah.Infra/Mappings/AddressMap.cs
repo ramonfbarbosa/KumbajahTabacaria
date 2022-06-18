@@ -15,7 +15,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
                 .HasColumnName("ID")
-                .HasColumnType("BIGINT");
+                .HasColumnType("INT");
 
             builder.Property(x => x.CEP)
                 .IsRequired()
@@ -62,12 +62,6 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(20)
                 .HasColumnName("REFERENCE")
                 .HasColumnType("VARCHAR(80)");
-
-            builder.Property(x => x.Orders)
-                .IsRequired();
-
-            builder.Property(x => x.Users)
-                .IsRequired();
         }
     }
 }

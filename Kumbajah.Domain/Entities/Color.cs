@@ -4,7 +4,7 @@ namespace Kumbajah.Domain.Entities
 {
     public class Color
     {
-        public short Id { get; set; }
+        public int Id { get; set; }
         public string ColorName { get; set; }
         public virtual IEnumerable<Product> Products { get; private set; }
 

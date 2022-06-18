@@ -9,8 +9,7 @@ namespace Kumbajah.Infra.Interfaces
         Task<Product> GetByProductName(string name);
         Task<List<Product>> SearchByProductName(string name);
         Task<List<Product>> SearchByCategoryName(string categoryName);
-        Task<List<Product>> SearchByBrand(string brandName);
-        Task<Product> Create(Product product);
-        
+        Task<List<Product>> SearchByBrandName(string brandName);
+        Task<List<Product>> SearchProductByColorName(string brandName);        
     }
 }

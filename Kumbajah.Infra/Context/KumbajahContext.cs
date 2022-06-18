@@ -48,14 +48,22 @@ namespace Kumbajah.Infra.Context
                 .WithMany(address => address.Orders)
                 .HasForeignKey(order => order.AddressId);
             builder.Entity<Order>()
-                 .HasOne(order => order.Users)
-                 .WithMany(client => client.Orders)
-                 .HasForeignKey(order => order.UserId);
+                .HasOne(order => order.Users)
+                .WithMany(client => client.Orders)
+                .HasForeignKey(order => order.UserId);
             builder.Entity<Order>()
-                 .HasOne(order => order.OrderStatus)
-                 .WithMany(orderStatus => orderStatus.Orders)
-                 .HasForeignKey(order => order.OrderStatusId);
+                .HasOne(order => order.OrderStatus)
+                .WithMany(orderStatus => orderStatus.Orders)
+                .HasForeignKey(order => order.OrderStatusId);
+            builder.Entity<Order>()
+                .HasMany(orderItem => orderItem.Items)
+                .WithOne(order => order.Order)
+                .HasForeignKey(orderItem => orderItem.OrderId);
 
+            builder.Entity<Product>()
+                .HasOne(product => product.Stock)
+                .WithOne(stock => stock.Product)
+                .HasForeignKey<Product>(product => product.StockId);
             builder.Entity<Product>()
                 .HasOne(product => product.Category)
                 .WithMany(category => category.Products)
@@ -65,23 +73,13 @@ namespace Kumbajah.Infra.Context
                 .WithMany(brand => brand.Products)
                 .HasForeignKey(product => product.BrandId);
             builder.Entity<Product>()
-                 .HasOne(product => product.Color)
-                 .WithMany(color => color.Products)
-                 .HasForeignKey(product => product.ColorId);
-
-            builder.Entity<OrderItem>()
-                .HasOne(orderItem => orderItem.Product)
-                .WithMany(product => product.Items)
+                .HasOne(product => product.Color)
+                .WithMany(color => color.Products)
+                .HasForeignKey(product => product.ColorId);
+            builder.Entity<Product>()
+                .HasMany(product => product.Items)
+                .WithOne(orderItem => orderItem.Product)
                 .HasForeignKey(orderItem => orderItem.ProductId);
-            builder.Entity<OrderItem>()
-                .HasOne(orderItem => orderItem.Order)
-                .WithMany(order => order.Items)
-                .HasForeignKey(orderItem => orderItem.OrderId);
-
-            builder.Entity<Stock>()
-                .HasOne(stock => stock.Product)
-                .WithOne(product => product.Stock)
-                .HasForeignKey<Product>(product => product.StockId);
         }
     }
 }

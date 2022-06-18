@@ -4,14 +4,16 @@ using Kumbajah.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KumbajahTabacaria.Migrations
 {
     [DbContext(typeof(KumbajahContext))]
-    partial class KumbajahContextModelSnapshot : ModelSnapshot
+    [Migration("20220618041530_MigracaoTeste4")]
+    partial class MigracaoTeste4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,8 +159,7 @@ namespace KumbajahTabacaria.Migrations
                         .UseIdentityColumn();
 
                     b.Property<int>("AddressId")
-                        .HasColumnType("INT")
-                        .HasColumnName("ADDRESS_ID");
+                        .HasColumnType("INT");
 
                     b.Property<DateTime>("BuyMoment")
                         .HasMaxLength(20)
@@ -172,8 +173,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("CPF");
 
                     b.Property<int>("OrderStatusId")
-                        .HasColumnType("INT")
-                        .HasColumnName("ORDER_STATUS_ID");
+                        .HasColumnType("INT");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -182,8 +182,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("PHONE_NUMBER");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("INT")
-                        .HasColumnName("USER_ID");
+                        .HasColumnType("INT");
 
                     b.HasKey("Id");
 
@@ -205,8 +204,7 @@ namespace KumbajahTabacaria.Migrations
                         .UseIdentityColumn();
 
                     b.Property<int>("OrderId")
-                        .HasColumnType("INT")
-                        .HasColumnName("ORDER_ID");
+                        .HasColumnType("INT");
 
                     b.Property<decimal>("Price")
                         .HasMaxLength(20)
@@ -214,8 +212,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("PRICE");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("INT")
-                        .HasColumnName("PRODUCT_ID");
+                        .HasColumnType("INT");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INT")
@@ -257,16 +254,13 @@ namespace KumbajahTabacaria.Migrations
                         .UseIdentityColumn();
 
                     b.Property<int>("BrandId")
-                        .HasColumnType("INT")
-                        .HasColumnName("BRAND_ID");
+                        .HasColumnType("INT");
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("INT")
-                        .HasColumnName("CATEGORY_ID");
+                        .HasColumnType("INT");
 
                     b.Property<int>("ColorId")
-                        .HasColumnType("INT")
-                        .HasColumnName("COLOR_ID");
+                        .HasColumnType("INT");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -294,8 +288,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("PRICE");
 
                     b.Property<int>("StockId")
-                        .HasColumnType("INT")
-                        .HasColumnName("STOCK_ID");
+                        .HasColumnType("INT");
 
                     b.HasKey("Id");
 

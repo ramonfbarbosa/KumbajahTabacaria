@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Kumbajah.Domain.Validators
 {
-    public class AddressValidator : AbstractValidator<AbstractAddress>
+    public class AddressValidator : AbstractValidator<Address>
     {
         public AddressValidator()
         {

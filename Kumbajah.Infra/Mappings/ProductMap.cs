@@ -15,7 +15,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
                 .HasColumnName("ID")
-                .HasColumnType("BIGINT");
+                .HasColumnType("INT");
 
             builder.Property(x => x.Name)
                 .IsRequired()
@@ -39,13 +39,6 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(200)
                 .HasColumnName("IMAGE")
                 .HasColumnType("VARCHAR(180)");
-
-            builder.Property(x => x.CategoryId)
-                .IsRequired();
-            builder.Property(x => x.BrandId)
-               .IsRequired();
-            builder.Property(x => x.StockId)
-               .IsRequired();
         }
     }
 }

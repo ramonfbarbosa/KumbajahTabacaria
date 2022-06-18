@@ -9,7 +9,14 @@ namespace KumbajahTabacaria.Controllers
     [ApiController]
     public class UserController : Controller
     {
-        [HttpPost]
+        //[HttpPost]
+        //[Route("/api/v1/users/create")]
+        //public async Task<IActionResult> GetById(int id)
+        //{
+
+        //}
+
+            [HttpPost]
         [Route("/api/v1/users/create")]
         public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
         {

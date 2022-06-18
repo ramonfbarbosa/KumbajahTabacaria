@@ -15,13 +15,19 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
                 .HasColumnName("ID")
-                .HasColumnType("BIGINT");
+                .HasColumnType("INT");
 
-            builder.Property(x => x.Name + x.LastName)
+            builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("NAME")
-                .HasColumnType("VARCHAR(180)"); //testar
+                .HasColumnType("VARCHAR(40)");
+
+            builder.Property(x => x.LastName)
+               .IsRequired()
+               .HasMaxLength(20)
+               .HasColumnName("LAST_NAME")
+               .HasColumnType("VARCHAR(180)");
 
             builder.Property(x => x.Email)
                 .IsRequired()
@@ -31,7 +37,7 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Birthdate)
                 .IsRequired()
-                .HasColumnName("BIRTHDATE")
+                .HasColumnName("BIRTH_DATE")
                 .HasColumnType("DATE");
 
             builder.Property(x => x.Password)

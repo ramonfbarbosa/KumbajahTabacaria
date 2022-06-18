@@ -1,5 +1,6 @@
 ﻿using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Context;
+using Kumbajah.Infra.Filters;
 using Kumbajah.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,16 +11,24 @@ namespace Kumbajah.Infra.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        private KumbajahContext Context { get; }
+        private new KumbajahContext Context { get; }
 
         public UserRepository(KumbajahContext context) : base(context)
         {
             Context = context;
         }
+        public async Task<List<User>> Get()
+        {
+            //var validFilter = new PaginationFilter([FromQuery] PaginationFilter filter);
+            //var response = await context.Customer.ToListAsync();
+            return await Context.Set<User>()
+                                 .AsNoTracking()
+                                 .ToListAsync();
+        }
 
         public async Task<User> GetByEmail(string email)
         {
-            var user = await Context.User
+            var user = await Context.Users
                 .Where(x => x.Email.ToLower().Equals(email.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
@@ -29,7 +38,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<User> GetByCPF(long cpf)
         {
-            var user = await Context.User
+            var user = await Context.Users
                 .Where(x => x.CPF.Equals(cpf))
                 .AsNoTracking()
                 .ToListAsync();
@@ -39,7 +48,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<User>> SearchByEmail(string email)
         {
-            var allUsers = await Context.User
+            var allUsers = await Context.Users
                 .Where(x => x.Email.ToLower().Contains(email.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
@@ -49,7 +58,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<User>> SearchByName(string name)
         {
-            var allUsers = await Context.User
+            var allUsers = await Context.Users
                 .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();

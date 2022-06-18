@@ -4,7 +4,7 @@ namespace Kumbajah.Domain.Entities
 {
     public class OrderStatus
     {
-        public short Id { get; set; }
+        public int Id { get; set; }
         public string Status { get; set; }
         public virtual IEnumerable<Order> Orders { get; private set; }
 

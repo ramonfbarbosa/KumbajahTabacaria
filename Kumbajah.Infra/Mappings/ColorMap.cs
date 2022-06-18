@@ -8,14 +8,14 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Color> builder)
         {
-            builder.ToTable("TB_ORDER_STATUS");
+            builder.ToTable("TB_COLORS");
 
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
                 .HasColumnName("ID")
-                .HasColumnType("BIGINT");
+                .HasColumnType("INT");
 
             builder.Property(x => x.ColorName)
                 .IsRequired()

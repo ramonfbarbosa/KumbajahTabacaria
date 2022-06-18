@@ -8,14 +8,14 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.ToTable("TB_ADDRESSES");
+            builder.ToTable("TB_ORDERS");
 
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
                 .HasColumnName("ID")
-                .HasColumnType("BIGINT");
+                .HasColumnType("INT");
 
             builder.Property(x => x.BuyMoment)
                 .IsRequired()
@@ -34,16 +34,6 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(20)
                 .HasColumnName("CPF")
                 .HasColumnType("VARCHAR(15)");
-
-            builder.Property(x => x.OrderStatusId)
-                .IsRequired();
-            builder.Property(x => x.UserId)
-                .IsRequired();
-            builder.Property(x => x.AddressId)
-                .IsRequired();
-            builder.Property(x => x.Items)
-                .IsRequired();
-
         }
     }
 }

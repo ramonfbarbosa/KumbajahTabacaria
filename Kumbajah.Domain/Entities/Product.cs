@@ -1,6 +1,7 @@
 ﻿using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kumbajah.Domain.Entities
 {
@@ -12,20 +13,24 @@ namespace Kumbajah.Domain.Entities
         public string Image { get; private set; }
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
         public virtual Category Category { get; private set; }
-        public long CategoryId { get; private set; }
+        [Column("CATEGORY_ID")]
+        public int CategoryId { get; private set; }
         public virtual Brand Brand { get; private set; }
-        public long BrandId { get; private set; }
+        [Column("BRAND_ID")]
+        public int BrandId { get; private set; }
         public virtual Stock Stock { get; private set; }
-        public long StockId { get; private set; }
+        [Column("STOCK_ID")]
+        public int StockId { get; private set; }
         public virtual Color Color { get; private set; }
-        public long ColorId { get; private set; }
+        [Column("COLOR_ID")]
+        public int ColorId { get; private set; }
         public virtual IEnumerable<OrderItem> Items { get; }
 
         public Product() { }
 
         public Product(string name, string description, decimal price, 
-            string image, long stockId, long brandId,
-            long categoryId, long colorId)
+            string image, int stockId, int brandId,
+            int categoryId, int colorId)
         {
             Name = name;
             Description = description;

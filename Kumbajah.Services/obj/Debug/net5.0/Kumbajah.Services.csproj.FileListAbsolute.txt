@@ -10,3 +10,10 @@ C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\obj
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\refint\Kumbajah.Services.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\ref\Kumbajah.Services.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Core.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Domain.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Infra.dll
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Domain.pdb
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Infra.pdb
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Core.pdb
+C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.csproj.CopyComplete

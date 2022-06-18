@@ -4,7 +4,7 @@ namespace Kumbajah.Domain.Entities
 {
     public class Category
     {
-        public short Id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; private set; }
         public virtual IEnumerable<Product> Products { get; }
 
