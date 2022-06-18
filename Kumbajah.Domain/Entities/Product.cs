@@ -1,4 +1,5 @@
-﻿using Kumbajah.Domain.Validators;
+﻿using Kumbajah.Core.Exceptions;
+using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -30,7 +31,7 @@ namespace Kumbajah.Domain.Entities
 
         public Product(string name, string description, decimal price, 
             string image, int stockId, int brandId,
-            int categoryId, int colorId)
+            int categoryId, int? colorId = null)
         {
             Name = name;
             Description = description;
@@ -39,7 +40,7 @@ namespace Kumbajah.Domain.Entities
             StockId = stockId;
             BrandId = brandId;
             CategoryId = categoryId;
-            ColorId = colorId;
+            ColorId = (int)colorId;
             Validate();
         }
 
@@ -53,7 +54,7 @@ namespace Kumbajah.Domain.Entities
                 foreach (var errors in validation.Errors)
                     _errors.Add(errors.ErrorMessage);
 
-                throw new Exception("Alguns campos estão inválidos, por favor corrija-os: " + _errors[0]);
+                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
             }
             return true;
         }

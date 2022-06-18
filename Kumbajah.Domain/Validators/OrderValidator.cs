@@ -13,20 +13,43 @@ namespace Kumbajah.Domain.Validators
                 .WithMessage("O campo celular não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo celular não pode ficar nulo!")
+                .WithMessage("O campo celular não pode ser nulo!")
 
                 .Matches(new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"))
-                .WithMessage("Celular inválido! Coloque o DDD na frente e 9 numeros");
+                .WithMessage("Celular inválido! Coloque o DDD na frente e 9 números!");
             
             RuleFor(costumer => costumer.CPF)
                 .NotEmpty()
-                .WithMessage("O campo e-mail não pode ficar vazio!")
+                .WithMessage("O campo CPF não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo e-mail não pode ficar nulo!")
+                .WithMessage("O campo CPF não pode ser nulo!")
 
                 .Matches(new Regex(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}"))
                 .WithMessage("Deve ser um CPF válido");
+
+
+            RuleFor(costumer => costumer.OrderStatusId)
+                .NotEmpty()
+                .WithMessage("O campo OrderStatus não pode ficar vazio!")
+
+                .NotNull()
+                .WithMessage("O campo OrderStatus não pode ser nulo!");
+
+            RuleFor(costumer => costumer.UserId)
+                .NotEmpty()
+                .WithMessage("O campo User não pode ficar vazio!")
+
+                .NotNull()
+                .WithMessage("O campo User não pode ser nulo!");
+
+            RuleFor(costumer => costumer.AddressId)
+               .NotEmpty()
+               .WithMessage("O campo Endereco não pode ficar vazio!")
+
+               .NotNull()
+               .WithMessage("O campo Endereco não pode ser nulo!");
+
         }
     }
 }

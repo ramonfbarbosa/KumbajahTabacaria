@@ -20,27 +20,38 @@ namespace Kumbajah.Domain.Validators
 
             RuleFor(costumer => costumer.Street)
                 .NotEmpty()
-                .WithMessage("O campo e-mail não pode ficar vazio!")
+                .WithMessage("O campo rua não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo e-mail não pode ficar nulo!")
+                .WithMessage("O campo rua não pode ser nulo!");
 
-                .Matches(new Regex(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}"))
-                .WithMessage("Deve ser um CPF válido");
+            RuleFor(costumer => costumer.State)
+                .NotEmpty()
+                .WithMessage("O campo estado não pode ficar vazio!")
+
+                .NotNull()
+                .WithMessage("O campo estado não pode ser nulo!");
+
+            RuleFor(costumer => costumer.City)
+                .NotEmpty()
+                .WithMessage("O campo cidade não pode ficar vazio!")
+
+                .NotNull()
+                .WithMessage("O campo cidade não pode ser nulo!");
 
             RuleFor(costumer => costumer.Number)
                 .NotEmpty()
-                .WithMessage("O campo e-mail não pode ficar vazio!")
+                .WithMessage("O campo número não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo e-mail não pode ficar nulo!");
+                .WithMessage("O campo número não pode ser nulo!");
 
             RuleFor(costumer => costumer.Reference)
                 .NotEmpty()
-                .WithMessage("O campo e-mail não pode ficar vazio!")
+                .WithMessage("O campo referencia não pode ficar vazio!")
 
                 .NotNull()
-                .WithMessage("O campo e-mail não pode ficar nulo!");
+                .WithMessage("O campo referencia não pode ficar nulo!");
         }
     }
 }

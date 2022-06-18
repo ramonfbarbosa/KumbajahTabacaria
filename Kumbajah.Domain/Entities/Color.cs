@@ -10,9 +10,10 @@ namespace Kumbajah.Domain.Entities
 
         public Color() { }
 
-        public Color(string colorName)
+        public Color(string colorName, IEnumerable<Product> products)
         {
             ColorName = colorName;
+            Products = products;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Kumbajah.Domain.Validators;
+﻿using Kumbajah.Core.Exceptions;
+using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
 
@@ -48,21 +49,9 @@ namespace Kumbajah.Domain.Entities
                 foreach (var errors in validation.Errors)
                     _errors.Add(errors.ErrorMessage);
 
-                throw new Exception("Alguns campos estão inválidos, por favor corrija-os: " + _errors[0]);
+                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
             }
             return true;
-        }
-
-        public void ChangeName(string name)
-        {
-            Name = name;
-            Validate();
-        }
-
-        public void ChangeLastName(string lastName)
-        {
-            LastName = lastName;
-            Validate();
         }
 
         public void ChangePhoneNumber(string phoneNumber)

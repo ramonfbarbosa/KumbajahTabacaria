@@ -10,9 +10,10 @@ namespace Kumbajah.Domain.Entities
 
         public OrderStatus() { }
 
-        public OrderStatus(string status)
+        public OrderStatus(string status, IEnumerable<Order> orders)
         {
             Status = status;
+            Orders = orders;
         }
     }
 }

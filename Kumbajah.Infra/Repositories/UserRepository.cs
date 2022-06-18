@@ -46,16 +46,6 @@ namespace Kumbajah.Infra.Repositories
             return user.FirstOrDefault();
         }
 
-        public async Task<List<User>> SearchByEmail(string email)
-        {
-            var allUsers = await Context.Users
-                .Where(x => x.Email.ToLower().Contains(email.ToLower()))
-                .AsNoTracking()
-                .ToListAsync();
-
-            return allUsers;
-        }
-
         public async Task<List<User>> SearchByName(string name)
         {
             var allUsers = await Context.Users

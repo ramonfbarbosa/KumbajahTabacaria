@@ -1,4 +1,5 @@
-﻿using Kumbajah.Domain.Validators;
+﻿using Kumbajah.Core.Exceptions;
+using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,13 +25,14 @@ namespace Kumbajah.Domain.Entities
         public Order() { }
 
         public Order(DateTime buyMoment, string phoneNumber, 
-            string cpf, int userId, int addressId)
+            string cpf, int userId, int addressId, int orderStatusId)
         {
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;
             CPF = cpf;
             UserId = userId;
             AddressId = addressId;
+            OrderStatusId = orderStatusId;
             Validate();
         }
 
@@ -54,7 +56,7 @@ namespace Kumbajah.Domain.Entities
                 foreach (var errors in validation.Errors)
                     _errors.Add(errors.ErrorMessage);
 
-                throw new Exception("Alguns campos estão inválidos, por favor corrija-os: " + _errors[0]);
+                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
             }
             return true;
         }
