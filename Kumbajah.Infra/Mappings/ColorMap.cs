@@ -14,13 +14,14 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("ID")
                 .HasColumnType("INT");
 
             builder.Property(x => x.ColorName)
                 .IsRequired()
                 .HasColumnName("COLOR_NAME")
-                .HasColumnType("VARCHAR(15)");
+                .HasColumnType("VARCHAR(80)");
         }
     }
 }

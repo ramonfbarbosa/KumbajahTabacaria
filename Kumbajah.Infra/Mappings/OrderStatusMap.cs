@@ -13,6 +13,7 @@ namespace Kumbajah.Infra.Mappings
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd()
                 .UseIdentityColumn()
                 .HasColumnName("ID")
                 .HasColumnType("INT");
@@ -20,7 +21,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Status)
                 .IsRequired()
                 .HasColumnName("STATUS")
-                .HasColumnType("VARCHAR(10)");
+                .HasColumnType("VARCHAR(80)");
         }
     }
 }

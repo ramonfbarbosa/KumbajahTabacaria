@@ -7,7 +7,7 @@ namespace Kumbajah.Infra.Context
     public class KumbajahContext : DbContext
     {
         public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<OrderItem> Brands { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<Order> Order { get; set; }

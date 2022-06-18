@@ -23,8 +23,6 @@ namespace Kumbajah.Domain.Entities
             string cep, string street, string state,
             string city, string district,
             int number, string reference,
-            IEnumerable<Order> orders,
-            IEnumerable<User> users, 
             string? complement = null)
         {
             CEP = cep;
@@ -35,8 +33,6 @@ namespace Kumbajah.Domain.Entities
             Number = number;
             Reference = reference;
             Complement = complement;
-            Orders = orders;
-            Users = users;
             Validate();
         }
 

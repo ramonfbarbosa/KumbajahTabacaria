@@ -1,6 +1,7 @@
 using Kumbajah.Infra.Context;
 using Kumbajah.Infra.Interfaces;
 using Kumbajah.Infra.Repositories;
+using Kumbajah.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
@@ -31,6 +32,7 @@ namespace KumbajahTabacaria
                 options.UseSqlServer(connectionString, conn => conn.MigrationsAssembly("KumbajahTabacaria"));
                 options.UseLazyLoadingProxies();
             });
+            services.AddScoped<SeedingService>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             //string viacepApiKey = Configuration.GetSection("ViaCepService:ViaCepURL").Value;
@@ -49,13 +51,14 @@ namespace KumbajahTabacaria
             });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "KumbajahTabacaria v1"));
+                seedingService.Seed();
             }
             app.UseHttpsRedirection();
             app.UseRouting();

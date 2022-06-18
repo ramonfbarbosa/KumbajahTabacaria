@@ -12,7 +12,7 @@ namespace Kumbajah.Domain.Entities
         public string Email { get; private set; }
         public DateTime Birthdate { get; private set; }
         public string Password { get; private set; }
-        public string ConfirmPassword { get; private set; }
+        public string ConfirmPassword { get; private set; }// ns oq fazer c isso
         public string? CPF { get; private set; }
         public string? PhoneNumber { get; private set; }
         public virtual IEnumerable<Address> Addresses { get; }
@@ -22,9 +22,7 @@ namespace Kumbajah.Domain.Entities
 
         public User(string name, string lastName,
             string email, DateTime birthdate, string password,
-            string? cpf = null, string? phoneNumber = null,
-            IEnumerable<Address>? addresses = null,
-            IEnumerable<Order>? orders = null)
+            string? cpf = null, string? phoneNumber = null)
         {
             Name = name;
             LastName = lastName;
@@ -33,8 +31,8 @@ namespace Kumbajah.Domain.Entities
             Birthdate = birthdate;
             Password = password;
             CPF = cpf;
-            Addresses = addresses;
-            Orders = orders;
+            Addresses = new List<Address>();
+            Orders = new List<Order>();
             _errors = new List<string>();
             Validate();
         }

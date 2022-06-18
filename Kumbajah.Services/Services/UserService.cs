@@ -57,7 +57,7 @@ namespace Kumbajah.Services.Services
 
         public async Task<List<UserDTO>> SearchByName(string name)
         {
-            var user = await UserRepository.SearchByEmail(name);
+            var user = await UserRepository.SearchByName(name);
             return Mapper.Map<List<UserDTO>>(user);
         }
 

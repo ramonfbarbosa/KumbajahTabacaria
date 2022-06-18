@@ -25,7 +25,7 @@ namespace Kumbajah.Services.Services
         {
             var existingProduct = await ProductRepository.GetById(productDTO.Id);
             if (existingProduct != null)
-                throw new DomainException("Não existe nenhuma categoria com este Id");
+                throw new DomainException("Não existe nenhum produto com este Id");
             var product = Mapper.Map<Product>(existingProduct);
             var updatedProduct = await ProductRepository.Update(product);
             return Mapper.Map<ProductDTO>(updatedProduct);

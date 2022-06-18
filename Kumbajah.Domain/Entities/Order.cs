@@ -25,7 +25,8 @@ namespace Kumbajah.Domain.Entities
         public Order() { }
 
         public Order(DateTime buyMoment, string phoneNumber, 
-            string cpf, int userId, int addressId, int orderStatusId)
+            string cpf, int userId, int addressId, int orderStatusId,
+            IEnumerable<OrderItem> items)
         {
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;
@@ -33,6 +34,7 @@ namespace Kumbajah.Domain.Entities
             UserId = userId;
             AddressId = addressId;
             OrderStatusId = orderStatusId;
+            Items = items;
             Validate();
         }
 

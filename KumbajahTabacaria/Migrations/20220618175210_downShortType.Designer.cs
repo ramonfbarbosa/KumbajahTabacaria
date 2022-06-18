@@ -4,14 +4,16 @@ using Kumbajah.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KumbajahTabacaria.Migrations
 {
     [DbContext(typeof(KumbajahContext))]
-    partial class KumbajahContextModelSnapshot : ModelSnapshot
+    [Migration("20220618175210_downShortType")]
+    partial class downShortType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,12 +53,12 @@ namespace KumbajahTabacaria.Migrations
                     b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(MAX)")
+                        .HasColumnType("VARCHAR(20)")
                         .HasColumnName("CITY");
 
                     b.Property<string>("Complement")
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(MAX)")
+                        .HasColumnType("VARCHAR(20)")
                         .HasColumnName("COMPLEMENT");
 
                     b.Property<string>("District")
@@ -72,19 +74,19 @@ namespace KumbajahTabacaria.Migrations
                     b.Property<string>("Reference")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(MAX)")
+                        .HasColumnType("VARCHAR(20)")
                         .HasColumnName("REFERENCE");
 
                     b.Property<string>("State")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(MAX)")
+                        .HasColumnType("VARCHAR(20)")
                         .HasColumnName("STATE");
 
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("VARCHAR(MAX)")
+                        .HasColumnType("VARCHAR(20)")
                         .HasColumnName("STREET");
 
                     b.HasKey("Id");
@@ -140,7 +142,7 @@ namespace KumbajahTabacaria.Migrations
 
                     b.Property<string>("ColorName")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(80)")
+                        .HasColumnType("VARCHAR(15)")
                         .HasColumnName("COLOR_NAME");
 
                     b.HasKey("Id");
@@ -240,7 +242,7 @@ namespace KumbajahTabacaria.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(80)")
+                        .HasColumnType("VARCHAR(10)")
                         .HasColumnName("STATUS");
 
                     b.HasKey("Id");
@@ -373,7 +375,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("PASSWORD");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("VARCHAR(80)")
+                        .HasColumnType("VARCHAR(15)")
                         .HasColumnName("PHONE_NUMBER");
 
                     b.HasKey("Id");

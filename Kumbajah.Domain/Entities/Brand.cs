@@ -10,10 +10,9 @@ namespace Kumbajah.Domain.Entities
 
         public Brand() { }
 
-        public Brand(string name, IEnumerable<Product> products)
+        public Brand(string name)
         {
             Name = name;
-            Products = products;
         }
     }
 }

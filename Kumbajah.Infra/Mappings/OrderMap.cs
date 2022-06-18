@@ -13,7 +13,7 @@ namespace Kumbajah.Infra.Mappings
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("ID")
                 .HasColumnType("INT");
 
@@ -27,13 +27,13 @@ namespace Kumbajah.Infra.Mappings
                 .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("PHONE_NUMBER")
-                .HasColumnType("VARCHAR(15)");
+                .HasColumnType("VARCHAR(80)");
 
             builder.Property(x => x.CPF)
                 .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("CPF")
-                .HasColumnType("VARCHAR(15)");
+                .HasColumnType("VARCHAR(80)");
         }
     }
 }
