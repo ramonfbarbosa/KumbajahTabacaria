@@ -28,6 +28,16 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(20)
                 .HasColumnName("PRICE")
                 .HasColumnType("DECIMAL(10,10)");
+
+            builder.Property(x => x.ProductId)
+                .IsRequired()
+                .HasColumnName("PRODUCT_ID")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.OrderId)
+                .IsRequired()
+                .HasColumnName("ORDER_ID")
+                .HasColumnType("INT");
         }
     }
 }

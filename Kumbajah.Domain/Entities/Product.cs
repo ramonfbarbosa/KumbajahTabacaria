@@ -14,16 +14,12 @@ namespace Kumbajah.Domain.Entities
         public string Image { get; private set; }
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
         public virtual Category Category { get; private set; }
-        [Column("CATEGORY_ID")]
         public int CategoryId { get; private set; }
         public virtual Brand Brand { get; private set; }
-        [Column("BRAND_ID")]
         public int BrandId { get; private set; }
         public virtual Stock Stock { get; private set; }
-        [Column("STOCK_ID")]
         public int StockId { get; private set; }
         public virtual Color Color { get; private set; }
-        [Column("COLOR_ID")]
         public int ColorId { get; private set; }
         public virtual List<OrderItem> Items { get; }
 

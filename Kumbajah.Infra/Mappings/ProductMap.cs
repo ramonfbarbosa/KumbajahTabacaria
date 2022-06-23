@@ -40,6 +40,26 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(200)
                 .HasColumnName("IMAGE")
                 .HasColumnType("VARCHAR(180)");
+
+            builder.Property(x => x.BrandId)
+                .IsRequired()
+                .HasColumnName("BRAND_ID")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.StockId)
+                .IsRequired()
+                .HasColumnName("STOCK_ID")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.CategoryId)
+                .IsRequired()
+                .HasColumnName("CATEGORY_ID")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.ColorId)
+                .IsRequired()
+                .HasColumnName("COLOR_ID")
+                .HasColumnType("INT");
         }
     }
 }

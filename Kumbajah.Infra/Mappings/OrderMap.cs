@@ -18,6 +18,12 @@ namespace Kumbajah.Infra.Mappings
                 .HasColumnName("ID")
                 .HasColumnType("INT");
 
+            builder.Property(x => x.OrderNumber)
+                .IsRequired()
+                .HasMaxLength(10000000)
+                .HasColumnName("ORDER_NUMBER")
+                .HasColumnType("INT");
+
             builder.Property(x => x.BuyMoment)
                 .IsRequired()
                 .HasMaxLength(20)
@@ -35,6 +41,21 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(20)
                 .HasColumnName("CPF")
                 .HasColumnType("VARCHAR(80)");
+
+            builder.Property(x => x.OrderStatusId)
+                .IsRequired()
+                .HasColumnName("ORDER_STATUS_ID")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.UserId)
+                .IsRequired()
+                .HasColumnName("USER_ID")
+                .HasColumnType("INT");
+
+            builder.Property(x => x.AddressId)
+               .IsRequired()
+               .HasColumnName("ADDRESS_ID")
+               .HasColumnType("INT");
         }
     }
 }

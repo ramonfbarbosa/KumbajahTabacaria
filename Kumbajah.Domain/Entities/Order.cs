@@ -9,16 +9,14 @@ namespace Kumbajah.Domain.Entities
     public class Order : Base
     {
         public DateTime BuyMoment { get; set; } = DateTime.Now;
+        public int OrderNumber { get; set; }
         public string PhoneNumber { get; private set; }
         public string CPF { get; private set; }
         public virtual OrderStatus OrderStatus { get; private set; }
-        [Column("ORDER_STATUS_ID")]
         public int OrderStatusId { get; private set; }
         public virtual User Users { get; private set; }
-        [Column("USER_ID")]
         public int UserId { get; private set; }
         public virtual Address Address { get; private set; }
-        [Column("ADDRESS_ID")]
         public int AddressId { get; private set; }
         public virtual List<OrderItem> Items { get; }
 
@@ -26,7 +24,7 @@ namespace Kumbajah.Domain.Entities
 
         public Order(DateTime buyMoment, string phoneNumber, 
             string cpf, int userId, int addressId, int orderStatusId,
-            IEnumerable<OrderItem> items)
+            List<OrderItem> items)
         {
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;
