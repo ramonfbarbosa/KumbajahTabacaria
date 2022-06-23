@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kumbajah.Infra.Interfaces
 {
-    public interface IProductRepository
+    public interface IProductRepository : IBaseRepository<Product>
     {
         Task<Product> GetByProductName(string name);
         Task<List<Product>> SearchByProductName(string name);

@@ -15,8 +15,8 @@ namespace Kumbajah.Domain.Entities
         public string ConfirmPassword { get; private set; }// ns oq fazer c isso
         public string? CPF { get; private set; }
         public string? PhoneNumber { get; private set; }
-        public virtual IEnumerable<Address> Addresses { get; }
-        public virtual IEnumerable<Order> Orders { get; }
+        public virtual List<Address> Addresses { get; }
+        public virtual List<Order> Orders { get; }
 
         public User() { }
 

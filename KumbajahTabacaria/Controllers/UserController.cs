@@ -16,7 +16,7 @@ namespace KumbajahTabacaria.Controllers
 
         //}
 
-            [HttpPost]
+        [HttpPost]
         [Route("/api/v1/users/create")]
         public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
         {

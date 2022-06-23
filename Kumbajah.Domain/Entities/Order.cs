@@ -20,7 +20,7 @@ namespace Kumbajah.Domain.Entities
         public virtual Address Address { get; private set; }
         [Column("ADDRESS_ID")]
         public int AddressId { get; private set; }
-        public virtual IEnumerable<OrderItem> Items { get; }
+        public virtual List<OrderItem> Items { get; }
 
         public Order() { }
 

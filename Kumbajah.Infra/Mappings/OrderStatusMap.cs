@@ -13,6 +13,7 @@ namespace Kumbajah.Infra.Mappings
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
+                .UseIdentityColumn(1, 1)
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn()
                 .HasColumnName("ID")

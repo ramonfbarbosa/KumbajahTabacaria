@@ -19,9 +19,14 @@ namespace Kumbajah.Services.Services
                 Context.Users.Any() ||
                 Context.Order.Any() ||
                 Context.Addresses.Any() ||
-                Context.OrderItems.Any())
+                Context.OrderItems.Any() ||
+                Context.OrderStatus.Any() ||
+                Context.Categories.Any() ||
+                Context.Brands.Any() ||
+                Context.Colors.Any() ||
+                Context.Stocks.Any())
             {
-                return; //DB HAS BEEN SEED
+                return;
             }
 
             var c1 = new Color("Azul");

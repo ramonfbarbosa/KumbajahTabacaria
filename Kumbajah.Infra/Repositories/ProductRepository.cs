@@ -19,12 +19,12 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<Product> GetByProductName(string name)
         {
-            var user = await Context.Products
+            var productName = await Context.Products
                 .Where(x => x.Name.ToLower() == name.ToLower())
                 .AsNoTracking()
                 .ToListAsync();
 
-            return user.FirstOrDefault();
+            return productName.FirstOrDefault();
         }
 
         public async Task<List<Product>> SearchByCategoryName(Category category)

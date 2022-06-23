@@ -25,7 +25,7 @@ namespace Kumbajah.Domain.Entities
         public virtual Color Color { get; private set; }
         [Column("COLOR_ID")]
         public int ColorId { get; private set; }
-        public virtual IEnumerable<OrderItem> Items { get; }
+        public virtual List<OrderItem> Items { get; }
 
         public Product() { }
 

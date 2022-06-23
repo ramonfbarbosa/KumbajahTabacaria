@@ -14,8 +14,8 @@ namespace Kumbajah.Domain.Entities
         public int Number { get; private set; }
         public string? Complement { get; private set; }
         public string Reference { get; private set; }
-        public virtual IEnumerable<Order> Orders { get; }
-        public virtual IEnumerable<User> Users { get; }
+        public virtual List<Order> Orders { get; }
+        public virtual List<User> Users { get; }
 
         public Address() { }
 

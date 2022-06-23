@@ -14,6 +14,7 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd()
+                .UseIdentityColumn(1, 1)
                 .HasColumnName("ID")
                 .HasColumnType("INT");
 

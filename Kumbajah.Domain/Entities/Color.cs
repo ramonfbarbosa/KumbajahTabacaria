@@ -6,7 +6,7 @@ namespace Kumbajah.Domain.Entities
     {
         public int Id { get; set; }
         public string ColorName { get; set; }
-        public virtual IEnumerable<Product> Products { get; private set; }
+        public virtual List<Product> Products { get; private set; }
 
         public Color() { }
 
