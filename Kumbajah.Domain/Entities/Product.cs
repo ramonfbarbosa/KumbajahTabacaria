@@ -2,7 +2,6 @@
 using Kumbajah.Domain.Validators;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kumbajah.Domain.Entities
 {

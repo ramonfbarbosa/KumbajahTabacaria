@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Kumbajah.Core.Exceptions;
 using Kumbajah.Domain.Entities;
-using Kumbajah.Infra.Repositories;
+using Kumbajah.Infra.Interfaces;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace Kumbajah.Services.Services
     public class UserService : IUserService
     {
         private IMapper Mapper { get; }
-        private UserRepository UserRepository { get; }
+        private IUserRepository UserRepository { get; }
 
-        public UserService(IMapper mapper, UserRepository userRepository)
+        public UserService(IMapper mapper, IUserRepository userRepository)
         {
             Mapper = mapper;
             UserRepository = userRepository;

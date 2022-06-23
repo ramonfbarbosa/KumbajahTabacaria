@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Kumbajah.Core.Exceptions;
 using Kumbajah.Domain.Entities;
-using Kumbajah.Infra.Repositories;
+using Kumbajah.Infra.Interfaces;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
 using System.Collections.Generic;
@@ -12,7 +12,13 @@ namespace Kumbajah.Services.Services
     public class ProductService : IProductService
     {
         private IMapper Mapper { get; }
-        private ProductRepository ProductRepository { get; }
+        private IProductRepository ProductRepository { get; }
+
+        public ProductService(IMapper mapper, IProductRepository productRepository)
+        {
+            Mapper = mapper;
+            ProductRepository = productRepository;
+        }
 
         public async Task<ProductDTO> Create(ProductDTO productDTO)
         {

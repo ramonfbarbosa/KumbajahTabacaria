@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using Kumbajah.Core.Exceptions;
+using Kumbajah.Domain.Entities;
+using Kumbajah.Infra.Interfaces;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
 using System.Collections.Generic;
@@ -9,54 +12,47 @@ namespace Kumbajah.Services.Services
     public class OrderService : IOrderService
     {
         private IMapper Mapper { get; }
-        private OrderRepository OrderRepository { get; }
+        private IOrderRepository OrderRepository { get; }
 
-        public OrderService(IMapper mapper, OrderRepository orderRepository)
+        public OrderService(IMapper mapper, IOrderRepository orderRepository)
         {
             Mapper = mapper;
             OrderRepository = orderRepository;
         }
 
-        public async Task<OrderDTO> Create(OrderDTO userDTO)
+        public async Task<OrderDTO> Create(OrderDTO orderDTO)
         {
-            var existingEmail = await OrderRepository.GetByEmail(userDTO.Email);
-            var existingCPF = await OrderRepository.GetByCPF(userDTO.CPF);
-            if (existingEmail != null && existingCPF != null)
-                throw new DomainException("Já existe um usuário cadastrado com estas credenciais");
-            var user = Mapper.Map<User>(userDTO);
-            user.Validate();
-            var createdUser = await OrderRepository.Create(user);
-            return Mapper.Map<UserDTO>(createdUser);
-        }
-
-        public async Task<List<OrderDTO>> GetAllUsers()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<OrderDTO> GetByEmail(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<OrderDTO> GetById(long id)
-        {
-            throw new System.NotImplementedException();
+            var order = Mapper.Map<Order>(orderDTO);
+            order.Validate();
+            var creaatedOrder = await OrderRepository.Create(order);
+            return Mapper.Map<OrderDTO>(creaatedOrder);
         }
 
         public async Task Remove(long id)
         {
-            throw new System.NotImplementedException();
+            await OrderRepository.Delete(id);
         }
 
-        public async Task<List<OrderDTO>> SearchByName(string name)
+        public async Task<List<OrderDTO>> GetAll()
         {
-            throw new System.NotImplementedException();
+            var allProducts = await OrderRepository.Get();
+            return Mapper.Map<List<OrderDTO>>(allProducts);
         }
 
-        public async Task<OrderDTO> Update(OrderDTO userDTO)
+        public async Task<OrderDTO> GetById(long id)
         {
-            throw new System.NotImplementedException();
+            var order = await OrderRepository.GetById(id);
+            return Mapper.Map<OrderDTO>(order);
+        }
+
+        public async Task<OrderDTO> Update(OrderDTO orderDTO)
+        {
+            var existingOrder = await OrderRepository.GetById(orderDTO.);
+            if (existingOrder != null)
+                throw new DomainException("Não existe nenhum pedido com este Id");
+            var order = Mapper.Map<Order>(existingOrder);
+            var updatedOrder = await OrderRepository.Update(order);
+            return Mapper.Map<OrderDTO>(updatedOrder);
         }
     }
 }

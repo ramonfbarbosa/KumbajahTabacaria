@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Kumbajah.Domain.Entities
+﻿namespace Kumbajah.Domain.Entities
 {
     public class OrderItem
     {
@@ -8,10 +6,8 @@ namespace Kumbajah.Domain.Entities
         public int Quantity { get; private set; }
         public decimal Price { get; private set; }
         public virtual Order Order { get; private set; }
-        [Column("ORDER_ID")]
         public int OrderId { get; private set; }
         public virtual Product Product { get; private set; }
-        [Column("PRODUCT_ID")]
         public int ProductId { get; private set; }
 
         public OrderItem() { }
