@@ -7,14 +7,13 @@ namespace Kumbajah.Domain.Entities
 {
     public class User : Base
     {
-        public string Name { get; private set; }
-        public string LastName { get; private set; }
-        public string Email { get; private set; }
-        public DateTime Birthdate { get; private set; }
-        public string Password { get; private set; }
-        public string ConfirmPassword { get; private set; }// ns oq fazer c isso
-        public string? CPF { get; private set; }
-        public string? PhoneNumber { get; private set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string Password { get; set; }
+        public string? CPF { get; set; }
+        public string? PhoneNumber { get; set; }
         public virtual List<Address> Addresses { get; }
         public virtual List<Order> Orders { get; }
 
@@ -50,24 +49,6 @@ namespace Kumbajah.Domain.Entities
                 throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
             }
             return true;
-        }
-
-        public void ChangePhoneNumber(string phoneNumber)
-        {
-            PhoneNumber = phoneNumber;
-            Validate();
-        }
-
-        public void ChangeEmail(string email)
-        {
-            Email = email;
-            Validate();
-        }
-
-        public void ChangePassword(string password)
-        {
-            Password = password;
-            Validate();
         }
     }
 }

@@ -9,19 +9,19 @@ namespace Kumbajah.Domain.Entities
     {
         public DateTime BuyMoment { get; set; } = DateTime.Now;
         public int OrderNumber { get; set; }
-        public string PhoneNumber { get; private set; }
-        public string CPF { get; private set; }
-        public virtual OrderStatus OrderStatus { get; private set; }
-        public int OrderStatusId { get; private set; }
-        public virtual User Users { get; private set; }
-        public int UserId { get; private set; }
-        public virtual Address Address { get; private set; }
-        public int AddressId { get; private set; }
+        public string PhoneNumber { get; set; }
+        public string CPF { get; set; }
+        public virtual OrderStatus OrderStatus { get; set; }
+        public int OrderStatusId { get; set; }
+        public virtual User Users { get; set; }
+        public int UserId { get; set; }
+        public virtual Address Address { get; set; }
+        public int AddressId { get; set; }
         public virtual List<OrderItem> Items { get; }
 
         public Order() { }
 
-        public Order(DateTime buyMoment, string phoneNumber, 
+        public Order(DateTime buyMoment, string phoneNumber,
             string cpf, int userId, int addressId, int orderStatusId,
             List<OrderItem> items)
         {

@@ -55,5 +55,20 @@ namespace Kumbajah.Infra.Repositories
 
             return allUsers;
         }
+
+        public Task<User> ChangeEmail(string email)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<User> ChangePhoneNumber(string phoneNumber)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<User> ChangePassword(string password)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

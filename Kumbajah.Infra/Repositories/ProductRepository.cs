@@ -30,7 +30,8 @@ namespace Kumbajah.Infra.Repositories
         public async Task<List<Product>> SearchByCategoryName(Category category)
         {
             var productsByCategory = await Context.Products
-               .Where(x => x.Category.Name.ToLower().Contains(category.Name.ToLower()))
+               .Where(x => x.Category.Name.ToLower()
+               .Contains(category.Name.ToLower()))
                .AsNoTracking()
                .ToListAsync();
 
@@ -40,7 +41,8 @@ namespace Kumbajah.Infra.Repositories
         public async Task<List<Product>> SearchByProductName(string name)
         {
             var allProducts = await Context.Products
-               .Where(x => x.Name.ToLower().Contains(name.ToLower()))
+               .Where(x => x.Name.ToLower()
+               .Contains(name.ToLower()))
                .AsNoTracking()
                .ToListAsync();
 
@@ -50,7 +52,8 @@ namespace Kumbajah.Infra.Repositories
         public async Task<List<Product>> SearchByBrandName(string brandName)
         {
             var productsByBrandname = await Context.Products
-                .Where(x => x.Brand.Name.ToLower().Contains(brandName.ToLower()))
+                .Where(x => x.Brand.Name.ToLower()
+                .Contains(brandName.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
 
