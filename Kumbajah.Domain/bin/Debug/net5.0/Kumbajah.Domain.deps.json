@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "Kumbajah.Domain/1.0.0": {
         "dependencies": {
-          "FluentValidation": "9.3.0",
-          "Kumbajah.Core": "1.0.0"
+          "FluentValidation": "9.3.0"
         },
         "runtime": {
           "Kumbajah.Domain.dll": {}
@@ -21,11 +20,6 @@
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.3.0.0"
           }
-        }
-      },
-      "Kumbajah.Core/1.0.0": {
-        "runtime": {
-          "Kumbajah.Core.dll": {}
         }
       }
     }
@@ -42,11 +36,6 @@
       "sha512": "sha512-C44l6Ih+YwpED/TsXfl6LIq6Z4wLXahstnr6T70uUg1Hs7/bLBKKAo9Nl0sLhVjDE8TA+fF+O3IM4nDrwabcSQ==",
       "path": "fluentvalidation/9.3.0",
       "hashPath": "fluentvalidation.9.3.0.nupkg.sha512"
-    },
-    "Kumbajah.Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

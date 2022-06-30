@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Brand> builder)
         {
-            builder.ToTable("TB_BRANDS");
+            builder.ToTable("TAB_MARCAS");
 
             builder.HasKey(x => x.Id);
 
@@ -21,7 +21,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("NAME")
+                .HasColumnName("NM_MARCA")
                 .HasColumnType("VARCHAR(50)");
         }
     }

@@ -1,38 +1,33 @@
-﻿using Kumbajah.Core.Exceptions;
+﻿using Kumbajah.Domain.Entities;
+using Kumbajah.Services.DTO;
+using Kumbajah.Services.Interfaces;
+using KumbajahTabacaria.Response;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
-using KumbajahTabacaria.ViewModels.User;
 
 namespace KumbajahTabacaria.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
-        //[HttpPost]
-        //[Route("/api/v1/users/create")]
-        //public async Task<IActionResult> GetById(int id)
-        //{
+        private IUserService OrderService { get; }
 
-        //}
+        public UserController(IUserService userService)
+        {
+            OrderService = userService;
+        }
 
         [HttpPost]
-        [Route("/api/v1/users/create")]
-        public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
+        [Route("create")]
+        public async Task<ActionResult<CreateOrderResponse<User>>> Create([FromBody] UserDTO request)
         {
-            try
+            var result = await OrderService.CreateAsync(request);
+            if (result.Success)
             {
-                return Ok();
+                return Ok(result);
             }
-            catch(DomainException e)
-            {
-                return BadRequest(e.Message);
-            }
-            catch(Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-            
+            return BadRequest(result.Errors);
         }
     }
 }

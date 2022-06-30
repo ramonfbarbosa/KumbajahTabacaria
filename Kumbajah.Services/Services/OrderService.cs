@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using Kumbajah.Core.Exceptions;
+﻿using FluentValidation;
 using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Interfaces;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
+using KumbajahTabacaria.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,48 +11,50 @@ namespace Kumbajah.Services.Services
 {
     public class OrderService : IOrderService
     {
-        private IMapper Mapper { get; }
         private IOrderRepository OrderRepository { get; }
+        private IValidator<Order> Validator { get; }
 
-        public OrderService(IMapper mapper, IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, 
+            IValidator<Order> validator)
         {
-            Mapper = mapper;
             OrderRepository = orderRepository;
+            Validator = validator;
         }
 
-        public async Task<OrderDTO> Create(OrderDTO orderDTO)
+        public OrderDTO GetById(int id)
         {
-            var order = Mapper.Map<Order>(orderDTO);
-            order.Validate();
-            var creaatedOrder = await OrderRepository.Create(order);
-            return Mapper.Map<OrderDTO>(creaatedOrder);
+            var entity = OrderRepository.GetById(id);
+            return new OrderDTO(entity);
         }
 
-        public async Task Remove(long id)
+        public List<OrderDTO> GetAll()
         {
-            await OrderRepository.Delete(id);
+            var allOrders = OrderRepository.GetAll();
+            var dtos = new List<OrderDTO>();
+            foreach (var order in allOrders)
+            {
+                var dto = new OrderDTO(order.Id, order.BuyMoment,
+                    order.PhoneNumber, order.CPF, order.UserId,
+                    order.AddressId, order.OrderStatusId, order.Items);
+                dtos.Add(dto);
+            }
+            return dtos;
         }
 
-        public async Task<List<OrderDTO>> GetAll()
+        public async Task<ValidationResponse<OrderDTO>> Create(OrderDTO orderDTO)
         {
-            var allProducts = await OrderRepository.Get();
-            return Mapper.Map<List<OrderDTO>>(allProducts);
-        }
-
-        public async Task<OrderDTO> GetById(long id)
-        {
-            var order = await OrderRepository.GetById(id);
-            return Mapper.Map<OrderDTO>(order);
-        }
-
-        public async Task<OrderDTO> Update(OrderDTO orderDTO)
-        {
-            var existingOrder = await OrderRepository.GetById(orderDTO.);
-            if (existingOrder != null)
-                throw new DomainException("Não existe nenhum pedido com este Id");
-            var order = Mapper.Map<Order>(existingOrder);
-            var updatedOrder = await OrderRepository.Update(order);
-            return Mapper.Map<OrderDTO>(updatedOrder);
-        }
+            var order = orderDTO.GetEntity();
+            var validationResult = Validator.Validate(order, o => o.IncludeRuleSets("CreateOrUpdate", "Create"));
+            if (validationResult.IsValid)
+            {
+                var entity = await OrderRepository.Create(order);
+                var dto = new OrderDTO(entity);
+                return ValidationResponse<OrderDTO>.Valid(validationResult, dto);
+            }
+            else
+            {
+                return ValidationResponse<OrderDTO>.Invalid(validationResult);
+            }
+        }        
     }
 }

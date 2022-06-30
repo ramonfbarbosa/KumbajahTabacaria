@@ -64,10 +64,8 @@ C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\SendGrid.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\StarkbankEcdsa.dll
-C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Kumbajah.Core.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Kumbajah.Services.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Kumbajah.Services.pdb
-C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Kumbajah.Core.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\KumbajahTabacaria\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

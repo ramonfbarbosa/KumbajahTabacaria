@@ -1,12 +1,15 @@
 ﻿using FluentValidation;
 using Kumbajah.Domain.Entities;
+using Kumbajah.Infra.Interfaces;
 
-namespace Kumbajah.Domain.Validators
+namespace Kumbajah.Infra.Validators
 {
     public class ProductValidator : AbstractValidator<Product>
     {
-        public ProductValidator()
+        private IProductRepository ProductRepository { get; }
+        public ProductValidator(IProductRepository productRepository)
         {
+            ProductRepository = productRepository;
             RuleFor(product => product)
                 .NotEmpty()
                 .WithMessage("A entidade não pode ser vazia")

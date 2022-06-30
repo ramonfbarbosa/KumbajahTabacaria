@@ -18,10 +18,11 @@ namespace Kumbajah.Services.DTO
 
         public OrderDTO() { }
 
-        public OrderDTO(DateTime buyMoment, string phoneNumber,
+        public OrderDTO(int id, DateTime buyMoment, string phoneNumber,
             string cpf, int userId, int addressId, int orderStatusId,
             List<OrderItem> items)
         {
+            Id = id;
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;
             CPF = cpf;
@@ -40,7 +41,7 @@ namespace Kumbajah.Services.DTO
             CPF = order.CPF;
             UserId = order.UserId;
             AddressId = order.AddressId;
-            OrderStatusId = order.OrderStatusId;
+            OrderStatusId = order.OrderStatusId
         }
 
         public Order GetEntity()

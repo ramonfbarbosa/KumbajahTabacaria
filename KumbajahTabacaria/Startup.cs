@@ -1,6 +1,9 @@
+using FluentValidation;
+using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Context;
 using Kumbajah.Infra.Interfaces;
 using Kumbajah.Infra.Repositories;
+using Kumbajah.Infra.Validators;
 using Kumbajah.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,8 +36,12 @@ namespace KumbajahTabacaria
                 options.UseLazyLoadingProxies();
             });
             services.AddScoped<SeedingService>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IValidator<Address>, AddressValidator>();
+            services.AddTransient<IValidator<Product>, ProductValidator>();
+            services.AddTransient<IValidator<Order>, OrderValidator>();
+            services.AddTransient<IValidator<User>, UserValidator>();
             //string viacepApiKey = Configuration.GetSection("ViaCepService:ViaCepURL").Value;
             //services.AddHttpClient<ViaCepService>(client =>
             //{

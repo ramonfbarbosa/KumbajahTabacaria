@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Color> builder)
         {
-            builder.ToTable("TB_COLORS");
+            builder.ToTable("TAB_CORES");
 
             builder.HasKey(x => x.Id);
 
@@ -20,7 +20,7 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.ColorName)
                 .IsRequired()
-                .HasColumnName("COLOR_NAME")
+                .HasColumnName("NM_COR")
                 .HasColumnType("VARCHAR(80)");
         }
     }

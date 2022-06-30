@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using Kumbajah.Core.Exceptions;
+﻿using FluentValidation;
 using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Interfaces;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
+using KumbajahTabacaria.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,65 +11,65 @@ namespace Kumbajah.Services.Services
 {
     public class UserService : IUserService
     {
-        private IMapper Mapper { get; }
         private IUserRepository UserRepository { get; }
+        private IValidator<User> Validator { get; }
 
-        public UserService(IMapper mapper, IUserRepository userRepository)
+        public UserService(IUserRepository userRepository,
+            IValidator<User> validator)
         {
-            Mapper = mapper;
             UserRepository = userRepository;
+            Validator = validator;
         }
 
-        public async Task<UserDTO> Create(UserDTO userDTO)
+        public async Task<ValidationResponse<UserDTO>> CreateAsync(UserDTO newUserDTO)
         {
-            var existingEmail = await UserRepository.GetByEmail(userDTO.Email);
-            var existingCPF = await UserRepository.GetByCPF(userDTO.CPF);
-            if (existingEmail != null && existingCPF != null)
-                throw new DomainException("Já existe um usuário cadastrado com estas credenciais");
-            var user = Mapper.Map<User>(userDTO);
-            user.Validate();
-            var createdUser = await UserRepository.Create(user);
-            return Mapper.Map<UserDTO>(createdUser);
+            var user = newUserDTO.GetEntity(); //2 campos nao funcionando
+            var validationResult = Validator.Validate(user, o => o.IncludeRuleSets("Create"));
+            if (validationResult.IsValid)
+            {
+                var entity = await UserRepository.CreateAsync(user);
+                var dto = new UserDTO(entity);
+                return ValidationResponse<UserDTO>.Valid(validationResult, dto);
+            }
+            else
+            {
+                return ValidationResponse<UserDTO>.Invalid(validationResult);
+            }
         }
 
-        public async Task<List<UserDTO>> GetAllUsers()
+        public List<UserDTO> GetAll()
         {
-            var allUsers = await UserRepository.Get();
-            return Mapper.Map<List<UserDTO>>(allUsers);
+            var allUsers = UserRepository.GetAll();
+            var dtos = new List<UserDTO>();
+            foreach (var user in allUsers)
+            {
+                var dto = new UserDTO(user.Id, user.Name, user.LastName,
+                    user.Email, user.PhoneNumber, user.Birthdate,
+                    user.Password, user.CPF);
+                dtos.Add(dto);
+            }
+            return dtos;
         }
 
-        public async Task<UserDTO> GetByEmail(string email)
+        public async Task<ValidationResponse<UserDTO>> UpdateAsync(UserDTO updatedUserDTO)
         {
-            var user = await UserRepository.GetByEmail(email);
-            return Mapper.Map<UserDTO>(user);
+            var updatedCustomer = updatedUserDTO.GetEntity();
+            var validationResult = await Validator.ValidateAsync(updatedCustomer);
+            if (validationResult.IsValid)
+            {
+                var entity = await UserRepository.UpdateAsync(updatedCustomer);
+                var updatedDto = new UserDTO(entity);
+                return ValidationResponse<UserDTO>.Valid(validationResult, updatedDto);
+            }
+            else
+            {
+                return ValidationResponse<UserDTO>.Invalid(validationResult);
+            }
         }
 
-        public async Task<UserDTO> GetById(long id)
+        public UserDTO GetById(int id)
         {
-            var user = await UserRepository.GetById(id);
-            return Mapper.Map<UserDTO>(user);
-        }
-
-        public async Task Remove(long id)
-        {
-            await UserRepository.Delete(id);
-        }
-
-        public async Task<List<UserDTO>> SearchByName(string name)
-        {
-            var user = await UserRepository.SearchByName(name);
-            return Mapper.Map<List<UserDTO>>(user);
-        }
-
-        public async Task<UserDTO> Update(UserDTO userDTO)
-        {
-            var existingUser = await UserRepository.GetById(userDTO.Id);
-            if (existingUser != null)
-                throw new DomainException("Não existe nenhum usuário com este Id");
-            var user = Mapper.Map<User>(userDTO);
-            user.Validate();
-            var updatedUser= await UserRepository.Update(user);
-            return Mapper.Map<UserDTO>(updatedUser);
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Kumbajah.Services.DTO;
+using KumbajahTabacaria.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,12 +7,9 @@ namespace Kumbajah.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<UserDTO> Create(UserDTO userDTO);
-        Task<UserDTO> Update(UserDTO userDTO);
-        Task Remove(long id);
-        Task<UserDTO> GetById(long id);
-        Task<List<UserDTO>> GetAllUsers();
-        Task<List<UserDTO>> SearchByName(string name);
-        Task<UserDTO> GetByEmail(string email);
+        Task<ValidationResponse<UserDTO>> CreateAsync(UserDTO userDTO);
+        Task<ValidationResponse<UserDTO>> UpdateAsync(UserDTO userDTO);
+        UserDTO GetById(int id);
+        List<UserDTO> GetAll();
     }
 }

@@ -1,12 +1,11 @@
-﻿using Kumbajah.Core.Exceptions;
-using Kumbajah.Domain.Validators;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Kumbajah.Domain.Entities
 {
-    public class Product : Base
+    public class Product
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -19,7 +18,7 @@ namespace Kumbajah.Domain.Entities
         public virtual Stock Stock { get; set; }
         public int StockId { get; set; }
         public virtual Color Color { get; set; }
-        public int ColorId { get; set; }
+        public int? ColorId { get; set; }
         public virtual List<OrderItem> Items { get; }
 
         public Product() { }
@@ -36,21 +35,6 @@ namespace Kumbajah.Domain.Entities
             BrandId = brandId;
             CategoryId = categoryId;
             ColorId = (int)colorId;
-        }
-
-        public override bool Validate()
-        {
-            var validator = new ProductValidator();
-            var validation = validator.Validate(this);
-
-            if (!validation.IsValid)
-            {
-                foreach (var errors in validation.Errors)
-                    _errors.Add(errors.ErrorMessage);
-
-                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
-            }
-            return true;
         }
     }
 }

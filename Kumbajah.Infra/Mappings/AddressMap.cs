@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.ToTable("TB_ADDRESSES");
+            builder.ToTable("TAB_ENDERECOS");
 
             builder.HasKey(x => x.Id);
 
@@ -27,41 +27,41 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Street)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("STREET")
+                .HasColumnName("RUA")
                 .HasColumnType("VARCHAR(MAX)");
 
             builder.Property(x => x.State)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("STATE")
-                .HasColumnType("VARCHAR(MAX)");
+                .HasColumnName("ESTADO")
+                .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.City)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("CITY")
-                .HasColumnType("VARCHAR(MAX)");
+                .HasColumnName("CIDADE")
+                .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.District)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("DISTRICT")
+                .HasColumnName("BAIRRO")
                 .HasColumnType("VARCHAR(2)");
 
             builder.Property(x => x.Number)
                 .IsRequired()
-                .HasColumnName("NUMBER")
+                .HasColumnName("NUMERO")
                 .HasColumnType("INT");
 
             builder.Property(x => x.Complement)
                 .HasMaxLength(20)
-                .HasColumnName("COMPLEMENT")
+                .HasColumnName("COMPLEMENTO")
                 .HasColumnType("VARCHAR(MAX)");
 
             builder.Property(x => x.Reference)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("REFERENCE")
+                .HasColumnName("REFERENCIA")
                 .HasColumnType("VARCHAR(MAX)");
         }
     }

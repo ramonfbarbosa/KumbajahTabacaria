@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<OrderItem> builder)
         {
-            builder.ToTable("TB_ORDER_ITEMS");
+            builder.ToTable("TAB_ITENS_DE_PEDIDO");
 
             builder.HasKey(x => x.Id);
 
@@ -20,13 +20,13 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Quantity)
                 .IsRequired()
-                .HasColumnName("QUANTITY")
+                .HasColumnName("QUANTIDADE")
                 .HasColumnType("INT");
 
             builder.Property(x => x.Price)
                 .IsRequired()
                 .HasMaxLength(20)
-                .HasColumnName("PRICE")
+                .HasColumnName("PRECO")
                 .HasColumnType("DECIMAL(10,10)");
 
             builder.Property(x => x.ProductId)

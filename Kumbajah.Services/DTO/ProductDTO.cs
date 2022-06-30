@@ -18,10 +18,11 @@ namespace Kumbajah.Services.DTO
 
         public ProductDTO() { }
 
-        public ProductDTO(string name, string description,
+        public ProductDTO(int id, string name, string description,
             decimal price, string image, DateTime createdTime,
             int categoryId, int stockId, int colorId, int brandId)
         {
+            Id = id;
             Name = name;
             Description = description;
             Price = price;
@@ -43,7 +44,7 @@ namespace Kumbajah.Services.DTO
             CreatedTime = product.CreatedTime;
             CategoryId = product.CategoryId;
             StockId = product.StockId;
-            ColorId = product.ColorId;
+            ColorId = product.ColorId.GetValueOrDefault();
             BrandId = product.BrandId;
         }
 

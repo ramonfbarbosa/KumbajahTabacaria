@@ -16,5 +16,3 @@ C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\De
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.genruntimeconfig.cache
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\ref\Kumbajah.Infra.dll
-C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Core.dll
-C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Core.pdb

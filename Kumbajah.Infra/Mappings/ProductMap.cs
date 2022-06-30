@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("TB_PRODUCTS");
+            builder.ToTable("TAB_PRODUTOS");
 
             builder.HasKey(x => x.Id);
 
@@ -21,24 +21,24 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(80)
-                .HasColumnName("NAME")
+                .HasColumnName("NOME")
                 .HasColumnType("VARCHAR(80)");
 
             builder.Property(x => x.Description)
                 .IsRequired()
                 .HasMaxLength(180)
-                .HasColumnName("DESCRIPTION")
+                .HasColumnName("DESCRICAO")
                 .HasColumnType("VARCHAR(180)");
 
             builder.Property(x => x.Price)
                 .IsRequired()
-                .HasColumnName("PRICE")
+                .HasColumnName("PRECO")
                 .HasColumnType("DECIMAL(10,10)");
 
             builder.Property(x => x.Image)
                 .IsRequired()
                 .HasMaxLength(200)
-                .HasColumnName("IMAGE")
+                .HasColumnName("IMAGEM")
                 .HasColumnType("VARCHAR(180)");
 
             builder.Property(x => x.BrandId)

@@ -1,6 +1,5 @@
 ﻿using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Context;
-using Kumbajah.Infra.Filters;
 using Kumbajah.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,46 +8,35 @@ using System.Threading.Tasks;
 
 namespace Kumbajah.Infra.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : IUserRepository
     {
-        private new KumbajahContext Context { get; }
+        private KumbajahContext KumbajahContext { get; }
 
-        public UserRepository(KumbajahContext context) : base(context)
+        public UserRepository(KumbajahContext kumbajahContext)
         {
-            Context = context;
-        }
-        public async Task<List<User>> Get()
-        {
-            //var validFilter = new PaginationFilter([FromQuery] PaginationFilter filter);
-            //var response = await context.Customer.ToListAsync();
-            return await Context.Set<User>()
-                                 .AsNoTracking()
-                                 .ToListAsync();
+            KumbajahContext = kumbajahContext;
         }
 
-        public async Task<User> GetByEmail(string email)
-        {
-            var user = await Context.Users
-                .Where(x => x.Email.ToLower().Equals(email.ToLower()))
-                .AsNoTracking()
-                .ToListAsync();
+        public User GetById(int id) =>
+            KumbajahContext.Users.AsNoTracking()
+                .FirstOrDefault(x => x.Id == id);
 
-            return user.FirstOrDefault();
-        }
+        public List<User> GetAll() =>
+            KumbajahContext.Users.ToList();
 
-        public async Task<User> GetByCPF(long cpf)
-        {
-            var user = await Context.Users
-                .Where(x => x.CPF.Equals(cpf))
-                .AsNoTracking()
-                .ToListAsync();
+        public User GetByEmail(string email) =>
+            KumbajahContext.Users
+                .FirstOrDefault(x => x.Email.ToLower()
+                .Equals(email.ToLower()));
 
-            return user.FirstOrDefault();
-        }
+        public User GetByCPF(string cpf) =>
+            KumbajahContext.Users
+                .FirstOrDefault(x => x.CPF
+                .Equals(cpf));
 
         public async Task<List<User>> SearchByName(string name)
         {
-            var allUsers = await Context.Users
+            var allUsers = await KumbajahContext.Users
                 .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
@@ -56,19 +44,34 @@ namespace Kumbajah.Infra.Repositories
             return allUsers;
         }
 
-        public Task<User> ChangeEmail(string email)
+        public async Task<User> ChangeEmail(string email)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<User> ChangePhoneNumber(string phoneNumber)
+        public async Task<User> ChangePhoneNumber(string phoneNumber)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<User> ChangePassword(string password)
+        public async Task<User> ChangePassword(string password)
         {
             throw new System.NotImplementedException();
+        }
+        public async Task<User> CreateAsync(User newUser)
+        {
+            KumbajahContext.Add(newUser);
+            await KumbajahContext.SaveChangesAsync();
+            return newUser;
+        }
+
+        public async Task<User> UpdateAsync(User updatedUser)
+        {
+            var proxy = KumbajahContext.Attach(updatedUser);
+            proxy.State = EntityState.Modified;
+            KumbajahContext.Update(updatedUser);
+            await KumbajahContext.SaveChangesAsync();
+            return proxy.Entity;
         }
     }
 }

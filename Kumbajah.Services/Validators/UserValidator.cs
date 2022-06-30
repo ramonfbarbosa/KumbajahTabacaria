@@ -1,14 +1,33 @@
 ﻿using FluentValidation;
 using Kumbajah.Domain.Entities;
+using Kumbajah.Infra.Interfaces;
 using System;
 using System.Linq;
 
-namespace Kumbajah.Domain.Validators
+namespace Kumbajah.Infra.Validators
 {
     public class UserValidator : AbstractValidator<User>
     {
-        public UserValidator()
+        private IUserRepository UserRepository { get; }
+        public UserValidator(IUserRepository userRepository)
         {
+            UserRepository = userRepository;
+            RuleSet("Create", () =>
+            {
+                RuleFor(customer => customer.Id)
+                    .NotNull()
+                    .WithMessage("O Id não pode ser nulo!")
+                    .NotEmpty()
+                    .WithMessage("O Id já existe!")
+                    .Must(UniqueId)
+                    .WithMessage("O Id já existe!");
+                RuleFor(costumer => costumer.Email)
+                    .Must(UniqueEmail)
+                    .WithMessage("Este e-mail já esta cadastrado");
+                RuleFor(costumer => costumer.CPF)
+                    .Must(UniqueCPF)
+                    .WithMessage("Este CPF já esta cadastrado");
+            });
             RuleFor(costumer => costumer)
                 .NotEmpty()
                 .WithMessage("A entidade não pode ser vazia")
@@ -37,10 +56,6 @@ namespace Kumbajah.Domain.Validators
                 .WithMessage("O campo e-mail não pode ficar vazio!")
                 .NotNull()
                 .WithMessage("O campo e-mail não pode ficar nulo!")
-                .MinimumLength(10)
-                .WithMessage("O email deve ter no mínimo 10 caracteres")
-                .MaximumLength(80)
-                .WithMessage("O nome deve ter no máximo 80 caracteres")
                 .EmailAddress()
                 .WithMessage("O e-mail precisa ser válido!");
             RuleFor(costumer => costumer.Birthdate)
@@ -49,7 +64,7 @@ namespace Kumbajah.Domain.Validators
                 .NotNull()
                 .WithMessage("O campo e-mail não pode ficar nulo!")
                 .Must(BeOver18)
-                .WithMessage("Voce precisa ter mais de 18 anos!");
+                .WithMessage("Voce deve ter mais de 18 anos!");
             RuleFor(costumer => costumer.Password)
                 .NotEmpty()
                 .WithMessage("O campo e-mail não pode ficar vazio!")
@@ -87,5 +102,14 @@ namespace Kumbajah.Domain.Validators
                 return true;
             return false;
         }
+
+        private bool UniqueId(int id) =>
+            UserRepository.GetById(id) == null;
+
+        private bool UniqueEmail(string email) =>
+            UserRepository.GetByEmail(email) == null;
+
+        private bool UniqueCPF(string cpf) =>
+            UserRepository.GetByCPF(cpf) == null;
     }
 }

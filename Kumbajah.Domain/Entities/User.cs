@@ -1,12 +1,11 @@
-﻿using Kumbajah.Core.Exceptions;
-using Kumbajah.Domain.Validators;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Kumbajah.Domain.Entities
 {
-    public class User : Base
+    public class User
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -14,8 +13,8 @@ namespace Kumbajah.Domain.Entities
         public string Password { get; set; }
         public string? CPF { get; set; }
         public string? PhoneNumber { get; set; }
-        public virtual List<Address> Addresses { get; }
-        public virtual List<Order> Orders { get; }
+        public virtual List<Address>? Addresses { get; }
+        public virtual List<Order>? Orders { get; }
 
         public User() { }
 
@@ -32,23 +31,6 @@ namespace Kumbajah.Domain.Entities
             CPF = cpf;
             Addresses = new List<Address>();
             Orders = new List<Order>();
-            _errors = new List<string>();
-            Validate();
-        }
-
-        public override bool Validate()
-        {
-            var validator = new UserValidator();
-            var validation = validator.Validate(this);
-
-            if (!validation.IsValid)
-            {
-                foreach (var errors in validation.Errors)
-                    _errors.Add(errors.ErrorMessage);
-
-                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
-            }
-            return true;
         }
     }
 }

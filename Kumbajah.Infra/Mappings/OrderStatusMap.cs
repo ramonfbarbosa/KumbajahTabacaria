@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<OrderStatus> builder)
         {
-            builder.ToTable("TB_ORDER_STATUS");
+            builder.ToTable("TAB_STATUS_DO_PEDIDO");
 
             builder.HasKey(x => x.Id);
 

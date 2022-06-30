@@ -2,7 +2,7 @@
 using Kumbajah.Domain.Entities;
 using System.Text.RegularExpressions;
 
-namespace Kumbajah.Domain.Validators
+namespace Kumbajah.Infra.Validators
 {
     public class AddressValidator : AbstractValidator<Address>
     {

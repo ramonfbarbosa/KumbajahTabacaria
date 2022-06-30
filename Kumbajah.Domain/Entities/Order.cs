@@ -1,13 +1,12 @@
-﻿using Kumbajah.Core.Exceptions;
-using Kumbajah.Domain.Validators;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Kumbajah.Domain.Entities
 {
-    public class Order : Base
+    public class Order
     {
-        public DateTime BuyMoment { get; set; } = DateTime.Now;
+        public int Id { get; set; }
+        public DateTime BuyMoment { get; set; }
         public int OrderNumber { get; set; }
         public string PhoneNumber { get; set; }
         public string CPF { get; set; }
@@ -32,7 +31,6 @@ namespace Kumbajah.Domain.Entities
             AddressId = addressId;
             OrderStatusId = orderStatusId;
             Items = items;
-            Validate();
         }
 
         public decimal Total()
@@ -43,21 +41,6 @@ namespace Kumbajah.Domain.Entities
                 sum += item.SubTotal();
             }
             return sum;
-        }
-
-        public override bool Validate()
-        {
-            var validator = new OrderValidator();
-            var validation = validator.Validate(this);
-
-            if (!validation.IsValid)
-            {
-                foreach (var errors in validation.Errors)
-                    _errors.Add(errors.ErrorMessage);
-
-                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os: ", _errors);
-            }
-            return true;
         }
     }
 }

@@ -8,11 +8,12 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.ToTable("TB_ORDERS");
+            builder.ToTable("TAB_PEDIDOS");
 
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
+                .IsRequired()
                 .UseIdentityColumn(1, 1)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("ID")
@@ -21,19 +22,19 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.OrderNumber)
                 .IsRequired()
                 .HasMaxLength(10000000)
-                .HasColumnName("ORDER_NUMBER")
+                .HasColumnName("NR_PEDIDO")
                 .HasColumnType("INT");
 
             builder.Property(x => x.BuyMoment)
                 .IsRequired()
-                .HasMaxLength(20)
-                .HasColumnName("BUY_MOMENT")
+                .HasMaxLength(30)
+                .HasColumnName("HR_COMPRA")
                 .HasColumnType("DATE");
 
             builder.Property(x => x.PhoneNumber)
                 .IsRequired()
-                .HasMaxLength(20)
-                .HasColumnName("PHONE_NUMBER")
+                .HasMaxLength(30)
+                .HasColumnName("CELULAR")
                 .HasColumnType("VARCHAR(80)");
 
             builder.Property(x => x.CPF)

@@ -14,15 +14,14 @@ namespace Kumbajah.Services.DTO
         public string Password { get; set; }
         public string? CPF { get; set; }
         public string? PhoneNumber { get; set; }
-        public List<Address> Addresses { get; }
-        public List<Order> Orders { get; }
+        public List<Address>? Addresses { get; }
+        public List<Order>? Orders { get; }
 
         public UserDTO() { }
 
-        public UserDTO(string name, string lastName,
+        public UserDTO(int id, string name, string lastName,
             string email, string phoneNumber, DateTime birthDate,
-            string password, string cpf, List<Address> addresses,
-            List<Order> orders)
+            string password, string cpf)
         {
             Name = name;
             LastName = lastName;
@@ -48,6 +47,7 @@ namespace Kumbajah.Services.DTO
             Addresses = user.Addresses;
             Orders = user.Orders;
         }
+
         public User GetEntity()
         {
             return new User

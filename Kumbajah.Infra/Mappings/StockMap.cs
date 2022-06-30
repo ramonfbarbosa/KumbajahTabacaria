@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Stock> builder)
         {
-            builder.ToTable("TB_STOCKS");
+            builder.ToTable("TAB_ESTOQUE");
 
             builder.HasKey(x => x.Id);
 
@@ -20,7 +20,7 @@ namespace Kumbajah.Infra.Mappings
 
             builder.Property(x => x.Quantity)
                 .IsRequired()
-                .HasColumnName("QUANTITY")
+                .HasColumnName("QUANTIDADE")
                 .HasColumnType("INT");
         }
     }

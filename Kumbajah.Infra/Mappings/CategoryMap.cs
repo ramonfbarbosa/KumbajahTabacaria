@@ -8,7 +8,7 @@ namespace Kumbajah.Infra.Mappings
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("TB_CATEGORIES");
+            builder.ToTable("TAB_CATEGORIAS");
 
             builder.HasKey(x => x.Id);
 
@@ -21,7 +21,7 @@ namespace Kumbajah.Infra.Mappings
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(80)
-                .HasColumnName("NAME")
+                .HasColumnName("NM_CATEGORIA")
                 .HasColumnType("VARCHAR(80)");
         }
     }

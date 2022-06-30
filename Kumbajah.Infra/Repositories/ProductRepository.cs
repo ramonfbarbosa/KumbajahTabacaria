@@ -8,28 +8,29 @@ using System.Threading.Tasks;
 
 namespace Kumbajah.Infra.Repositories
 {
-    public class ProductRepository : BaseRepository<Product>, IProductRepository
+    public class ProductRepository : IProductRepository
     {
-        private new KumbajahContext Context { get; }
+        private KumbajahContext KumbajahContext { get; }
 
-        public ProductRepository(KumbajahContext context) : base(context)
+        public ProductRepository(KumbajahContext kumbajaCcontext)
         {
-            Context = context;
+            KumbajahContext = kumbajaCcontext;
         }
 
-        public async Task<Product> GetByProductName(string name)
-        {
-            var productName = await Context.Products
-                .Where(x => x.Name.ToLower() == name.ToLower())
-                .AsNoTracking()
-                .ToListAsync();
+        public Product GetById(int id) =>
+            KumbajahContext.Products.AsNoTracking()
+                .FirstOrDefault(x => x.Id == id);
 
-            return productName.FirstOrDefault();
-        }
+        public List<Product> GetAll() =>
+            KumbajahContext.Products.ToList();
+
+        public Product GetByProductName(string name) =>
+            KumbajahContext.Products
+                .FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
         public async Task<List<Product>> SearchByCategoryName(Category category)
         {
-            var productsByCategory = await Context.Products
+            var productsByCategory = await KumbajahContext.Products
                .Where(x => x.Category.Name.ToLower()
                .Contains(category.Name.ToLower()))
                .AsNoTracking()
@@ -40,7 +41,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Product>> SearchByProductName(string name)
         {
-            var allProducts = await Context.Products
+            var allProducts = await KumbajahContext.Products
                .Where(x => x.Name.ToLower()
                .Contains(name.ToLower()))
                .AsNoTracking()
@@ -51,7 +52,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Product>> SearchByBrandName(string brandName)
         {
-            var productsByBrandname = await Context.Products
+            var productsByBrandname = await KumbajahContext.Products
                 .Where(x => x.Brand.Name.ToLower()
                 .Contains(brandName.ToLower()))
                 .AsNoTracking()
@@ -62,7 +63,7 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Product>> SearchByCategoryName(string categoryName)
         {
-            var productsByCatgegoryName = await Context.Products
+            var productsByCatgegoryName = await KumbajahContext.Products
                 .Where(x => x.Category.Name.ToLower().Contains(categoryName.ToLower()))
                 .AsNoTracking()
                 .ToListAsync();
@@ -72,12 +73,38 @@ namespace Kumbajah.Infra.Repositories
 
         public async Task<List<Product>> SearchProductByColorName(string colorName)
         {
-            var productsByColorName = await Context.Products
+            var productsByColorName = await KumbajahContext.Products
                .Where(x => x.Color.ColorName.ToLower().Contains(colorName.ToLower()))
                .AsNoTracking()
                .ToListAsync();
 
             return productsByColorName;
+        }
+
+        public async Task<Product> CreateAsync(Product newProduct)
+        {
+            KumbajahContext.Add(newProduct);
+            await KumbajahContext.SaveChangesAsync();
+            return newProduct;
+        }
+
+        public async Task<Product> UpdateAsync(Product updatedProduct)
+        {
+            var proxy = KumbajahContext.Attach(updatedProduct);
+            proxy.State = EntityState.Modified;
+            KumbajahContext.Update(updatedProduct);
+            await KumbajahContext.SaveChangesAsync();
+            return proxy.Entity;
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var product = GetById(id);
+            if (product != null)
+            {
+                KumbajahContext.Remove(product);
+                await KumbajahContext.SaveChangesAsync();
+            }
         }
     }
 }

@@ -1,13 +1,10 @@
-﻿using Kumbajah.Domain.Entities;
-using Kumbajah.Services.DTO;
-using Kumbajah.Services.Services;
-using KumbajahTabacaria.Response;
+﻿using Kumbajah.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace KumbajahTabacaria.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductController : Controller
     {
         private ProductService ProductService { get; }
@@ -15,13 +12,6 @@ namespace KumbajahTabacaria.Controllers
         public ProductController(ProductService productService)
         {
             ProductService = productService;
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var productId = ProductService.GetById(id).Result;
-            return Ok(new Response<ProductDTO>(productId));
         }
     }
 }
