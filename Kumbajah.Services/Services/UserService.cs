@@ -21,20 +21,10 @@ namespace Kumbajah.Services.Services
             Validator = validator;
         }
 
-        public async Task<ValidationResponse<UserDTO>> CreateAsync(UserDTO newUserDTO)
+        public UserDTO GetById(int id)
         {
-            var user = newUserDTO.GetEntity(); //2 campos nao funcionando
-            var validationResult = Validator.Validate(user, o => o.IncludeRuleSets("Create"));
-            if (validationResult.IsValid)
-            {
-                var entity = await UserRepository.CreateAsync(user);
-                var dto = new UserDTO(entity);
-                return ValidationResponse<UserDTO>.Valid(validationResult, dto);
-            }
-            else
-            {
-                return ValidationResponse<UserDTO>.Invalid(validationResult);
-            }
+            var user = UserRepository.GetById(id);
+            return new UserDTO(user);
         }
 
         public List<UserDTO> GetAll()
@@ -51,6 +41,22 @@ namespace Kumbajah.Services.Services
             return dtos;
         }
 
+        public async Task<ValidationResponse<UserDTO>> CreateAsync(UserDTO newUserDTO)
+        {
+            var user = newUserDTO.GetEntity();
+            var validationResult = Validator.Validate(user, o => o.IncludeRuleSets("Create"));
+            if (validationResult.IsValid)
+            {
+                var entity = await UserRepository.CreateAsync(user);
+                var dto = new UserDTO(entity);
+                return ValidationResponse<UserDTO>.Valid(validationResult, dto);
+            }
+            else
+            {
+                return ValidationResponse<UserDTO>.Invalid(validationResult);
+            }
+        }
+
         public async Task<ValidationResponse<UserDTO>> UpdateAsync(UserDTO updatedUserDTO)
         {
             var updatedCustomer = updatedUserDTO.GetEntity();
@@ -65,11 +71,6 @@ namespace Kumbajah.Services.Services
             {
                 return ValidationResponse<UserDTO>.Invalid(validationResult);
             }
-        }
-
-        public UserDTO GetById(int id)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

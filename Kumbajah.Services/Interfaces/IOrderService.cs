@@ -7,8 +7,8 @@ namespace Kumbajah.Services.Interfaces
 {
     public interface IOrderService
     {
-        Task<ValidationResponse<OrderDTO>> Create(OrderDTO userDTO);
-        List<OrderDTO> GetAll();
         OrderDTO GetById(int id);
+        List<OrderDTO> GetAll();
+        Task<ValidationResponse<OrderDTO>> CreateAsync(OrderDTO userDTO);
     }
 }

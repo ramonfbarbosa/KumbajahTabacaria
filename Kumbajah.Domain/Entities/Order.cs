@@ -7,16 +7,15 @@ namespace Kumbajah.Domain.Entities
     {
         public int Id { get; set; }
         public DateTime BuyMoment { get; set; }
-        public int OrderNumber { get; set; }
         public string PhoneNumber { get; set; }
         public string CPF { get; set; }
         public virtual OrderStatus OrderStatus { get; set; }
         public int OrderStatusId { get; set; }
-        public virtual User Users { get; set; }
+        public virtual User User { get; set; }
         public int UserId { get; set; }
         public virtual Address Address { get; set; }
         public int AddressId { get; set; }
-        public virtual List<OrderItem> Items { get; }
+        public virtual List<OrderItem> Items { get; set; }
 
         public Order() { }
 

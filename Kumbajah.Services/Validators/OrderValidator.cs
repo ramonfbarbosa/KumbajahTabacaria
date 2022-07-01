@@ -7,6 +7,8 @@ namespace Kumbajah.Infra.Validators
     public class OrderValidator : AbstractValidator<Order>
     {
         Regex PhoneNumberRegex = new(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$");
+        Regex CPFRegex = new(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$");
+
         public OrderValidator()
         {
             RuleFor(costumer => costumer.PhoneNumber)
@@ -14,14 +16,14 @@ namespace Kumbajah.Infra.Validators
                 .WithMessage("O campo celular não pode ficar vazio!")
                 .NotNull()
                 .WithMessage("O campo celular não pode ser nulo!")
-                .Matches(new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"))
+                .Matches(PhoneNumberRegex)
                 .WithMessage("Celular inválido! Coloque o DDD na frente e 9 números!");
             RuleFor(costumer => costumer.CPF)
                 .NotEmpty()
                 .WithMessage("O campo CPF não pode ficar vazio!")
                 .NotNull()
                 .WithMessage("O campo CPF não pode ser nulo!")
-                .Matches(PhoneNumberRegex)
+                .Matches(CPFRegex)
                 .WithMessage("Deve ser um CPF válido");
             RuleFor(costumer => costumer.OrderStatusId)
                 .NotEmpty()

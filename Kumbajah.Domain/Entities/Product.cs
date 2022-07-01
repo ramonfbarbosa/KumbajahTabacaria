@@ -19,7 +19,7 @@ namespace Kumbajah.Domain.Entities
         public int StockId { get; set; }
         public virtual Color Color { get; set; }
         public int? ColorId { get; set; }
-        public virtual List<OrderItem> Items { get; }
+        public virtual List<OrderItem> Items { get; set; }
 
         public Product() { }
 

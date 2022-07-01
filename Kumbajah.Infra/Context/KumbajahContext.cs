@@ -48,7 +48,7 @@ namespace Kumbajah.Infra.Context
                 .WithMany(address => address.Orders)
                 .HasForeignKey(order => order.AddressId);
             builder.Entity<Order>()
-                .HasOne(order => order.Users)
+                .HasOne(order => order.User)
                 .WithMany(client => client.Orders)
                 .HasForeignKey(order => order.UserId);
             builder.Entity<Order>()

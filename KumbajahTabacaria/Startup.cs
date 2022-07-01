@@ -38,6 +38,7 @@ namespace KumbajahTabacaria
             services.AddScoped<SeedingService>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IValidator<Address>, AddressValidator>();
             services.AddTransient<IValidator<Product>, ProductValidator>();
             services.AddTransient<IValidator<Order>, OrderValidator>();

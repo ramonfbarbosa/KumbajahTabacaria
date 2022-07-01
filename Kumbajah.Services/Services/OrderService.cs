@@ -4,6 +4,7 @@ using Kumbajah.Infra.Interfaces;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
 using KumbajahTabacaria.Response;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,7 +12,9 @@ namespace Kumbajah.Services.Services
 {
     public class OrderService : IOrderService
     {
+        private const int OrderStatusPaid = 1;
         private IOrderRepository OrderRepository { get; }
+        public IUserRepository UserRepository { get; set; }
         private IValidator<Order> Validator { get; }
 
         public OrderService(IOrderRepository orderRepository, 
@@ -41,10 +44,11 @@ namespace Kumbajah.Services.Services
             return dtos;
         }
 
-        public async Task<ValidationResponse<OrderDTO>> Create(OrderDTO orderDTO)
+        public async Task<ValidationResponse<OrderDTO>> CreateAsync(OrderDTO orderDTO)
         {
             var order = orderDTO.GetEntity();
-            var validationResult = Validator.Validate(order, o => o.IncludeRuleSets("CreateOrUpdate", "Create"));
+            CreateResource(order);
+            var validationResult = Validator.Validate(order);
             if (validationResult.IsValid)
             {
                 var entity = await OrderRepository.Create(order);
@@ -55,6 +59,17 @@ namespace Kumbajah.Services.Services
             {
                 return ValidationResponse<OrderDTO>.Invalid(validationResult);
             }
-        }        
+        }
+
+        private void CreateResource(Order order)
+        {
+            var user = UserRepository.GetById(order.UserId);
+            order.BuyMoment = DateTime.Now;
+            order.OrderStatusId = OrderStatusPaid;
+            user.PhoneNumber = order.PhoneNumber;
+            user.CPF = order.CPF;
+            user = order.User;
+            user.Orders.Add(order);
+        }
     }
 }

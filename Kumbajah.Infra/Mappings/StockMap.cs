@@ -9,15 +9,12 @@ namespace Kumbajah.Infra.Mappings
         public void Configure(EntityTypeBuilder<Stock> builder)
         {
             builder.ToTable("TAB_ESTOQUE");
-
             builder.HasKey(x => x.Id);
-
             builder.Property(x => x.Id)
                 .UseIdentityColumn(1, 1)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("ID")
                 .HasColumnType("INT");
-
             builder.Property(x => x.Quantity)
                 .IsRequired()
                 .HasColumnName("QUANTIDADE")

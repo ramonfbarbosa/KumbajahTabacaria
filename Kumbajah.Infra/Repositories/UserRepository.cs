@@ -44,20 +44,15 @@ namespace Kumbajah.Infra.Repositories
             return allUsers;
         }
 
-        public async Task<User> ChangeEmail(string email)
+        public async Task ChangePhoneNumber(string updatedPhoneNumber)
         {
-            throw new System.NotImplementedException();
+            var oldPhoneNumber = KumbajahContext.Users
+                .Select(x => x.PhoneNumber)
+                .FirstOrDefault();
+            if (oldPhoneNumber == null) { return; }
+            oldPhoneNumber = updatedPhoneNumber ;
         }
 
-        public async Task<User> ChangePhoneNumber(string phoneNumber)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<User> ChangePassword(string password)
-        {
-            throw new System.NotImplementedException();
-        }
         public async Task<User> CreateAsync(User newUser)
         {
             KumbajahContext.Add(newUser);

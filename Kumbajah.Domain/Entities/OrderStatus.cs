@@ -6,7 +6,7 @@ namespace Kumbajah.Domain.Entities
     {
         public int Id { get; set; }
         public string Status { get; set; }
-        public virtual List<Order> Orders { get; private set; }
+        public virtual List<Order> Orders { get; set; }
 
         public OrderStatus() { }
 

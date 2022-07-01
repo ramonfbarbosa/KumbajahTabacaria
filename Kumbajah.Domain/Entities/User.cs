@@ -13,8 +13,8 @@ namespace Kumbajah.Domain.Entities
         public string Password { get; set; }
         public string? CPF { get; set; }
         public string? PhoneNumber { get; set; }
-        public virtual List<Address>? Addresses { get; }
-        public virtual List<Order>? Orders { get; }
+        public virtual List<Address>? Addresses { get; set; }
+        public virtual List<Order>? Orders { get; set; }
 
         public User() { }
 

@@ -15,7 +15,7 @@ namespace Kumbajah.Services.DTO
         public string? CPF { get; set; }
         public string? PhoneNumber { get; set; }
         public List<Address>? Addresses { get; }
-        public List<Order>? Orders { get; }
+        public List<Order>? Orders { get; set; }
 
         public UserDTO() { }
 
@@ -59,9 +59,9 @@ namespace Kumbajah.Services.DTO
                 PhoneNumber = PhoneNumber,
                 Birthdate = Birthdate,
                 Password = Password,
-                CPF = CPF
-                //Addresses = Addresses,
-                //Orders = Orders
+                CPF = CPF,
+                Addresses = Addresses,
+                Orders = Orders
             };
         }
     }

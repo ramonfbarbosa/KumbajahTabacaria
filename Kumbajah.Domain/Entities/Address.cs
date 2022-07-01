@@ -5,16 +5,16 @@ namespace Kumbajah.Domain.Entities
     public class Address
     {
         public int Id { get; set; }
-        public string CEP { get; private set; }
-        public string Street { get; private set; }
-        public string State { get; private set; }
-        public string City { get; private set; }
-        public string District { get; private set; }
-        public int Number { get; private set; }
-        public string? Complement { get; private set; }
-        public string Reference { get; private set; }
-        public virtual List<Order> Orders { get; }
-        public virtual List<User> Users { get; }
+        public string CEP { get; set; }
+        public string Street { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
+        public string District { get; set; }
+        public int Number { get; set; }
+        public string? Complement { get; set; }
+        public string Reference { get; set; }
+        public virtual List<Order> Orders { get; set; }
+        public virtual List<User> Users { get; set; }
 
         public Address() { }
 

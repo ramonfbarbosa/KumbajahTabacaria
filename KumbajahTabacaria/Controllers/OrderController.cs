@@ -1,7 +1,5 @@
-﻿using Kumbajah.Domain.Entities;
-using Kumbajah.Services.DTO;
+﻿using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
-using KumbajahTabacaria.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -26,9 +24,9 @@ namespace KumbajahTabacaria.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<CreateOrderResponse<Order>>> CreateOrder([FromBody] OrderDTO request)
+        public async Task<IActionResult> CreateAsync([FromBody] OrderDTO request)
         {
-            var result = await OrderService.Create(request);
+            var result = await OrderService.CreateAsync(request);
             if (result.Success)
             {
                 return Ok(result);
