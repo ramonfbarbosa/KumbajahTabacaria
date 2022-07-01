@@ -44,7 +44,7 @@ namespace Kumbajah.Services.Services
         public async Task<ValidationResponse<UserDTO>> CreateAsync(UserDTO newUserDTO)
         {
             var user = newUserDTO.GetEntity();
-            var validationResult = Validator.Validate(user, o => o.IncludeRuleSets("Create"));
+            var validationResult = Validator.Validate(user, o => o.IncludeRuleSets("Create", "CreateOrUpdate"));
             if (validationResult.IsValid)
             {
                 var entity = await UserRepository.CreateAsync(user);
@@ -60,7 +60,7 @@ namespace Kumbajah.Services.Services
         public async Task<ValidationResponse<UserDTO>> UpdateAsync(UserDTO updatedUserDTO)
         {
             var updatedCustomer = updatedUserDTO.GetEntity();
-            var validationResult = await Validator.ValidateAsync(updatedCustomer);
+            var validationResult = await Validator.ValidateAsync(updatedCustomer, o => o.IncludeRuleSets("CreateOrUpdate"));
             if (validationResult.IsValid)
             {
                 var entity = await UserRepository.UpdateAsync(updatedCustomer);

@@ -18,21 +18,19 @@ namespace KumbajahTabacaria.Controllers
             UserService = userService;
         }
 
-        [HttpGet("id")]
-        public ActionResult<List<User>> GetById([FromBody] int id)
+        [HttpGet("/{id}")]
+        public ActionResult<List<User>> GetById(int id)
         {
             return Ok(UserService.GetById(id));
         }
 
-        [HttpGet]
-        [Route("users")]
+        [HttpGet("users")]
         public ActionResult<List<User>> GetAll()
         {
             return Ok(UserService.GetAll());
         }
 
-        [HttpPost]
-        [Route("create")]
+        [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] UserDTO request)
         {
             var result = await UserService.CreateAsync(request);

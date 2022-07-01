@@ -13,15 +13,16 @@ namespace Kumbajah.Domain.Entities
         public string Password { get; set; }
         public string? CPF { get; set; }
         public string? PhoneNumber { get; set; }
-        public virtual List<Address>? Addresses { get; set; }
+        public virtual List<AddressUser>? UserAddress { get; set; }
         public virtual List<Order>? Orders { get; set; }
 
         public User() { }
 
-        public User(string name, string lastName,
-            string email, DateTime birthdate, string password,
+        public User(int id, string name, string lastName, string email, 
+            DateTime birthdate, string password,
             string? cpf = null, string? phoneNumber = null)
         {
+            Id = id;
             Name = name;
             LastName = lastName;
             Email = email;
@@ -29,7 +30,6 @@ namespace Kumbajah.Domain.Entities
             Birthdate = birthdate;
             Password = password;
             CPF = cpf;
-            Addresses = new List<Address>();
             Orders = new List<Order>();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Kumbajah.Services.DTO;
+﻿using Kumbajah.Domain.Entities;
+using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ namespace KumbajahTabacaria.Controllers
         public OrderController(IOrderService orderService)
         {
             OrderService = orderService;
+        }
+
+        [HttpGet("/{id}")]
+        public ActionResult<List<Order>> GetById(int id)
+        {
+            return Ok(OrderService.GetById(id));
         }
 
         [HttpGet("orders")]

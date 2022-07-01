@@ -16,6 +16,7 @@ namespace Kumbajah.Infra.Context
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<AddressUser> UserAddress { get; set; }
 
         public KumbajahContext() { }
 
@@ -39,14 +40,15 @@ namespace Kumbajah.Infra.Context
             builder.ApplyConfiguration(new ProductMap());
             builder.ApplyConfiguration(new StockMap());
             builder.ApplyConfiguration(new UserMap());
+            builder.ApplyConfiguration(new UserAddressMap());
         }
 
         private static void EntityRelationship(ModelBuilder builder)
         {
             builder.Entity<Order>()
                 .HasOne(order => order.Address)
-                .WithMany(address => address.Orders)
-                .HasForeignKey(order => order.AddressId);
+                .WithOne(address => address.Order)
+                .HasForeignKey<Order>(order => order.AddressId);
             builder.Entity<Order>()
                 .HasOne(order => order.User)
                 .WithMany(client => client.Orders)
@@ -80,6 +82,15 @@ namespace Kumbajah.Infra.Context
                 .HasMany(product => product.Items)
                 .WithOne(orderItem => orderItem.Product)
                 .HasForeignKey(orderItem => orderItem.ProductId);
+
+            builder.Entity<AddressUser>()
+                .HasOne(userAddress => userAddress.User)
+                .WithMany(user => user.UserAddress)
+                .HasForeignKey(userAddress => userAddress.UserId);
+            builder.Entity<AddressUser>()
+                .HasOne(userAddress => userAddress.Address)
+                .WithMany(user => user.UserAddress)
+                .HasForeignKey(userAddress => userAddress.UserId);
         }
     }
 }

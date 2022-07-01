@@ -34,7 +34,7 @@ namespace Kumbajah.Domain.Entities
             StockId = stockId;
             BrandId = brandId;
             CategoryId = categoryId;
-            ColorId = (int)colorId;
+            ColorId = colorId.Value;
         }
     }
 }

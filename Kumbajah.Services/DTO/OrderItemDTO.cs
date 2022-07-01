@@ -15,9 +15,10 @@
             return Price * Quantity;
         }
 
-        public OrderItemDTO(int quantity, decimal price,
-            int orderId, int productId)
+        public OrderItemDTO(int id, int quantity, 
+            decimal price, int orderId, int productId)
         {
+            Id = id;
             Quantity = quantity;
             Price = price;
             OrderId = orderId;

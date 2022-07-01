@@ -4,6 +4,7 @@ using Kumbajah.Infra.Context;
 using Kumbajah.Infra.Interfaces;
 using Kumbajah.Infra.Repositories;
 using Kumbajah.Infra.Validators;
+using Kumbajah.Services.Interfaces;
 using Kumbajah.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,9 @@ namespace KumbajahTabacaria
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IValidator<Address>, AddressValidator>();
             services.AddTransient<IValidator<Product>, ProductValidator>();
             services.AddTransient<IValidator<Order>, OrderValidator>();
@@ -66,7 +70,7 @@ namespace KumbajahTabacaria
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "KumbajahTabacaria v1"));
-                seedingService.Seed();
+                //seedingService.Seed();
             }
             app.UseHttpsRedirection();
             app.UseRouting();

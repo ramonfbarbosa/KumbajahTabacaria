@@ -54,17 +54,17 @@ namespace Kumbajah.Services.Services
             var os5 = new OrderStatus("Produto Entregue");
             var os6 = new OrderStatus("Cancelado");
 
-            var a1 = new Address("22790-510", "Rua Desembargador Paulo Alonso", "Rio de Janeiro", "Rio de Janeiro", "RJ", 510, "rua esquina com a gilka", "apto 303");
-            var a2 = new Address("22790-701", "Rua Werneck da Silva", "Rio de Janeiro", "Rio de Janeiro", "RJ", 11, "do lado do prezunic", "bl 2/903");
-            var a3 = new Address("01311-000", "Avenida Paulista", "São Paulo", "São Paulo", "SP", 02, "do lado da droga raia");
-            var a4 = new Address("82590-300", "Rua Ernesto de Araújo", "Paraná", "Curitiba", "PR", 12, "perto do Kharina");
-            var a5 = new Address("20765-630", "Rua Ari Almeida", "Minas de Gerais", "Belo Horizonte", "MG", 103, "em frente ao jota lennon", "casa 2b");
+            //var a1 = new Address("22790-510", "Rua Desembargador Paulo Alonso", "Rio de Janeiro", "Rio de Janeiro", "RJ", 510, "rua esquina com a gilka", "apto 303");
+            //var a2 = new Address("22790-701", "Rua Werneck da Silva", "Rio de Janeiro", "Rio de Janeiro", "RJ", 11, "do lado do prezunic", "bl 2/903");
+            //var a3 = new Address("01311-000", "Avenida Paulista", "São Paulo", "São Paulo", "SP", 02, "do lado da droga raia");
+            //var a4 = new Address("82590-300", "Rua Ernesto de Araújo", "Paraná", "Curitiba", "PR", 12, "perto do Kharina");
+            //var a5 = new Address("20765-630", "Rua Ari Almeida", "Minas de Gerais", "Belo Horizonte", "MG", 103, "em frente ao jota lennon", "casa 2b");
 
             //falta Order, OrderItem, Stock, Products, Users
             Context.Colors.AddRange(c1, c2, c3, c4, c5);
             Context.Categories.AddRange(ca1, ca2, ca3, ca4, ca5);
             Context.OrderStatus.AddRange(os1, os2, os3, os4, os5, os6);
-            Context.Addresses.AddRange(a1, a2, a3, a4, a5);
+            //Context.Addresses.AddRange(a1, a2, a3, a4, a5);
             Context.Brands.AddRange(b1, b2, b3, b4, b5);
 
             Context.SaveChanges();

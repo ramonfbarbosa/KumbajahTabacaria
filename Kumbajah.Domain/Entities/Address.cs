@@ -13,14 +13,15 @@ namespace Kumbajah.Domain.Entities
         public int Number { get; set; }
         public string? Complement { get; set; }
         public string Reference { get; set; }
-        public virtual List<Order> Orders { get; set; }
-        public virtual List<User> Users { get; set; }
+        public virtual List<AddressUser> UserAddress { get; set; }
+        public virtual Order Order { get; set; }
+        public int OrderId { get; set; }
 
         public Address() { }
 
         public Address(string cep, string street, string state,
             string city, string district, int number, string reference,
-            string? complement = null)
+            int orderId, string? complement = null)
         {
             CEP = cep;
             Street = street;
@@ -30,6 +31,7 @@ namespace Kumbajah.Domain.Entities
             Number = number;
             Reference = reference;
             Complement = complement;
+            OrderId = orderId;
         }
     }
 }

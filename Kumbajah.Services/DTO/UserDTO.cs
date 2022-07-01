@@ -14,7 +14,7 @@ namespace Kumbajah.Services.DTO
         public string Password { get; set; }
         public string? CPF { get; set; }
         public string? PhoneNumber { get; set; }
-        public List<Address>? Addresses { get; }
+        public List<AddressUser>? UserAddress { get; }
         public List<Order>? Orders { get; set; }
 
         public UserDTO() { }
@@ -23,6 +23,7 @@ namespace Kumbajah.Services.DTO
             string email, string phoneNumber, DateTime birthDate,
             string password, string cpf)
         {
+            Id = id;
             Name = name;
             LastName = lastName;
             Email = email;
@@ -30,7 +31,7 @@ namespace Kumbajah.Services.DTO
             Birthdate = birthDate;
             Password = password;
             CPF = cpf;
-            Addresses = new List<Address>();
+            UserAddress = new List<AddressUser>();
             Orders = new List<Order>();
         }
 
@@ -44,7 +45,7 @@ namespace Kumbajah.Services.DTO
             Birthdate = user.Birthdate;
             Password = user.Password;
             CPF = user.CPF;
-            Addresses = user.Addresses;
+            UserAddress = user.UserAddress;
             Orders = user.Orders;
         }
 
@@ -60,7 +61,7 @@ namespace Kumbajah.Services.DTO
                 Birthdate = Birthdate,
                 Password = Password,
                 CPF = CPF,
-                Addresses = Addresses,
+                UserAddress = UserAddress,
                 Orders = Orders
             };
         }
