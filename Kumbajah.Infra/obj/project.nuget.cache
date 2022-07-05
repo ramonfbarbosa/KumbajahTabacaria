@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dgWOHKjxePQeXU5w/2ExZ6M3WqPWo4TswjUDdqze+XUWpx1hDGhG/91qfEm3qamBR7PhS0/qaPCNyfDDnM8Mmw==",
+  "dgSpecHash": "jUQO4PuUwf2hejWkTn8iIO1WRXT4IFCWjlYvcvQKaIEWWk5QL5RIl4wtGsbH1DxxWQngiJa0FfZHrEpXV1iMkQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj",
+  "projectFilePath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramon\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
     "C:\\Users\\Ramon\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

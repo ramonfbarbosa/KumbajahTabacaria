@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g6972lIQm8vjeto17lKWPu9Vx7vqF1icgsNtz9cPrMCTRUV4IGoXsB43eFnmdgkf0JYgRVHGvtr2HgFJJadJ7Q==",
+  "dgSpecHash": "+peWyNEbNtWEmsZW6iSChBSiXFbsEzRoKzbStKZSaEtJ9h1cIy1mS2MEDBg8NzXhYkW5IdPXwg37JKerOjupXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\KumbajahTabacaria\\KumbajahTabacaria.csproj",
+  "projectFilePath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\KumbajahTabacaria\\KumbajahTabacaria.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramon\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Ramon\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",

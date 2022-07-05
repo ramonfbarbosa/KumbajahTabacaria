@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj": {}
+    "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj": {
+    "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj",
         "projectName": "Kumbajah.Domain",
-        "projectPath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj",
+        "projectPath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj",
         "packagesPath": "C:\\Users\\Ramon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ramon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -64,14 +64,14 @@
         }
       }
     },
-    "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj": {
+    "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj",
+        "projectUniqueName": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj",
         "projectName": "Kumbajah.Infra",
-        "projectPath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj",
+        "projectPath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Infra\\Kumbajah.Infra.csproj",
         "packagesPath": "C:\\Users\\Ramon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Infra\\obj\\",
+        "outputPath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Infra\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ramon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -88,8 +88,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj": {
-                "projectPath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj"
+              "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj": {
+                "projectPath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Domain\\Kumbajah.Domain.csproj"
               }
             }
           }

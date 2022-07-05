@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y5vI+nDI9c9spyCvPfTvuhMUi9c3XtbfYeOp7j5XJw6CSV+5lyk1TWjvmQ9fQtCcbSqWweeBaVm3UYi75i0DmQ==",
+  "dgSpecHash": "ORRHpd0+0Ivm+1W26+ag63bpYpVJyuDRer4pLhIeDxhUBCc6pUyOuTe8KSjSHEZO3NeASxwMWgsqyJznIC1AOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ramon\\Documents\\csharp projects\\KumbajahTabacaria\\Kumbajah.Services\\Kumbajah.Services.csproj",
+  "projectFilePath": "C:\\Users\\Ramon\\Desktop\\KumbajahTabacaria\\Kumbajah.Services\\Kumbajah.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ramon\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Ramon\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",

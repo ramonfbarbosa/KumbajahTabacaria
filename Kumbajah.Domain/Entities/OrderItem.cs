@@ -12,11 +12,6 @@
 
         public OrderItem() { }
 
-        public decimal SubTotal()
-        {
-            return Price * Quantity;
-        }
-
         public OrderItem(int quantity, decimal price,
             int orderId, int productId)
         {

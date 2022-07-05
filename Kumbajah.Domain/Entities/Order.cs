@@ -9,6 +9,7 @@ namespace Kumbajah.Domain.Entities
         public DateTime BuyMoment { get; set; }
         public string PhoneNumber { get; set; }
         public string CPF { get; set; }
+        public decimal TotalPrice { get; set; }
         public virtual OrderStatus OrderStatus { get; set; }
         public int OrderStatusId { get; set; }
         public virtual User User { get; set; }
@@ -30,16 +31,6 @@ namespace Kumbajah.Domain.Entities
             AddressId = addressId;
             OrderStatusId = orderStatusId;
             Items = items;
-        }
-
-        public decimal Total()
-        {
-            decimal sum = 0;
-            foreach (OrderItem item in Items)
-            {
-                sum += item.SubTotal();
-            }
-            return sum;
         }
     }
 }

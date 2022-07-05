@@ -16,3 +16,21 @@ C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\De
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.genruntimeconfig.cache
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\ref\Kumbajah.Infra.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Infra.deps.json
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Infra.runtimeconfig.json
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Infra.runtimeconfig.dev.json
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Infra.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Infra.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Domain.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\bin\Debug\net5.0\Kumbajah.Domain.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.csproj.AssemblyReference.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.AssemblyInfoInputs.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.AssemblyInfo.cs
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.csproj.CoreCompileInputs.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.csproj.CopyComplete
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\refint\Kumbajah.Infra.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\Kumbajah.Infra.genruntimeconfig.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Infra\obj\Debug\net5.0\ref\Kumbajah.Infra.dll

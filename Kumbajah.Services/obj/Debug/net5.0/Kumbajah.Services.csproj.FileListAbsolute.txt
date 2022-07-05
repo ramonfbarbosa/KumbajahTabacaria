@@ -15,3 +15,11 @@ C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Domain.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Infra.pdb
 C:\Users\Ramon\Documents\csharp projects\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.csproj.CopyComplete
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.csproj.AssemblyReference.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.AssemblyInfoInputs.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.AssemblyInfo.cs
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.csproj.CoreCompileInputs.cache
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\refint\Kumbajah.Services.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.pdb
