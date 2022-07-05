@@ -17,6 +17,8 @@ namespace Kumbajah.Services.DTO
         public List<AddressUser>? UserAddress { get; }
         public List<Order>? Orders { get; set; }
 
+        public UserDTO() { }
+
         public UserDTO(
             int id, string name, string lastName,
             string email, string phoneNumber,

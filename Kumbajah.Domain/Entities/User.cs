@@ -32,6 +32,7 @@ namespace Kumbajah.Domain.Entities
             Password = password;
             CPF = cpf;
             Orders = new List<Order>();
+            UserAddress = new List<AddressUser>();
         }
     }
 }

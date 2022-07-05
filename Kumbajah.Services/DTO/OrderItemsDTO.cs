@@ -2,7 +2,7 @@
 
 namespace Kumbajah.Services.DTO
 {
-    public class OrderItemDTO
+    public class OrderItemsDTO
     {
         public int Id { get; set; }
         public int Quantity { get; set; }
@@ -15,7 +15,9 @@ namespace Kumbajah.Services.DTO
             return Price * Quantity;
         }
 
-        public OrderItemDTO(
+        public OrderItemsDTO() { }
+
+        public OrderItemsDTO(
             int id, int quantity, 
             decimal price, int orderId, int productId)
         {

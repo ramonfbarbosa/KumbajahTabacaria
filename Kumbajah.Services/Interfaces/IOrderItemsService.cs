@@ -4,6 +4,6 @@ namespace Kumbajah.Services.Interfaces
 {
     public interface IOrderItemsService
     {
-        decimal SubTotal(OrderItemDTO items);
+        decimal SubTotal(OrderItemsDTO items);
     }
 }

@@ -19,6 +19,8 @@ namespace Kumbajah.Services.DTO
         public Address Address { get; set; }
         public List<OrderItem> Items { get; set; }
 
+        public OrderDTO() { }
+
         public OrderDTO(
             int id, DateTime buyMoment, string phoneNumber,
             string cpf, decimal totalPrice, int userId, int addressId,

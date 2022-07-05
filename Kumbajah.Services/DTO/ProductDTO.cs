@@ -16,6 +16,8 @@ namespace Kumbajah.Services.DTO
         public int ColorId { get; set; }
         public int BrandId { get; set; }
 
+        public ProductDTO() { }
+
         public ProductDTO(
             int id, string name, string description,
             decimal price, string image, DateTime createdTime,

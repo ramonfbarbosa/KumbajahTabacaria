@@ -11,8 +11,8 @@ namespace Kumbajah.Infra.Mappings
             builder.ToTable("TAB_CORES");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id)
-                .ValueGeneratedOnAdd()
                 .UseIdentityColumn(1, 1)
+                .ValueGeneratedOnAdd()
                 .HasColumnName("ID")
                 .HasColumnType("INT");
             builder.Property(x => x.ColorName)

@@ -13,7 +13,7 @@ namespace Kumbajah.Services.Services
             OrderItemsRepository = orderItemsRepository;
         }
 
-        public decimal SubTotal(OrderItemDTO items)
+        public decimal SubTotal(OrderItemsDTO items)
         {
             var dto = items.GetEntity();
             return OrderItemsRepository.SubTotal(dto);
