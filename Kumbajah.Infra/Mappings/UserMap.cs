@@ -11,7 +11,6 @@ namespace Kumbajah.Infra.Mappings
             builder.ToTable("TAB_CLIENTES");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id)
-                .UseIdentityColumn(1, 1)
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn(1, 1)
                 .HasColumnName("ID")
