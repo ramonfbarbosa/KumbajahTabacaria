@@ -18,7 +18,7 @@ namespace Kumbajah.Infra.Validators
                     .NotNull()
                     .WithMessage("O Id não pode ser nulo!")
                     .NotEmpty()
-                    .WithMessage("O Id já existe!")
+                    .WithMessage("O Id já existes!")
                     .Must(UniqueId)
                     .WithMessage("O Id já existe!");
                 RuleFor(costumer => costumer.Email)
