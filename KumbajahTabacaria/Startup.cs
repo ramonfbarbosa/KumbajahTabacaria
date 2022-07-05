@@ -40,9 +40,11 @@ namespace KumbajahTabacaria
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderItemsRepository, OrderItemsRepository>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IOrderItemsService, OrderItemsService>();
             services.AddTransient<IValidator<Address>, AddressValidator>();
             services.AddTransient<IValidator<Product>, ProductValidator>();
             services.AddTransient<IValidator<Order>, OrderValidator>();

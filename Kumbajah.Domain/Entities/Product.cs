@@ -23,7 +23,8 @@ namespace Kumbajah.Domain.Entities
 
         public Product() { }
 
-        public Product(string name, string description, decimal price,
+        public Product(
+            string name, string description, decimal price,
             string image, int stockId, int brandId,
             int categoryId, int? colorId = null)
         {
@@ -34,7 +35,7 @@ namespace Kumbajah.Domain.Entities
             StockId = stockId;
             BrandId = brandId;
             CategoryId = categoryId;
-            ColorId = colorId.Value;
+            ColorId = colorId;
         }
     }
 }

@@ -4,14 +4,16 @@ using Kumbajah.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KumbajahTabacaria.Migrations
 {
     [DbContext(typeof(KumbajahContext))]
-    partial class KumbajahContextModelSnapshot : ModelSnapshot
+    [Migration("20220705224654_TestandoUmaCoisa")]
+    partial class TestandoUmaCoisa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,8 +170,7 @@ namespace KumbajahTabacaria.Migrations
                         .UseIdentityColumn();
 
                     b.Property<int>("AddressId")
-                        .HasColumnType("INT")
-                        .HasColumnName("ADDRESS_ID");
+                        .HasColumnType("INT");
 
                     b.Property<DateTime>("BuyMoment")
                         .HasMaxLength(30)
@@ -183,8 +184,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("CPF");
 
                     b.Property<int>("OrderStatusId")
-                        .HasColumnType("INT")
-                        .HasColumnName("ORDER_STATUS_ID");
+                        .HasColumnType("INT");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -197,8 +197,7 @@ namespace KumbajahTabacaria.Migrations
                         .HasColumnName("PRECO_TOTAL");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("INT")
-                        .HasColumnName("USER_ID");
+                        .HasColumnType("INT");
 
                     b.HasKey("Id");
 

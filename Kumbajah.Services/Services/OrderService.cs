@@ -1,11 +1,14 @@
 ﻿using FluentValidation;
 using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Interfaces;
+using Kumbajah.Infra.Pagination;
 using Kumbajah.Services.DTO;
 using Kumbajah.Services.Interfaces;
+using KumbajahTabacaria.Infra.Pagination;
 using KumbajahTabacaria.Response;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kumbajah.Services.Services
@@ -14,6 +17,7 @@ namespace Kumbajah.Services.Services
     {
         private const int OrderStatusPaid = 1;
         private IOrderRepository OrderRepository { get; }
+        public IOrderItemsRepository OrderItemsRepository { get; }
         public IUserRepository UserRepository { get; set; }
         private IValidator<Order> Validator { get; }
 
@@ -37,11 +41,24 @@ namespace Kumbajah.Services.Services
             foreach (var order in allOrders)
             {
                 var dto = new OrderDTO(order.Id, order.BuyMoment,
-                    order.PhoneNumber, order.CPF, order.UserId,
+                    order.PhoneNumber, order.CPF, order.TotalPrice, order.UserId,
                     order.AddressId, order.OrderStatusId, order.Items);
                 dtos.Add(dto);
             }
             return dtos;
+        }
+
+        public PaginationResponse<OrderDTO> PagedOrders(ListCriteria criteria)
+        {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException(nameof(criteria));
+            }
+            var filteredOrders = OrderRepository.Filter(criteria.Filter);
+            var orderedOrders = OrderRepository.OrderBy(filteredOrders, criteria.Sortings);
+            var paginatedOrders = orderedOrders.Paginate(criteria.Pagination);
+            var usersDTO = paginatedOrders.Select(order => new OrderDTO(order));
+            return new PaginationResponse<OrderDTO>(filteredOrders.Count(), usersDTO.ToList());
         }
 
         public async Task<ValidationResponse<OrderDTO>> CreateAsync(OrderDTO orderDTO)
@@ -64,12 +81,30 @@ namespace Kumbajah.Services.Services
         private void CreateResource(Order order)
         {
             var user = UserRepository.GetById(order.UserId);
+            if (user == null) throw new Exception("Usuario nao encontrado");
             order.BuyMoment = DateTime.Now;
             order.OrderStatusId = OrderStatusPaid;
-            user.PhoneNumber = order.PhoneNumber;
-            user.CPF = order.CPF;
+            if (user.PhoneNumber.Any())
+            {
+                user.PhoneNumber = order.PhoneNumber;
+            }
+            if (user.CPF.Any())
+            {
+                user.CPF = order.CPF;
+            }
             user = order.User;
+            order.TotalPrice = TotalPrice(order);
             user.Orders.Add(order);
+        }
+
+        private decimal TotalPrice(Order order)
+        {
+            decimal sum = 0;
+            foreach (OrderItem item in order.Items)
+            {
+                sum += OrderItemsRepository.SubTotal(item);
+            }
+            return sum;
         }
     }
 }

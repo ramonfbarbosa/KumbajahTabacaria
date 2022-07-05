@@ -24,7 +24,7 @@ namespace Kumbajah.Infra.Validators
                 .NotNull()
                 .WithMessage("O campo CPF não pode ser nulo!")
                 .Matches(CPFRegex)
-                .WithMessage("Deve ser um CPF válido");
+                .WithMessage("CPF deve ser válido");
             RuleFor(costumer => costumer.OrderStatusId)
                 .NotEmpty()
                 .WithMessage("O campo OrderStatus não pode ficar vazio!")

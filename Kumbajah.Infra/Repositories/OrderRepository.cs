@@ -20,8 +20,7 @@ namespace Kumbajah.Infra.Repositories
         }
 
         public Order GetById(int id) =>
-            KumbajahContext.Orders.AsNoTracking()
-            .FirstOrDefault(x => x.Id == id);
+            KumbajahContext.Orders.AsNoTracking().FirstOrDefault(x => x.Id == id);
 
         public List<Order> GetAll() =>
             KumbajahContext.Orders.ToList();

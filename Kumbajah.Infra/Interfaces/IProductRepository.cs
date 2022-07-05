@@ -1,5 +1,7 @@
 ﻿using Kumbajah.Domain.Entities;
+using Kumbajah.Infra.Pagination;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kumbajah.Infra.Interfaces
@@ -7,14 +9,12 @@ namespace Kumbajah.Infra.Interfaces
     public interface IProductRepository
     {
         Product GetById(int id);
+        Product GetByName(string name);
         List<Product> GetAll();
-        Product GetByProductName(string name);
-        Task<List<Product>> SearchByProductName(string name);
-        Task<List<Product>> SearchByCategoryName(string categoryName);
-        Task<List<Product>> SearchByBrandName(string brandName);
-        Task<List<Product>> SearchProductByColorName(string colorName);
+        IQueryable<Product> Filter(Filter filter);
+        IQueryable<Product> OrderBy(IQueryable<Product> products, List<SortingPage> sortings);
         Task<Product> CreateAsync(Product newProduct);
         Task<Product> UpdateAsync(Product updatedProduct);
-        Task DeleteAsync(int id);
+        Task<string> DeleteAsync(int id);
     }
 }

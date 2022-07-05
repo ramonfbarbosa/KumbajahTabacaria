@@ -19,7 +19,8 @@ namespace Kumbajah.Domain.Entities
 
         public Address() { }
 
-        public Address(string cep, string street, string state,
+        public Address(
+            string cep, string street, string state,
             string city, string district, int number, string reference,
             int orderId, string? complement = null)
         {

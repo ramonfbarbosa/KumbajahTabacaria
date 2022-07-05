@@ -20,9 +20,10 @@ namespace Kumbajah.Domain.Entities
 
         public Order() { }
 
-        public Order(DateTime buyMoment, string phoneNumber,
-            string cpf, int userId, int addressId, int orderStatusId,
-            List<OrderItem> items)
+        public Order(
+            DateTime buyMoment, string phoneNumber,
+            string cpf, int userId, int addressId,
+            int orderStatusId, List<OrderItem> items)
         {
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;

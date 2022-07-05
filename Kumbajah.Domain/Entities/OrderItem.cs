@@ -12,7 +12,8 @@
 
         public OrderItem() { }
 
-        public OrderItem(int quantity, decimal price,
+        public OrderItem(
+            int quantity, decimal price,
             int orderId, int productId)
         {
             Quantity = quantity;

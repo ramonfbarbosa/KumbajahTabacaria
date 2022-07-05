@@ -10,21 +10,25 @@ namespace Kumbajah.Services.DTO
         public DateTime BuyMoment { get; set; }
         public string PhoneNumber { get; set; }
         public string CPF { get; set; }
+        public decimal TotalPrice { get; set; }
         public int OrderStatusId { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public int UserId { get; set; }
+        public User User { get; set; }
         public int AddressId { get; set; }
+        public Address Address { get; set; }
         public List<OrderItem> Items { get; set; }
 
-        public OrderDTO() { }
-
-        public OrderDTO(int id, DateTime buyMoment, string phoneNumber,
-            string cpf, int userId, int addressId, int orderStatusId,
-            List<OrderItem> items)
+        public OrderDTO(
+            int id, DateTime buyMoment, string phoneNumber,
+            string cpf, decimal totalPrice, int userId, int addressId,
+            int orderStatusId, List<OrderItem> items)
         {
             Id = id;
             BuyMoment = buyMoment;
             PhoneNumber = phoneNumber;
             CPF = cpf;
+            TotalPrice = totalPrice;
             UserId = userId;
             AddressId = addressId;
             OrderStatusId = orderStatusId;
@@ -37,6 +41,7 @@ namespace Kumbajah.Services.DTO
             BuyMoment = order.BuyMoment;
             PhoneNumber = order.PhoneNumber;
             CPF = order.CPF;
+            TotalPrice = order.TotalPrice;
             UserId = order.UserId;
             AddressId = order.AddressId;
             OrderStatusId = order.OrderStatusId;
@@ -51,6 +56,7 @@ namespace Kumbajah.Services.DTO
                 BuyMoment = BuyMoment,
                 PhoneNumber = PhoneNumber,
                 CPF = CPF,
+                TotalPrice = TotalPrice,
                 UserId = UserId,
                 AddressId = AddressId,
                 OrderStatusId = OrderStatusId,

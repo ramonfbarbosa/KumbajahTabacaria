@@ -31,6 +31,10 @@ namespace Kumbajah.Infra.Mappings
                 .HasMaxLength(20)
                 .HasColumnName("CPF")
                 .HasColumnType("VARCHAR(80)");
+            builder.Property(x => x.TotalPrice)
+                .IsRequired()
+                .HasColumnName("PRECO_TOTAL")
+                .HasColumnType("DECIMAL(10,10)");
             builder.Property(x => x.OrderStatusId)
                 .IsRequired()
                 .HasColumnName("ORDER_STATUS_ID")

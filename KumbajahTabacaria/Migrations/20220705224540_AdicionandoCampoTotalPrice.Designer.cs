@@ -4,14 +4,16 @@ using Kumbajah.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KumbajahTabacaria.Migrations
 {
     [DbContext(typeof(KumbajahContext))]
-    partial class KumbajahContextModelSnapshot : ModelSnapshot
+    [Migration("20220705224540_AdicionandoCampoTotalPrice")]
+    partial class AdicionandoCampoTotalPrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,7 +196,7 @@ namespace KumbajahTabacaria.Migrations
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("DECIMAL(10,10)")
-                        .HasColumnName("PRECO_TOTAL");
+                        .HasColumnName("PRECO");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INT")

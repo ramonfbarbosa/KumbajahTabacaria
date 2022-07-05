@@ -1,4 +1,6 @@
-﻿namespace Kumbajah.Services.DTO
+﻿using Kumbajah.Domain.Entities;
+
+namespace Kumbajah.Services.DTO
 {
     public class OrderItemDTO
     {
@@ -8,14 +10,13 @@
         public int OrderId { get; set; }
         public int ProductId { get; set; }
 
-        public OrderItemDTO() { }
-
         public decimal SubTotal()
         {
             return Price * Quantity;
         }
 
-        public OrderItemDTO(int id, int quantity, 
+        public OrderItemDTO(
+            int id, int quantity, 
             decimal price, int orderId, int productId)
         {
             Id = id;
@@ -23,6 +24,18 @@
             Price = price;
             OrderId = orderId;
             ProductId = productId;
+        }
+
+        public OrderItem GetEntity()
+        {
+            return new OrderItem
+            {
+                Id = Id,
+                Quantity = Quantity,
+                Price = Price,
+                OrderId = OrderId,
+                ProductId = ProductId
+            };
         }
     }
 }

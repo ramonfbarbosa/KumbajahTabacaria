@@ -17,7 +17,7 @@ namespace Kumbajah.Services.Services
         {
             if (Context.Products.Any() ||
                 Context.Users.Any() ||
-                Context.Order.Any() ||
+                Context.Orders.Any() ||
                 Context.Addresses.Any() ||
                 Context.OrderItems.Any() ||
                 Context.OrderStatus.Any() ||

@@ -3,7 +3,7 @@ using Kumbajah.Infra.Interfaces;
 
 namespace Kumbajah.Infra.Repositories
 {
-    public class OrderItemRepository : IOrderItemsRepository
+    public class OrderItemsRepository : IOrderItemsRepository
     {
         public decimal SubTotal(OrderItem items)
         {

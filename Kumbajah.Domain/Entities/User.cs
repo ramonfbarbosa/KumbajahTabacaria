@@ -18,7 +18,8 @@ namespace Kumbajah.Domain.Entities
 
         public User() { }
 
-        public User(int id, string name, string lastName, string email, 
+        public User(
+            int id, string name, string lastName, string email, 
             DateTime birthdate, string password,
             string? cpf = null, string? phoneNumber = null)
         {

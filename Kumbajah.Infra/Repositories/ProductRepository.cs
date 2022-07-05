@@ -1,7 +1,9 @@
 ﻿using Kumbajah.Domain.Entities;
 using Kumbajah.Infra.Context;
 using Kumbajah.Infra.Interfaces;
+using Kumbajah.Infra.Pagination;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,66 +22,58 @@ namespace Kumbajah.Infra.Repositories
         public Product GetById(int id) =>
             KumbajahContext.Products.AsNoTracking()
                 .FirstOrDefault(x => x.Id == id);
+        public Product GetByName(string name) =>
+            KumbajahContext.Products.AsNoTracking()
+                .FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
         public List<Product> GetAll() =>
             KumbajahContext.Products.ToList();
 
-        public Product GetByProductName(string name) =>
-            KumbajahContext.Products
-                .FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
-
-        public async Task<List<Product>> SearchByCategoryName(Category category)
+        public IQueryable<Product> Filter(Filter filter)
         {
-            var productsByCategory = await KumbajahContext.Products
-               .Where(x => x.Category.Name.ToLower()
-               .Contains(category.Name.ToLower()))
-               .AsNoTracking()
-               .ToListAsync();
-
-            return productsByCategory;
+            IQueryable<Product> users = KumbajahContext.Products;
+            if (filter == null || filter.Value == null) return users;
+            return users.Where(x =>
+            x.Id.ToString().Contains(filter.Value.ToLower())
+                    || x.Name.Contains(filter.Value.ToLower())
+                    || x.Category.Name.Contains(filter.Value.ToLower())
+                    || x.Brand.Name.Contains(filter.Value.ToLower())
+                    || x.Color.ColorName.Contains(filter.Value.ToLower()));
         }
 
-        public async Task<List<Product>> SearchByProductName(string name)
+        public IQueryable<Product> OrderBy(IQueryable<Product> products, List<SortingPage> sortings)
         {
-            var allProducts = await KumbajahContext.Products
-               .Where(x => x.Name.ToLower()
-               .Contains(name.ToLower()))
-               .AsNoTracking()
-               .ToListAsync();
-
-            return allProducts;
+            if (sortings == null || sortings.Count == 0)
+            {
+                return products;
+            }
+            var orderedProducts = OrderByFirst(products, sortings.First());
+            foreach (var sorting in sortings.Skip(1))
+            {
+                orderedProducts = NextOrderBy(orderedProducts, sorting);
+            }
+            return orderedProducts;
         }
 
-        public async Task<List<Product>> SearchByBrandName(string brandName)
+        private IOrderedQueryable<Product> OrderByFirst(IQueryable<Product> products, SortingPage sorting) => sorting.Field.ToLower() switch
         {
-            var productsByBrandname = await KumbajahContext.Products
-                .Where(x => x.Brand.Name.ToLower()
-                .Contains(brandName.ToLower()))
-                .AsNoTracking()
-                .ToListAsync();
+            "id" => sorting.IsAscending ? products.OrderBy(x => x.Id) : products.OrderByDescending(x => x.Id),
+            "email" => sorting.IsAscending ? products.OrderBy(x => x.Name) : products.OrderByDescending(x => x.Name),
+            "horadacompra" => sorting.IsAscending ? products.OrderBy(x => x.Category.Name) : products.OrderByDescending(x => x.Category.Name),
+            "userid" => sorting.IsAscending ? products.OrderBy(x => x.Brand.Name) : products.OrderByDescending(x => x.Brand.Name),
+            "orderstatus" => sorting.IsAscending ? products.OrderBy(x => x.Color.ColorName) : products.OrderByDescending(x => x.Color.ColorName),
+            _ => throw new NotImplementedException()
+        };
 
-            return productsByBrandname;
-        }
-
-        public async Task<List<Product>> SearchByCategoryName(string categoryName)
+        private IOrderedQueryable<Product> NextOrderBy(IOrderedQueryable<Product> products, SortingPage sorting) => sorting.Field.ToLower() switch
         {
-            var productsByCatgegoryName = await KumbajahContext.Products
-                .Where(x => x.Category.Name.ToLower().Contains(categoryName.ToLower()))
-                .AsNoTracking()
-                .ToListAsync();
-
-            return productsByCatgegoryName;
-        }
-
-        public async Task<List<Product>> SearchProductByColorName(string colorName)
-        {
-            var productsByColorName = await KumbajahContext.Products
-               .Where(x => x.Color.ColorName.ToLower().Contains(colorName.ToLower()))
-               .AsNoTracking()
-               .ToListAsync();
-
-            return productsByColorName;
-        }
+            "id" => sorting.IsAscending ? products.ThenBy(x => x.Id) : products.ThenByDescending(x => x.Id),
+            "email" => sorting.IsAscending ? products.ThenBy(x => x.Name) : products.ThenByDescending(x => x.Name),
+            "horadacompra" => sorting.IsAscending ? products.ThenBy(x => x.Category.Name) : products.ThenByDescending(x => x.Category.Name),
+            "userid" => sorting.IsAscending ? products.ThenBy(x => x.Brand.Name) : products.ThenByDescending(x => x.Brand.Name),
+            "orderstatus" => sorting.IsAscending ? products.ThenBy(x => x.Color.ColorName) : products.ThenByDescending(x => x.Color.ColorName),
+            _ => throw new NotImplementedException()
+        };
 
         public async Task<Product> CreateAsync(Product newProduct)
         {
@@ -97,14 +91,16 @@ namespace Kumbajah.Infra.Repositories
             return proxy.Entity;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<string> DeleteAsync(int id)
         {
             var product = GetById(id);
             if (product != null)
             {
                 KumbajahContext.Remove(product);
                 await KumbajahContext.SaveChangesAsync();
+                return "Produto removido!";
             }
+            return null;
         }
     }
 }

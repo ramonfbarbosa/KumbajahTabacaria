@@ -7,6 +7,7 @@ namespace Kumbajah.Infra.Validators
     public class AddressValidator : AbstractValidator<Address>
     {
         Regex CPFRegex = new Regex(@"[0-9]{5}-[0-9]{3}");
+
         public AddressValidator()
         {
             RuleFor(costumer => costumer.CEP)

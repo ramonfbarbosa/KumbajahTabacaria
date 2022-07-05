@@ -23,3 +23,12 @@ C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumb
 C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.dll
 C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\refint\Kumbajah.Services.dll
 C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Services.deps.json
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Services.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Services.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Domain.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Infra.dll
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Domain.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\bin\Debug\net5.0\Kumbajah.Infra.pdb
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\Kumbajah.Services.csproj.CopyComplete
+C:\Users\Ramon\Desktop\KumbajahTabacaria\Kumbajah.Services\obj\Debug\net5.0\ref\Kumbajah.Services.dll

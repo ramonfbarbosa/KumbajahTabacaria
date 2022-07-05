@@ -9,6 +9,7 @@ namespace Kumbajah.Infra.Validators
     public class UserValidator : AbstractValidator<User>
     {
         private IUserRepository UserRepository { get; }
+
         public UserValidator(IUserRepository userRepository)
         {
             UserRepository = userRepository;
@@ -18,7 +19,7 @@ namespace Kumbajah.Infra.Validators
                     .NotNull()
                     .WithMessage("O Id não pode ser nulo!")
                     .NotEmpty()
-                    .WithMessage("O Id já existes!")
+                    .WithMessage("Id não pode ficar vazio!")
                     .Must(UniqueId)
                     .WithMessage("O Id já existe!");
                 RuleFor(costumer => costumer.Email)
